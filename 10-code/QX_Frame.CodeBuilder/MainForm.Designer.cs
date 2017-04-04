@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Server");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Server");
             this.button1 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -42,7 +42,6 @@
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.button11 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -221,7 +220,6 @@
             this.groupBox2.Controls.Add(this.textBox9);
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.button11);
-            this.groupBox2.Controls.Add(this.button10);
             this.groupBox2.Controls.Add(this.button9);
             this.groupBox2.Controls.Add(this.textBox3);
             this.groupBox2.Controls.Add(this.textBox2);
@@ -251,9 +249,9 @@
             this.textBox9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox9.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(690, 55);
+            this.textBox9.Location = new System.Drawing.Point(678, 55);
             this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(257, 25);
+            this.textBox9.Size = new System.Drawing.Size(269, 25);
             this.textBox9.TabIndex = 7;
             // 
             // label12
@@ -276,17 +274,6 @@
             this.button11.Text = "SqlStatements";
             this.button11.UseVisualStyleBackColor = false;
             this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
-            // button10
-            // 
-            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button10.Location = new System.Drawing.Point(901, 151);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(46, 23);
-            this.button10.TabIndex = 4;
-            this.button10.Text = "set";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // button9
             // 
@@ -333,9 +320,9 @@
             this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox4.Font = new System.Drawing.Font("SimSun", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox4.Location = new System.Drawing.Point(653, 151);
+            this.textBox4.Location = new System.Drawing.Point(678, 151);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(242, 22);
+            this.textBox4.Size = new System.Drawing.Size(269, 22);
             this.textBox4.TabIndex = 1;
             this.textBox4.Text = "Class1.cs";
             // 
@@ -353,10 +340,11 @@
             this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox7.Font = new System.Drawing.Font("SimSun", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox7.Location = new System.Drawing.Point(690, 89);
+            this.textBox7.Location = new System.Drawing.Point(678, 89);
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(257, 22);
+            this.textBox7.Size = new System.Drawing.Size(269, 22);
             this.textBox7.TabIndex = 1;
+            this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 
             // textBox8
             // 
@@ -376,6 +364,7 @@
             this.textBox5.Size = new System.Drawing.Size(410, 22);
             this.textBox5.TabIndex = 1;
             this.textBox5.Text = "-";
+            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // label5
             // 
@@ -1023,10 +1012,10 @@
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(3, 15);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "fuwuqi";
-            treeNode1.Text = "Server";
+            treeNode2.Name = "fuwuqi";
+            treeNode2.Text = "Server";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode2});
             this.treeView1.SelectedImageIndex = 16;
             this.treeView1.Size = new System.Drawing.Size(194, 634);
             this.treeView1.TabIndex = 0;
@@ -1162,7 +1151,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Label label12;

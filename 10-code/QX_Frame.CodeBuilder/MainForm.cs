@@ -284,6 +284,18 @@ namespace CSharp_FlowchartToCode_DG
         /// <param name="e"></param>
         private void button10_Click(object sender, EventArgs e)
         {
+            ChangeTexBox4();
+        }
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+            ChangeTexBox4();
+        }
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+            ChangeTexBox4();
+        }
+        private void ChangeTexBox4()
+        {
             try
             {
                 string[] createFileName = new string[2];
@@ -299,7 +311,6 @@ namespace CSharp_FlowchartToCode_DG
                 MessageBox.Show(ex.ToString());
             }
         }
-
         #endregion
 
         #region code builder
@@ -421,6 +432,7 @@ namespace CSharp_FlowchartToCode_DG
 
         }
         #endregion
+
 
     }
 }
