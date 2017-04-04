@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace CSharp_FlowchartToCode_DG.CodeCreate
 {
-    public class QX_FrameToDataService
+    public  class QX_FrameToDataContract
     {
         public static string CreateCode(Dictionary<string, dynamic> CreateCodeDic)
         {
@@ -53,39 +51,14 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
 
             //添加实体类
             str.Append("\t" + "/// <summary>" + "\r\n");
-            str.Append("\t" + "/// class " + ClassName + ClassNamePlus + "\r\n");
+            str.Append("\t" + "/// interface " + ClassName + ClassNamePlus + "\r\n");
             str.Append("\t" + "/// </summary>" + "\r\n");
-            str.Append("\t" + $"public class {ClassNameAndExtends}\r\n");
+            str.Append("\t" + $"public interface {ClassNameAndExtends}\r\n");
             str.Append("\t" + "{" + "\r\n");
-            //add private member
-            str.Append("\t\t" + $"private {TableName} _{TableName};" + "\r\n");
-            //添加构造方法
-            str.Append("\t\t" + "/// <summary>" + "\r\n");
-            str.Append("\t\t" + "/// construction method" + "\r\n");
-            str.Append("\t\t" + "/// </summary>" + "\r\n");
-            str.Append("\t\t" + "public " + ClassName + ClassNamePlus + "()" + "\r\n");
-            str.Append("\t\t" + "{}" + "\r\n" + "\r\n");
             //add method
-            str.Append("\t\t" + "public " + ClassName + ClassNamePlus + $"({TableName} {TableName})" + "\r\n");
-            str.Append("\t\t" + "{" + "\r\n");
-            str.Append("\t\t\t" + $"this._{TableName} = {TableName};" + "\r\n");
-            str.Append("\t\t" + "}" + "\r\n");
-
-            str.Append("\t\t" + $"public bool Add({TableName} {TableName})" + "\r\n");
-            str.Append("\t\t" + "{" + "\r\n");
-            str.Append("\t\t\t" + $"return {TableName}.Add();" + "\r\n");
-            str.Append("\t\t" + "}" + "\r\n");
-
-            str.Append("\t\t" + $"public bool Update({TableName} {TableName})" + "\r\n");
-            str.Append("\t\t" + "{" + "\r\n");
-            str.Append("\t\t\t" + $"return {TableName}.Update();" + "\r\n");
-            str.Append("\t\t" + "}" + "\r\n");
-
-            str.Append("\t\t" + $"public bool Delete({TableName} {TableName})" + "\r\n");
-            str.Append("\t\t" + "{" + "\r\n");
-            str.Append("\t\t\t" + $"return {TableName}.Delete();" + "\r\n");
-            str.Append("\t\t" + "}" + "\r\n");
-
+            str.Append("\t\t" + $"bool Add({TableName} {TableName});" + "\r\n");
+            str.Append("\t\t" + $"bool Update({TableName} {TableName});" + "\r\n");
+            str.Append("\t\t" + $"bool Delete({TableName} {TableName});" + "\r\n");
 
             str.Append("\t" + "}" + "\r\n");//public class }
             str.Append("}" + "\r\n");//namespace class }

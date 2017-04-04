@@ -85,7 +85,6 @@ namespace CSharp_FlowchartToCode_DG
             Ini_Helper_DG.Update(filePath, "code", "fileName", textBox4.Text);//fileName
         }
 
-
         #region 获取数据库结构的代码
         //获取数据库信息
         private void button2_Click(object sender, EventArgs e)
@@ -277,6 +276,32 @@ namespace CSharp_FlowchartToCode_DG
 
         #endregion
 
+        #region function button
+        /// <summary>
+        /// set button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button10_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string[] createFileName = new string[2];
+                if (textBox4.Text.Contains("."))
+                {
+                    createFileName = textBox4.Text.Trim().Split('.');
+                }
+                createFileName[0] = textBox5.Text.Trim() + textBox7.Text.Trim();
+                textBox4.Text = $"{createFileName[0]}.{createFileName[1]}";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        #endregion
+
         #region code builder
         //common set infoList
         private void SetInfoList()
@@ -379,43 +404,23 @@ namespace CSharp_FlowchartToCode_DG
         {
             CommonComponent(() => CodeForSqlStatement.CreateCode(CreateInfoDic));
         }
-        //build QueryObject
+        //build QX_Frame.QueryObject
         private void button3_Click(object sender, EventArgs e)
         {
             CommonComponent(() => QX_FrameToQueryObject.CreateCode(CreateInfoDic));
         }
-        //build DataService
+        //build QX_Frame.DataService
         private void button9_Click(object sender, EventArgs e)
         {
             CommonComponent(() => QX_FrameToDataService.CreateCode(CreateInfoDic));
         }
-        #endregion
-
-        #region function button
-        /// <summary>
-        /// set button
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void button10_Click(object sender, EventArgs e)
+        //build QX_Frame.Contract
+        private void button17_Click(object sender, EventArgs e)
         {
-            try
-            {
-                string[] createFileName = new string[2];
-                if (textBox4.Text.Contains("."))
-                {
-                    createFileName = textBox4.Text.Trim().Split('.');
-                }
-                createFileName[0] = textBox5.Text.Trim() + textBox7.Text.Trim();
-                textBox4.Text = $"{createFileName[0]}.{createFileName[1]}";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+            CommonComponent(() =>QX_FrameToDataContract.CreateCode(CreateInfoDic));
+
         }
         #endregion
-
 
     }
 }

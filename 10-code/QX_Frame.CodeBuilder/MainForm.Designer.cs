@@ -107,6 +107,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.button17 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -216,6 +217,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.groupBox2.Controls.Add(this.button17);
             this.groupBox2.Controls.Add(this.textBox9);
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.button11);
@@ -266,9 +268,10 @@
             // button11
             // 
             this.button11.BackColor = System.Drawing.Color.Silver;
+            this.button11.Font = new System.Drawing.Font("SimSun", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button11.Location = new System.Drawing.Point(111, 184);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(110, 30);
+            this.button11.Size = new System.Drawing.Size(119, 30);
             this.button11.TabIndex = 5;
             this.button11.Text = "SqlStatements";
             this.button11.UseVisualStyleBackColor = false;
@@ -287,9 +290,10 @@
             // 
             // button9
             // 
+            this.button9.Font = new System.Drawing.Font("SimSun", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button9.Location = new System.Drawing.Point(352, 184);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(110, 30);
+            this.button9.Size = new System.Drawing.Size(118, 30);
             this.button9.TabIndex = 3;
             this.button9.Text = "Data.Service";
             this.button9.UseVisualStyleBackColor = true;
@@ -1030,6 +1034,17 @@
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
             this.treeView1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseDoubleClick);
             // 
+            // button17
+            // 
+            this.button17.Font = new System.Drawing.Font("SimSun", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button17.Location = new System.Drawing.Point(476, 185);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(124, 30);
+            this.button17.TabIndex = 8;
+            this.button17.Text = "Data.Contract";
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1151,6 +1166,7 @@
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button button17;
     }
 }
 

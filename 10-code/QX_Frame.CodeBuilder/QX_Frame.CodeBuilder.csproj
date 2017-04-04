@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CodeCreate\CodeForSqlStatement.cs" />
+    <Compile Include="CodeCreate\QX_FrameToDataContract.cs" />
     <Compile Include="CodeCreate\QX_FrameToDataService.cs" />
     <Compile Include="CodeCreate\CodeForEntity.cs" />
     <Compile Include="CodeCreate\QX_FrameToQueryObject.cs" />
