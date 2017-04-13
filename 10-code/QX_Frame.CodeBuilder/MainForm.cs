@@ -313,7 +313,7 @@ namespace CSharp_FlowchartToCode_DG
         }
         #endregion
 
-        #region code builder
+        #region code builder settings
         //common set infoList
         private void SetInfoList()
         {
@@ -404,11 +404,19 @@ namespace CSharp_FlowchartToCode_DG
                 MessageBox.Show(ee.ToString());
             }
         }
+        #endregion
+
+        //page 1 -----------------
 
         //build Entities
         private void button1_Click(object sender, EventArgs e)
         {
             CommonComponent(() => CodeForEntity.CreateCode(CreateInfoDic));
+        }
+        //CodeForInstance
+        private void button18_Click(object sender, EventArgs e)
+        {
+            CommonComponent(() => CodeForInstance.CreateCode(CreateInfoDic));
         }
         //build SqlStatements
         private void button11_Click(object sender, EventArgs e)
@@ -428,11 +436,17 @@ namespace CSharp_FlowchartToCode_DG
         //build QX_Frame.Contract
         private void button17_Click(object sender, EventArgs e)
         {
-            CommonComponent(() =>QX_FrameToDataContract.CreateCode(CreateInfoDic));
-
+            CommonComponent(() => QX_FrameToDataContract.CreateCode(CreateInfoDic));
         }
-        #endregion
 
+        //page 2 -----------
 
+        //REST WebApiController
+        private void button10_Click_1(object sender, EventArgs e)
+        {
+            CommonComponent(() => QX_FrameToRESTWebApiController.CreateCode(CreateInfoDic));
+        }
+
+        
     }
 }

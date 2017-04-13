@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace CSharp_FlowchartToCode_DG.CodeCreate
 {
-    public class QX_FrameToDataService
+    class QX_FrameToRESTWebApiController
     {
         public static string CreateCode(Dictionary<string, dynamic> CreateCodeDic)
         {
@@ -15,8 +13,8 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
             string NameSpace = CreateCodeDic["NameSpace"];                                      //NameSpace
             string TableName = CreateCodeDic["TableName"];                                      //TableName
             string ClassName = CreateCodeDic["Class"];                                          //ClassName
-            string ClassNamePlus = CreateCodeDic["ClassNamePlus"];                               //ClassName Plus
-            string ClassNameExtends = CreateCodeDic["ClassExtends"];                            //ClassExtends
+            string ClassNamePlus = CreateCodeDic["ClassNamePlus"];                              //ClassName Plus
+            string ClassNameExtends = CreateCodeDic["ClassExtends"];                             //ClassExtends
             if (!string.IsNullOrEmpty(ClassNameExtends))
             {
                 ClassNameExtends = ":" + ClassNameExtends;
@@ -30,20 +28,26 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
             List<string> FeildIsPK = CreateCodeDic["FeildIsPK"];                                //表字段是否主键
             List<string> FeildIsIdentity = CreateCodeDic["FeildIsIdentity"];                    //表字段是否自增
 
+
             StringBuilder str = new StringBuilder();
 
-            foreach (var item in usingsArray)
-            {
-                if (usingsArray.Last().Equals(item))
-                {
-                    break;
-                }
-                str.Append($"{item};\r\n");
-            }
+            //foreach (var item in usingsArray)
+            //{
+            //    if (usingsArray.Last().Equals(item))
+            //    {
+            //        break;
+            //    }
+            //    str.Append($"{item};\r\n");
+            //}
+
+            str.Append($"using QX_Frame.App.Web;\r\n");
+            str.Append($"using QX_Frame.Helper_DG_Framework;\r\n");
+            str.Append($"using QX_Frame.Helper_DG_Framework.Extends;\r\n");
+            str.Append($"using System.Web.Http;\r\n");
 
             str.Append("\r\n");//引用结束换行
             //添加命名空间
-            str.Append($"namespace {NameSpace}\r\n");
+            str.Append($"namespace QX_Frame.WebAPI.Controllers\r\n");
             str.Append("{" + "\r\n");
             #region 版权信息
             //版权信息
@@ -53,37 +57,48 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
 
             //添加实体类
             str.Append("\t" + "/// <summary>" + "\r\n");
-            str.Append("\t" + "/// class " + ClassName + ClassNamePlus + "\r\n");
+            str.Append("\t" + $"///class {ClassName}{ClassNamePlus}\r\n");
             str.Append("\t" + "/// </summary>" + "\r\n");
             str.Append("\t" + $"public class {ClassNameAndExtends}\r\n");
             str.Append("\t" + "{" + "\r\n");
-            //add private member
-            str.Append("\t\t" + $"private {TableName} _{TableName};" + "\r\n");
-            //添加构造方法
-            str.Append("\t\t" + "/// <summary>" + "\r\n");
-            str.Append("\t\t" + "/// construction method" + "\r\n");
-            str.Append("\t\t" + "/// </summary>" + "\r\n");
-            str.Append("\t\t" + "public " + ClassName + ClassNamePlus + "()" + "\r\n");
-            str.Append("\t\t" + "{}" + "\r\n" + "\r\n");
-            //add method
-            str.Append("\t\t" + "public " + ClassName + ClassNamePlus + $"({TableName} {TableName})" + "\r\n");
-            str.Append("\t\t" + "{" + "\r\n");
-            str.Append("\t\t\t" + $"this._{TableName} = {TableName};" + "\r\n");
-            str.Append("\t\t" + "}" + "\r\n");
 
-            str.Append("\t\t" + $"public bool Add({TableName} {TableName})" + "\r\n");
+            //添加 Get Method
+            str.Append("\t\t" + $"// GET: api/{ClassName}" + "\r\n");
+            str.Append("\t\t" + "public IHttpActionResult Get()\r\n");
             str.Append("\t\t" + "{" + "\r\n");
-            str.Append("\t\t\t" + $"return {TableName}.Add({TableName});" + "\r\n");
+            str.Append("\t\t\t" + "throw new Exception_DG(\"The interface is not available\", 9999);" + "\r\n");
             str.Append("\t\t" + "}" + "\r\n");
+            str.Append("\r\n");
 
-            str.Append("\t\t" + $"public bool Update({TableName} {TableName})" + "\r\n");
+            //添加 Get Method
+            str.Append("\t\t" + $"// GET: api/{ClassName}/id" + "\r\n");
+            str.Append("\t\t" + "public IHttpActionResult Get(string id)\r\n");
             str.Append("\t\t" + "{" + "\r\n");
-            str.Append("\t\t\t" + $"return {TableName}.Update({TableName});" + "\r\n");
+            str.Append("\t\t\t" + "throw new Exception_DG(\"The interface is not available\", 9999);" + "\r\n");
             str.Append("\t\t" + "}" + "\r\n");
+            str.Append("\r\n");
 
-            str.Append("\t\t" + $"public bool Delete({TableName} {TableName})" + "\r\n");
+            //添加 Post Method
+            str.Append("\t\t" + $"// POST: api/{ClassName}" + "\r\n");
+            str.Append("\t\t" + "public IHttpActionResult Post([FromBody]dynamic query)\r\n");
             str.Append("\t\t" + "{" + "\r\n");
-            str.Append("\t\t\t" + $"return {TableName}.Delete({TableName});" + "\r\n");
+            str.Append("\t\t\t" + "throw new Exception_DG(\"The interface is not available\", 9999);" + "\r\n");
+            str.Append("\t\t" + "}" + "\r\n");
+            str.Append("\r\n");
+
+            //添加 Put Method
+            str.Append("\t\t" + $"// PUT: api/{ClassName}" + "\r\n");
+            str.Append("\t\t" + "public IHttpActionResult Put([FromBody]dynamic query)\r\n");
+            str.Append("\t\t" + "{" + "\r\n");
+            str.Append("\t\t\t" + "throw new Exception_DG(\"The interface is not available\", 9999);" + "\r\n");
+            str.Append("\t\t" + "}" + "\r\n");
+            str.Append("\r\n");
+
+            //添加 Delete Method
+            str.Append("\t\t" + $"// DELETE: api/{ClassName}" + "\r\n");
+            str.Append("\t\t" + "public IHttpActionResult Delete([FromBody]dynamic query)\r\n");
+            str.Append("\t\t" + "{" + "\r\n");
+            str.Append("\t\t\t" + "throw new Exception_DG(\"The interface is not available\", 9999);" + "\r\n");
             str.Append("\t\t" + "}" + "\r\n");
 
 

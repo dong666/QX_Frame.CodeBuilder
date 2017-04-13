@@ -112,23 +112,34 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
             #region Select
             str.Append("\r\n//Select ->\r\n\r\n");
 
+            //query count
+            str.Append("\r\n//query count:\r\n\r\n");
+
+            str.Append($"select count(0) from {TableName} WHERE 1=1");
+
+            str.Append("\r\n");
+
+            //query top 1
             str.Append("\r\n//query single:\r\n\r\n");
 
             str.Append($"SELECT TOP (1) * FROM {TableName} WHERE {FeildName[0].Trim()} = @{FeildName[0].Trim()}");
 
             str.Append("\r\n");
 
+            //query all
             str.Append("\r\n//query all:\r\n\r\n");
 
             str.Append($"SELECT * FROM {TableName} WHERE 1=1");
 
             str.Append("\r\n");
 
+            //query all paging
             str.Append("\r\n//query paging by RowNumber:\r\n\r\n");
 
             str.Append($"SELECT TOP \" + PageSize + \" * FROM (SELECT ROW_NUMBER() OVER (ORDER BY \" + DataOrderBy + \") AS RowNumber,* FROM {TableName} WHERE 1=1  ) AS T  WHERE RowNumber > (\" + PageSize + \"*(\" + PageNumber + \"-1))");
 
             str.Append("\r\n");
+
             #endregion
 
             #region SqlParameters
@@ -145,7 +156,6 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
             str.Append("" + "};" + "\r\n");
             str.Append("\r\n");
             #endregion
-
 
             return str.ToString();
         }

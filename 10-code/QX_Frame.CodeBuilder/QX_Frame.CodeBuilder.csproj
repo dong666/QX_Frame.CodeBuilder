@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodeCreate\CodeForInstance.cs" />
     <Compile Include="CodeCreate\CodeForSqlStatement.cs" />
     <Compile Include="CodeCreate\QX_FrameToDataContract.cs" />
     <Compile Include="CodeCreate\QX_FrameToDataService.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="CodeCreate\CodeToControllers.cs" />
     <Compile Include="CodeCreate\CodeToHTML.cs" />
     <Compile Include="CodeCreate\CodeToJavascript.cs" />
+    <Compile Include="CodeCreate\QX_FrameToRESTWebApiController.cs" />
     <Compile Include="config\Info.cs" />
     <Compile Include="QX_Frame.Helper\Iniclass.cs" />
     <Compile Include="MainForm.cs">

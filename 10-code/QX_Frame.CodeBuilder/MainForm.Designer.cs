@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Server");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Server");
             this.button1 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -39,6 +39,7 @@
             this.label_Description = new System.Windows.Forms.Label();
             this.label_Author = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button17 = new System.Windows.Forms.Button();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.button11 = new System.Windows.Forms.Button();
@@ -77,6 +78,8 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.button10 = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.checkBox14 = new System.Windows.Forms.CheckBox();
             this.button15 = new System.Windows.Forms.Button();
@@ -106,7 +109,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.button17 = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -115,6 +118,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -216,6 +220,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.groupBox2.Controls.Add(this.button18);
             this.groupBox2.Controls.Add(this.button17);
             this.groupBox2.Controls.Add(this.textBox9);
             this.groupBox2.Controls.Add(this.label12);
@@ -244,6 +249,17 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Code Configration ->";
             // 
+            // button17
+            // 
+            this.button17.Font = new System.Drawing.Font("SimSun", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button17.Location = new System.Drawing.Point(647, 186);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(124, 30);
+            this.button17.TabIndex = 8;
+            this.button17.Text = "Data.Contract";
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
+            // 
             // textBox9
             // 
             this.textBox9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -267,7 +283,7 @@
             // 
             this.button11.BackColor = System.Drawing.Color.Silver;
             this.button11.Font = new System.Drawing.Font("SimSun", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button11.Location = new System.Drawing.Point(111, 184);
+            this.button11.Location = new System.Drawing.Point(238, 185);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(119, 30);
             this.button11.TabIndex = 5;
@@ -278,7 +294,7 @@
             // button9
             // 
             this.button9.Font = new System.Drawing.Font("SimSun", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button9.Location = new System.Drawing.Point(352, 184);
+            this.button9.Location = new System.Drawing.Point(523, 185);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(118, 30);
             this.button9.TabIndex = 3;
@@ -423,7 +439,7 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("SimSun", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button3.Location = new System.Drawing.Point(236, 184);
+            this.button3.Location = new System.Drawing.Point(407, 185);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(110, 30);
             this.button3.TabIndex = 0;
@@ -648,6 +664,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.groupBox8);
             this.tabPage3.Controls.Add(this.groupBox7);
             this.tabPage3.Controls.Add(this.groupBox6);
             this.tabPage3.Controls.Add(this.groupBox5);
@@ -657,6 +674,28 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Others Code";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.BackColor = System.Drawing.Color.LightGray;
+            this.groupBox8.Controls.Add(this.button10);
+            this.groupBox8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox8.Location = new System.Drawing.Point(0, 356);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(966, 133);
+            this.groupBox8.TabIndex = 10;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "QX_Frame";
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(16, 22);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(168, 23);
+            this.button10.TabIndex = 0;
+            this.button10.Text = "REST WebApiController";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click_1);
             // 
             // groupBox7
             // 
@@ -799,7 +838,7 @@
             // checkBox19
             // 
             this.checkBox19.AutoSize = true;
-            this.checkBox19.Location = new System.Drawing.Point(424, 29);
+            this.checkBox19.Location = new System.Drawing.Point(422, 22);
             this.checkBox19.Name = "checkBox19";
             this.checkBox19.Size = new System.Drawing.Size(187, 18);
             this.checkBox19.TabIndex = 4;
@@ -809,7 +848,7 @@
             // checkBox15
             // 
             this.checkBox15.AutoSize = true;
-            this.checkBox15.Location = new System.Drawing.Point(169, 29);
+            this.checkBox15.Location = new System.Drawing.Point(167, 22);
             this.checkBox15.Name = "checkBox15";
             this.checkBox15.Size = new System.Drawing.Size(138, 18);
             this.checkBox15.TabIndex = 3;
@@ -819,7 +858,7 @@
             // checkBox13
             // 
             this.checkBox13.AutoSize = true;
-            this.checkBox13.Location = new System.Drawing.Point(313, 29);
+            this.checkBox13.Location = new System.Drawing.Point(311, 22);
             this.checkBox13.Name = "checkBox13";
             this.checkBox13.Size = new System.Drawing.Size(96, 18);
             this.checkBox13.TabIndex = 2;
@@ -829,7 +868,7 @@
             // checkBox11
             // 
             this.checkBox11.AutoSize = true;
-            this.checkBox11.Location = new System.Drawing.Point(18, 29);
+            this.checkBox11.Location = new System.Drawing.Point(16, 22);
             this.checkBox11.Name = "checkBox11";
             this.checkBox11.Size = new System.Drawing.Size(145, 18);
             this.checkBox11.TabIndex = 2;
@@ -1012,10 +1051,10 @@
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(3, 15);
             this.treeView1.Name = "treeView1";
-            treeNode2.Name = "fuwuqi";
-            treeNode2.Text = "Server";
+            treeNode1.Name = "fuwuqi";
+            treeNode1.Text = "Server";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2});
+            treeNode1});
             this.treeView1.SelectedImageIndex = 16;
             this.treeView1.Size = new System.Drawing.Size(194, 634);
             this.treeView1.TabIndex = 0;
@@ -1023,16 +1062,17 @@
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
             this.treeView1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseDoubleClick);
             // 
-            // button17
+            // button18
             // 
-            this.button17.Font = new System.Drawing.Font("SimSun", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button17.Location = new System.Drawing.Point(476, 185);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(124, 30);
-            this.button17.TabIndex = 8;
-            this.button17.Text = "Data.Contract";
-            this.button17.UseVisualStyleBackColor = true;
-            this.button17.Click += new System.EventHandler(this.button17_Click);
+            this.button18.BackColor = System.Drawing.Color.Silver;
+            this.button18.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button18.Location = new System.Drawing.Point(103, 185);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(129, 29);
+            this.button18.TabIndex = 9;
+            this.button18.Text = "Entitiy-Instance";
+            this.button18.UseVisualStyleBackColor = false;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
             // 
             // MainForm
             // 
@@ -1062,6 +1102,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.tabPage3.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.groupBox6.ResumeLayout(false);
@@ -1155,6 +1196,9 @@
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button18;
     }
 }
 

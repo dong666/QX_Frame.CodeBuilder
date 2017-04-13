@@ -65,16 +65,32 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
             str.Append("\t\t" + "public " + ClassName+ClassNamePlus + "()" + "\r\n");
             str.Append("\t\t" + "{}" + "\r\n" + "\r\n");
             //add filed
-            //for (int i = 0; i < FeildName.Count; i++)
-            //{
-            //    string IsNull = TypeConvert.RT_Type(FeildType[i]).Equals("String") ? "" : TypeConvert.RT_Nullable(FeildIsNullable[i]);
-            //    str.Append("\t\t" + $"//{ TypeConvert.RT_PK(FeildIsPK[i])} {FeildDescription[i]}" + "\r\n");
-            //    str.Append("\t\t" + $"public {TypeConvert.RT_Type(FeildType[i])}{IsNull} {FeildName[i]} {"{ get;set; }"}" + "\r\n");
-            //    str.Append("\r\n");//换行
-            //}
+            for (int i = 0; i < FeildName.Count; i++)
+            {
+                string IsNull = TypeConvert.RT_Type(FeildType[i]).Equals("String") ? "" : TypeConvert.RT_Nullable(FeildIsNullable[i]);
+                str.Append("\t\t" + $"//{ TypeConvert.RT_PK(FeildIsPK[i])} {FeildDescription[i]}" + "\r\n");
+                str.Append("\t\t" + $"public {TypeConvert.RT_Type(FeildType[i])}{IsNull} {FeildName[i]} {"{ get;set; }"}" + "\r\n");
+                str.Append("\r\n");//换行
+            }
 
-            str.Append("\t\t" + "//query condition // true default" + "\r\n");
-            str.Append("\t\t" + $"public override Expression<Func<{TableName}, bool>> QueryCondition {{ get => base.QueryCondition; set => base.QueryCondition = value; }}" + "\r\n");
+            str.Append("\t\t" + "//query condition // null default" + "\r\n");
+            str.Append("\t\t" + $"public override Expression<Func<{TableName}, bool>> QueryCondition {{get {{ return base.QueryCondition; }} set {{ base.QueryCondition = value; }} }}" + "\r\n");
+            str.Append("\r\n");//换行
+
+            str.Append("\t\t" + "//query condition func // true default //if QueryCondition != null this will be override !!!" + "\r\n");
+            str.Append("\t\t" + $"protected override Expression<Func<{TableName}, bool>> QueryConditionFunc()" + "\r\n");
+            str.Append("\t\t" + "{" + "\r\n");
+            str.Append("\t\t\t" + $"Expression<Func<{TableName}, bool>> func = t => true;" + "\r\n");
+            str.Append("\r\n");//换行
+            str.Append("\t\t\t" + $"if (!string.IsNullOrEmpty(\"\"))" + "\r\n");
+            str.Append("\t\t\t" + "{" + "\r\n");
+            str.Append("\t\t\t\t" + $"func = func.And(t => true);" + "\r\n");
+            str.Append("\t\t\t" + "}" + "\r\n");
+            str.Append("\r\n");//换行
+            str.Append("\t\t\t" + $"return func;" + "\r\n");
+            str.Append("\t\t" + "}" + "\r\n");
+
+
 
             str.Append("\t" + "}" + "\r\n");//public class }
             str.Append("}" + "\r\n");//namespace class }
