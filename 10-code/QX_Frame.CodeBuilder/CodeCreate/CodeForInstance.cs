@@ -36,7 +36,40 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
             str.Append($"{TableName} {GetFirstLowerStr(RemoveTB_(TableName))} = new {TableName}();\r\n");
             for (int i = 0; i < FeildName.Count; i++)
             {
-                str.Append($"{GetFirstLowerStr(RemoveTB_(TableName))}.{FeildName[i]} = default({TypeConvert.RT_Type(FeildType[i])});\r\n");
+                str.Append($"{GetFirstLowerStr(RemoveTB_(TableName))}.{FeildName[i]} = default({TypeConvert.RT_Type(FeildType[i])}) ;\r\n");
+            }
+
+            return str.ToString();
+        }
+        public static string CreateCode_otherObject(Dictionary<string, dynamic> CreateCodeDic)
+        {
+            string usings = CreateCodeDic["Using"];                                             //Using
+            string[] usingsArray = usings.Split(';');
+            string NameSpace = CreateCodeDic["NameSpace"];                                      //NameSpace
+            string TableName = CreateCodeDic["TableName"];                                      //TableName
+            string ClassName = CreateCodeDic["Class"];                                          //ClassName
+            string ClassNamePlus = CreateCodeDic["ClassNamePlus"];                               //ClassName Plus
+            string ClassNameExtends = CreateCodeDic["ClassExtends"];                            //ClassExtends
+            if (!string.IsNullOrEmpty(ClassNameExtends))
+            {
+                ClassNameExtends = ":" + ClassNameExtends;
+            }
+            string ClassNameAndExtends = ClassName + ClassNamePlus + ClassNameExtends;          //Class whole name
+            List<string> FeildName = CreateCodeDic["FeildName"];                                //表字段名称
+            List<string> FeildType = CreateCodeDic["FeildType"];                                //表字段类型
+            List<string> FeildLength = CreateCodeDic["FeildLength"];                            //表字段长度
+            List<string> FeildIsNullable = CreateCodeDic["FeildIsNullable"];                    //表字段可空
+            List<string> FeildDescription = CreateCodeDic["FeildDescription"];                  //表字段说明
+            List<string> FeildIsPK = CreateCodeDic["FeildIsPK"];                                //表字段是否主键
+            List<string> FeildIsIdentity = CreateCodeDic["FeildIsIdentity"];                    //表字段是否自增
+
+            StringBuilder str = new StringBuilder();
+
+            //add filed
+            str.Append($"{TableName} {GetFirstLowerStr(RemoveTB_(TableName))} = new {TableName}();\r\n");
+            for (int i = 0; i < FeildName.Count; i++)
+            {
+                str.Append($"{GetFirstLowerStr(RemoveTB_(TableName))}.{FeildName[i]} = otherObject.{FeildName[i]};\r\n");
             }
 
             return str.ToString();

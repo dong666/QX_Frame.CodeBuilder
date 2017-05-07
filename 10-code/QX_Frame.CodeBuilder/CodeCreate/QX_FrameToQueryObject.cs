@@ -33,19 +33,24 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
 
             StringBuilder str = new StringBuilder();
 
-            foreach (var item in usingsArray)
-            {
-                if (usingsArray.Last().Equals(item))
-                {
-                    break;
-                }
-                str.Append($"{item};\r\n");
-            }
+            //foreach (var item in usingsArray)
+            //{
+            //    if (usingsArray.Last().Equals(item))
+            //    {
+            //        break;
+            //    }
+            //    str.Append($"{item};\r\n");
+            //}
+
+            //添加using
+            str.Append($"{usings}\r\n");
+
 
             str.Append("\r\n");//引用结束换行
             //添加命名空间
             str.Append($"namespace {NameSpace}\r\n");
             str.Append("{" + "\r\n");
+
             #region 版权信息
             //版权信息
             str.Append(Info.CopyRight);

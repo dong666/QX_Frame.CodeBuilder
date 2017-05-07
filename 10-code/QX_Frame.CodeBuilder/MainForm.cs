@@ -233,6 +233,16 @@ namespace CSharp_FlowchartToCode_DG
                 MessageBox.Show(ex.ToString());
             }
         }
+        //left to right
+        private void button19_Click(object sender, EventArgs e)
+        {
+            this.richTextBox1.RightToLeft = RightToLeft.No;
+        }
+        //right to left
+        private void button20_Click(object sender, EventArgs e)
+        {
+            this.richTextBox1.RightToLeft = RightToLeft.Yes;
+        }
         #endregion
 
         #region page2
@@ -413,10 +423,15 @@ namespace CSharp_FlowchartToCode_DG
         {
             CommonComponent(() => CodeForEntity.CreateCode(CreateInfoDic));
         }
-        //CodeForInstance
+        //CodeForInstance value from default
         private void button18_Click(object sender, EventArgs e)
         {
             CommonComponent(() => CodeForInstance.CreateCode(CreateInfoDic));
+        }
+        //CodeForInstance value from another
+        private void button21_Click(object sender, EventArgs e)
+        {
+            CommonComponent(() => CodeForInstance.CreateCode_otherObject(CreateInfoDic));
         }
         //build SqlStatements
         private void button11_Click(object sender, EventArgs e)

@@ -75,6 +75,7 @@
     <Compile Include="CodeCreate\ThreelayeToModel.cs" />
     <Compile Include="CodeCreate\ThreelayeToBLL.cs" />
     <Compile Include="QX_Frame.Helper\SqlHelper.cs" />
+    <Compile Include="QX_Frame.Helper\StringFormatHelper.cs" />
     <Compile Include="QX_Frame.Helper\TypeConvert.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

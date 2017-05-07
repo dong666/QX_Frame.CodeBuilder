@@ -40,14 +40,12 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
             //    str.Append($"{item};\r\n");
             //}
 
-            str.Append($"using QX_Frame.App.Web;\r\n");
-            str.Append($"using QX_Frame.Helper_DG_Framework;\r\n");
-            str.Append($"using QX_Frame.Helper_DG_Framework.Extends;\r\n");
-            str.Append($"using System.Web.Http;\r\n");
+            //添加using
+            str.Append($"{usings}\r\n");
 
             str.Append("\r\n");//引用结束换行
             //添加命名空间
-            str.Append($"namespace QX_Frame.WebAPI.Controllers\r\n");
+            str.Append($"namespace QX_Frame.WebApi.Controllers\r\n");
             str.Append("{" + "\r\n");
             #region 版权信息
             //版权信息
