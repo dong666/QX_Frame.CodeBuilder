@@ -22,12 +22,12 @@ namespace CSharp_FlowchartToCode_DG
             {
                 #region 版权信息
                 StringBuilder str = new StringBuilder();    //版本信息
-                str.Append("\t" + "/// <summary>" + "\r\n");
-                str.Append("\t" + "/// copyright qixiao code builder ->" + "\r\n");
-                str.Append("\t" + "/// version:" + VersionNum + "\r\n");
-                str.Append("\t" + "/// author:" + Author + "\r\n");
-                str.Append("\t" + "/// time:" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\r\n");
-                str.Append("\t" + "/// </summary>" + "\r\n");
+                str.Append("\t" + "/**" + "\r\n");
+                str.Append("\t" + " * copyright qixiao code builder ->" + "\r\n");
+                str.Append("\t" + " *  version:" + VersionNum + "\r\n");
+                str.Append("\t" + " *  author:" + Author + "\r\n");
+                str.Append("\t" + " *  create:" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\r\n");
+                str.Append("\t" + " **/" + "\r\n");
                 #endregion
                 return str.ToString(); ;
             }

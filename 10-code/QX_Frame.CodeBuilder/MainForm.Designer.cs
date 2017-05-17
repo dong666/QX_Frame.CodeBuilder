@@ -62,6 +62,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button22 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -480,6 +481,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.groupBox1.Controls.Add(this.button22);
             this.groupBox1.Controls.Add(this.button8);
             this.groupBox1.Controls.Add(this.comboBox2);
             this.groupBox1.Controls.Add(this.label11);
@@ -496,6 +498,17 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Operatino ->";
+            // 
+            // button22
+            // 
+            this.button22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.button22.Location = new System.Drawing.Point(173, 24);
+            this.button22.Name = "button22";
+            this.button22.Size = new System.Drawing.Size(113, 25);
+            this.button22.TabIndex = 9;
+            this.button22.Text = "ExportToExcel";
+            this.button22.UseVisualStyleBackColor = false;
+            this.button22.Click += new System.EventHandler(this.button22_Click);
             // 
             // button8
             // 
@@ -538,7 +551,7 @@
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(375, 26);
+            this.radioButton4.Location = new System.Drawing.Point(455, 27);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(74, 18);
             this.radioButton4.TabIndex = 5;
@@ -548,7 +561,7 @@
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(323, 26);
+            this.radioButton3.Location = new System.Drawing.Point(403, 27);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(46, 18);
             this.radioButton3.TabIndex = 5;
@@ -558,7 +571,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(264, 26);
+            this.radioButton2.Location = new System.Drawing.Point(344, 27);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(53, 18);
             this.radioButton2.TabIndex = 4;
@@ -569,7 +582,7 @@
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(219, 26);
+            this.radioButton1.Location = new System.Drawing.Point(299, 27);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(39, 18);
             this.radioButton1.TabIndex = 3;
@@ -580,7 +593,7 @@
             // button5
             // 
             this.button5.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button5.Location = new System.Drawing.Point(120, 24);
+            this.button5.Location = new System.Drawing.Point(93, 24);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 24);
             this.button5.TabIndex = 1;
@@ -591,11 +604,11 @@
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button4.Location = new System.Drawing.Point(22, 24);
+            this.button4.Location = new System.Drawing.Point(10, 24);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(92, 24);
+            this.button4.Size = new System.Drawing.Size(78, 24);
             this.button4.TabIndex = 0;
-            this.button4.Text = "Select All";
+            this.button4.Text = "SelectAll";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -1244,6 +1257,7 @@
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button button21;
+        private System.Windows.Forms.Button button22;
     }
 }
 

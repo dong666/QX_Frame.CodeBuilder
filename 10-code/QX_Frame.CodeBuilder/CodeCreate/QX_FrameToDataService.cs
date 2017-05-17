@@ -41,19 +41,20 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
             //    str.Append($"{item};\r\n");
             //}
 
+
             //添加using
             str.Append($"{usings}\r\n");
-
-
             str.Append("\r\n");//引用结束换行
-            //添加命名空间
-            str.Append($"namespace {NameSpace}\r\n");
-            str.Append("{" + "\r\n");
+
             #region 版权信息
             //版权信息
             str.Append(Info.CopyRight);
             str.Append("\r\n");
             #endregion
+            
+            //添加命名空间
+            str.Append($"namespace {NameSpace}\r\n");
+            str.Append("{" + "\r\n");
 
             //添加实体类
             str.Append("\t" + "/// <summary>" + "\r\n");

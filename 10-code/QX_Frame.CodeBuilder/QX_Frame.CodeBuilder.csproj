@@ -34,8 +34,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="QX_Frame.Helper_DG_Framework">
-      <HintPath>QX_Frame.Reference\QX_Frame.Helper_DG_Framework.dll</HintPath>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>QX_Frame.Reference\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI">
+      <HintPath>QX_Frame.Reference\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML">
+      <HintPath>QX_Frame.Reference\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net">
+      <HintPath>QX_Frame.Reference\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats">
+      <HintPath>QX_Frame.Reference\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="QX_Frame.Helper_DG">
+      <HintPath>QX_Frame.Reference\QX_Frame.Helper_DG.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />

@@ -1,9 +1,10 @@
 ﻿using CSharp_FlowchartToCode_DG.CodeCreate;
-using QX_Frame.Helper_DG_Framework;
+using QX_Frame.Helper_DG;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 
 
@@ -12,22 +13,23 @@ namespace CSharp_FlowchartToCode_DG
     public partial class MainForm : Form
     {
         #region 全局变量
-        //全局变量
-
         public static Dictionary<string, dynamic> CreateInfoDic = new Dictionary<string, dynamic>();         //存储全部信息的List
 
-        public List<string> FeildName = new List<string>();          //表字段名称
-        public List<string> FeildType = new List<string>();          //表字段类型
-        public List<string> FeildIsNullable = new List<string>();    //表字段可空
-        public List<string> FeildLength = new List<string>();        //表字段长度
-        public List<string> FeildDescription = new List<string>();   //表字段说明
-        public List<string> FeildIsPK = new List<string>();          //表字段是否主键
-        public List<string> FeildIsIdentity = new List<string>();    //表字段是否自增
+        string DataBaseName = "DataBase1";                    //数据库名
+        string TableName = "Table1";                          //表名
+        List<string> FeildName = new List<string>();          //表字段名称
+        List<string> FeildType = new List<string>();          //表字段类型
+        List<string> FeildIsNullable = new List<string>();    //表字段可空
+        List<string> FeildLength = new List<string>();        //表字段长度
+        List<string> FeildDescription = new List<string>();   //表字段说明
+        List<string> FeildIsPK = new List<string>();          //表字段是否主键
+        List<string> FeildIsIdentity = new List<string>();    //表字段是否自增
 
 
         string CodeTxt = "";        //代码字符串，用于输出到文件
-        string dir = Path_Helper_DG.DeskTopPath;                  //获取路径
+        string dir = IO_Helper_DG.DeskTopPath;                  //获取路径
         string filePath = @"qixiaoSrc\QixiaoConfig.ini";          //获取配置文件的路径
+        DataTable DataBaseTable = default(DataTable); //数据库表数据DataTable
 
         #endregion
 
@@ -86,6 +88,7 @@ namespace CSharp_FlowchartToCode_DG
         }
 
         #region 获取数据库结构的代码
+
         //获取数据库信息
         private void button2_Click(object sender, EventArgs e)
         {
@@ -136,18 +139,13 @@ namespace CSharp_FlowchartToCode_DG
                 MessageBox.Show(ex.ToString());
             }
         }
-        private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
-        {
-            getTableInfo();
-        }
-        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
-        {
-            getTableInfo();
-        }
-        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-            getTableInfo();
-        }
+
+        private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e) => getTableInfo();
+
+        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e) => getTableInfo();
+
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e) => getTableInfo();
+
         //获取数据库表信息
         public void getTableInfo()
         {
@@ -156,17 +154,18 @@ namespace CSharp_FlowchartToCode_DG
                 string database = this.treeView1.SelectedNode.Parent.Parent.Name;
                 string table = this.treeView1.SelectedNode.Name;
 
+                this.DataBaseName = database;//保存数据库名
+                this.TableName = table;
+
                 textBox5.Text = table;//将table的表名赋值给TableName变量，方便后续传值; Model
                 textBox9.Text = table;//将table的表名赋值给TableName变量，方便后续传值; Model
                 textBox4.Text = table + textBox7.Text.Trim() + ".cs";//fileName
-
                 string connStr = "Data Source=" + textBox1.Text.Trim() + ";Initial Catalog=" + database + ";Integrated Security=True";
-
                 string sql = @"select syscolumns.name as Field ,systypes.name as FieldType , syscolumns.length as Length,syscolumns.isnullable as Nullable, sys.extended_properties.value as Description  ,IsPK = Case  when exists ( select 1 from sysobjects  inner join sysindexes  on sysindexes.name = sysobjects.name  inner join sysindexkeys  on sysindexes.id = sysindexkeys.id  and  sysindexes.indid = sysindexkeys.indid  where xtype='PK'  and parent_obj = syscolumns.id and sysindexkeys.colid = syscolumns.colid ) then 1 else 0 end ,IsIdentity = Case syscolumns.status when 128 then 1 else 0 end  from syscolumns inner join systypes on(  syscolumns.xtype = systypes.xtype and systypes.name <>'_default_' and systypes.name<>'sysname'  ) left outer join sys.extended_properties on  ( sys.extended_properties.major_id=syscolumns.id and minor_id=syscolumns.colid  ) where syscolumns.id = (select id from sysobjects where name='" + table + @"') order by syscolumns.colid ";
-
                 DataSet ds = SqlHelper.ExecuteDataSet(connStr, sql);
 
                 DataTable dt = ds.Tables[0];
+                this.DataBaseTable = dt;//将获取到的表信息保存到全局变量
                 this.dataGridView1.DataSource = dt.DefaultView;
                 //设置初始值为全选中
                 for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
@@ -182,43 +181,43 @@ namespace CSharp_FlowchartToCode_DG
         }
         #endregion
 
-        #region 操作栏按钮点击事件 全选和清空
+        #region 操作栏按钮点击事件 全选、清空、导出到Excel...
+
         //全选按钮
         private void button4_Click(object sender, EventArgs e)
         {
-            try
+            int count = Convert.ToInt32(this.dataGridView1.Rows.Count.ToString());
+            for (int i = 0; i < count; i++)
             {
-                int count = Convert.ToInt32(this.dataGridView1.Rows.Count.ToString());
-                for (int i = 0; i < count; i++)
-                {
-                    //如果DataGridView是可编辑的，将数据提交，否则处于编辑状态的行无法取到 
-                    this.dataGridView1.EndEdit();
-                    DataGridViewCheckBoxCell checkCell = (DataGridViewCheckBoxCell)this.dataGridView1.Rows[i].Cells["Check"];
-                    checkCell.Value = true;
-                }
-            }
-            catch (Exception)
-            {
-
+                //如果DataGridView是可编辑的，将数据提交，否则处于编辑状态的行无法取到 
+                this.dataGridView1.EndEdit();
+                DataGridViewCheckBoxCell checkCell = (DataGridViewCheckBoxCell)this.dataGridView1.Rows[i].Cells["Check"];
+                checkCell.Value = true;
             }
         }
+
         //清空按钮
         private void button5_Click(object sender, EventArgs e)
         {
-            try
+            int count = Convert.ToInt32(this.dataGridView1.Rows.Count.ToString());
+            for (int i = 0; i < count; i++)
             {
-                int count = Convert.ToInt32(this.dataGridView1.Rows.Count.ToString());
-                for (int i = 0; i < count; i++)
-                {
-                    //如果DataGridView是可编辑的，将数据提交，否则处于编辑状态的行无法取到 
-                    this.dataGridView1.EndEdit();
-                    DataGridViewCheckBoxCell checkCell = (DataGridViewCheckBoxCell)this.dataGridView1.Rows[i].Cells["Check"];
-                    checkCell.Value = false;
-                }
+                //如果DataGridView是可编辑的，将数据提交，否则处于编辑状态的行无法取到 
+                this.dataGridView1.EndEdit();
+                DataGridViewCheckBoxCell checkCell = (DataGridViewCheckBoxCell)this.dataGridView1.Rows[i].Cells["Check"];
+                checkCell.Value = false;
             }
-            catch (Exception)
-            {
-            }
+        }
+
+        //Export To Excel
+        private void button22_Click(object sender, EventArgs e)
+        {
+            string fileComplexPath = $"{ textBox6.Text.Trim() + DataBaseName}.xlsx";
+            new Thread(() =>
+             {
+                 Office_Helper_DG.DataTableToExcel(fileComplexPath, textBox9.Text.Trim(), this.DataBaseTable);
+             }).Start();
+            MessageBox.Show("OutPut->" + fileComplexPath);
         }
         //open code dir
         private void button8_Click(object sender, EventArgs e)
@@ -233,16 +232,7 @@ namespace CSharp_FlowchartToCode_DG
                 MessageBox.Show(ex.ToString());
             }
         }
-        //left to right
-        private void button19_Click(object sender, EventArgs e)
-        {
-            this.richTextBox1.RightToLeft = RightToLeft.No;
-        }
-        //right to left
-        private void button20_Click(object sender, EventArgs e)
-        {
-            this.richTextBox1.RightToLeft = RightToLeft.Yes;
-        }
+
         #endregion
 
         #region page2
@@ -252,7 +242,7 @@ namespace CSharp_FlowchartToCode_DG
         {
             string dirPath = textBox6.Text;
             string fileComplexPath = dirPath + textBox4.Text;
-            Path_Helper_DG.CreateDirectoryIfNotExist(dirPath);
+            IO_Helper_DG.CreateDirectoryIfNotExist(dirPath);
             using (FileStream fs = new FileStream(fileComplexPath, FileMode.Create))
             {
                 StreamWriter sw = new StreamWriter(fs);
@@ -261,28 +251,23 @@ namespace CSharp_FlowchartToCode_DG
             }
             MessageBox.Show("OutPut->" + fileComplexPath);
         }
-        private void button6_Click(object sender, EventArgs e)
-        {
-            saveCodeToFile();
-        }
+
+        private void button6_Click(object sender, EventArgs e) => saveCodeToFile();
 
         //返回代码生成设置页面 也就是首页
-        private void button14_Click(object sender, EventArgs e)
-        {
-            this.tabControl1.SelectedTab = tabPage1;//转换到首页
-        }
+        private void button14_Click(object sender, EventArgs e) => this.tabControl1.SelectedTab = tabPage1;//转换到首页
 
         //全选的按钮 的事件
-        private void button12_Click(object sender, EventArgs e)
-        {
-            richTextBox1.SelectAll();//全选
-        }
-        //复制按钮的事件
-        private void button13_Click(object sender, EventArgs e)
-        {
-            richTextBox1.Copy();//复制选择文本
-        }
+        private void button12_Click(object sender, EventArgs e) => richTextBox1.SelectAll();//全选
 
+        //复制按钮的事件
+        private void button13_Click(object sender, EventArgs e) => richTextBox1.Copy();//复制选择文本
+
+        //left to right
+        private void button19_Click(object sender, EventArgs e) => this.richTextBox1.RightToLeft = RightToLeft.No;
+
+        //right to left
+        private void button20_Click(object sender, EventArgs e) => this.richTextBox1.RightToLeft = RightToLeft.Yes;
 
         #endregion
 
@@ -321,6 +306,7 @@ namespace CSharp_FlowchartToCode_DG
                 MessageBox.Show(ex.ToString());
             }
         }
+
         #endregion
 
         #region code builder settings
@@ -462,6 +448,6 @@ namespace CSharp_FlowchartToCode_DG
             CommonComponent(() => QX_FrameToRESTWebApiController.CreateCode(CreateInfoDic));
         }
 
-        
+
     }
 }

@@ -24,6 +24,8 @@ namespace CSharp_FlowchartToCode_DG
 
 
             StringBuilder str = new StringBuilder();
+
+
             str.Append("using Model;" + "\r\n");
             str.Append("using Helper_DG_Framework4_5;" + "\r\n");
             str.Append("using System;" + "\r\n");
@@ -32,16 +34,16 @@ namespace CSharp_FlowchartToCode_DG
             str.Append("using System.Data.SqlClient;" + "\r\n");
             str.Append("using System.Text;" + "\r\n");
             str.Append("\r\n");                                                     //空间引用结束换行
-            //添加命名空间
-            str.Append("namespace " + NameSpace + "\r\n");
-            str.Append("{" + "\r\n");
 
             #region 版权信息
             //版权信息
             str.Append(Info.CopyRight);
             str.Append("\r\n");
             #endregion
-
+            
+            //添加命名空间
+            str.Append("namespace " + NameSpace + "\r\n");
+            str.Append("{" + "\r\n");
             //添加实体类
             str.Append("\t" + "/// <summary>" + "\r\n");
             str.Append("\t" + "/// 实体类" + className + "（可添加属性说明）" + "\r\n");
