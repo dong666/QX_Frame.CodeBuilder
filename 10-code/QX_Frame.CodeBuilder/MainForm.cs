@@ -1,4 +1,6 @@
 ﻿using CSharp_FlowchartToCode_DG.CodeCreate;
+using CSharp_FlowchartToCode_DG.config;
+using CSharp_FlowchartToCode_DG.Options;
 using QX_Frame.Helper_DG;
 using System;
 using System.Collections.Generic;
@@ -12,7 +14,11 @@ namespace CSharp_FlowchartToCode_DG
 {
     public partial class MainForm : Form
     {
-        #region 全局变量
+        OperationForm operationForm = new OperationForm();
+
+        private static bool isOperationFormShow = false;
+
+        #region 代码编辑全局变量
         public static Dictionary<string, dynamic> CreateInfoDic = new Dictionary<string, dynamic>();         //存储全部信息的List
 
         string DataBaseName = "DataBase1";                    //数据库名
@@ -33,15 +39,17 @@ namespace CSharp_FlowchartToCode_DG
 
         #endregion
 
-        public MainForm()
-        {
-            InitializeComponent();
-
-        }
+        public MainForm()=> InitializeComponent();
         private void MainForm_Load(object sender, EventArgs e)
         {
             try
             {
+                //Open OperationWindow 
+                MagneticMagnager test3 = new MagneticMagnager(this, operationForm, MagneticPosition.Right);
+                operationForm.operationEvent += OperationForm_operationEvent;
+                operationForm.Show();
+                isOperationFormShow = true;//mark as open
+
                 // set copyright
                 label_Author.Text += Info.Author;
                 label_Version.Text += Info.VersionNum;
@@ -277,18 +285,9 @@ namespace CSharp_FlowchartToCode_DG
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button10_Click(object sender, EventArgs e)
-        {
-            ChangeTexBox4();
-        }
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-            ChangeTexBox4();
-        }
-        private void textBox7_TextChanged(object sender, EventArgs e)
-        {
-            ChangeTexBox4();
-        }
+        private void button10_Click(object sender, EventArgs e) => ChangeTexBox4();
+        private void textBox5_TextChanged(object sender, EventArgs e) => ChangeTexBox4();
+        private void textBox7_TextChanged(object sender, EventArgs e) => ChangeTexBox4();
         private void ChangeTexBox4()
         {
             try
@@ -304,6 +303,21 @@ namespace CSharp_FlowchartToCode_DG
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        //Open Operation Form Event
+        private void button23_Click(object sender, EventArgs e)
+        {
+            if (isOperationFormShow)
+            {
+                this.operationForm.Hide();
+                isOperationFormShow = false;
+            }
+            else
+            {
+                this.operationForm.Show();
+                isOperationFormShow = true;
             }
         }
 
@@ -402,52 +416,46 @@ namespace CSharp_FlowchartToCode_DG
         }
         #endregion
 
-        //page 1 -----------------
+        #region Code Generate
 
-        //build Entities
-        private void button1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// OperationForm_operationEvent
+        /// </summary>
+        /// <param name="operationType"></param>
+        private void OperationForm_operationEvent(Opt_OperationType operationType)
         {
-            CommonComponent(() => CodeForEntity.CreateCode(CreateInfoDic));
-        }
-        //CodeForInstance value from default
-        private void button18_Click(object sender, EventArgs e)
-        {
-            CommonComponent(() => CodeForInstance.CreateCode(CreateInfoDic));
-        }
-        //CodeForInstance value from another
-        private void button21_Click(object sender, EventArgs e)
-        {
-            CommonComponent(() => CodeForInstance.CreateCode_otherObject(CreateInfoDic));
-        }
-        //build SqlStatements
-        private void button11_Click(object sender, EventArgs e)
-        {
-            CommonComponent(() => CodeForSqlStatement.CreateCode(CreateInfoDic));
-        }
-        //build QX_Frame.QueryObject
-        private void button3_Click(object sender, EventArgs e)
-        {
-            CommonComponent(() => QX_FrameToQueryObject.CreateCode(CreateInfoDic));
-        }
-        //build QX_Frame.DataService
-        private void button9_Click(object sender, EventArgs e)
-        {
-            CommonComponent(() => QX_FrameToDataService.CreateCode(CreateInfoDic));
-        }
-        //build QX_Frame.Contract
-        private void button17_Click(object sender, EventArgs e)
-        {
-            CommonComponent(() => QX_FrameToDataContract.CreateCode(CreateInfoDic));
-        }
+            switch (operationType)
+            {
+                case Opt_OperationType.Entities:
+                    CommonComponent(() => CodeForEntity.CreateCode(CreateInfoDic));
+                    break;
+                case Opt_OperationType.CodeForInstance:
+                    CommonComponent(() => CodeForInstance.CreateCode(CreateInfoDic));
+                    break;
+                case Opt_OperationType.CodeForInstance_Another:
+                    CommonComponent(() => CodeForInstance.CreateCode_otherObject(CreateInfoDic));
+                    break;
+                case Opt_OperationType.SqlStatements:
+                    CommonComponent(() => CodeForSqlStatement.CreateCode(CreateInfoDic));
+                    break;
+                case Opt_OperationType.QX_Frame_Data_Service:
+                    CommonComponent(() => QX_FrameToDataService.CreateCode(CreateInfoDic));
+                    break;
+                case Opt_OperationType.QX_Frame_Data_QueryObject:
+                    CommonComponent(() => QX_FrameToQueryObject.CreateCode(CreateInfoDic));
+                    break;
+                case Opt_OperationType.QX_Frame_Data_Contract:
+                    CommonComponent(() => QX_FrameToDataContract.CreateCode(CreateInfoDic));
+                    break;
+                case Opt_OperationType.REST_WebApiController:
+                    CommonComponent(() => QX_FrameToRESTWebApiController.CreateCode(CreateInfoDic));
+                    break;
+                default:
+                    throw new Exception("No operation type matched -- qixiao");
+            }
 
-        //page 2 -----------
-
-        //REST WebApiController
-        private void button10_Click_1(object sender, EventArgs e)
-        {
-            CommonComponent(() => QX_FrameToRESTWebApiController.CreateCode(CreateInfoDic));
+            #endregion
         }
-
 
     }
 }

@@ -65,7 +65,7 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
             str.Append("\t\t" + $"// GET: api/{ClassName}" + "\r\n");
             str.Append("\t\t" + "public IHttpActionResult Get()\r\n");
             str.Append("\t\t" + "{" + "\r\n");
-            str.Append("\t\t\t" + "throw new Exception_DG(\"The interface is not available\", 9999);" + "\r\n");
+            str.Append("\t\t\t" + "throw new Exception_DG_Internationalization(9999);" + "\r\n");
             str.Append("\t\t" + "}" + "\r\n");
             str.Append("\r\n");
 
@@ -73,7 +73,7 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
             str.Append("\t\t" + $"// GET: api/{ClassName}/id" + "\r\n");
             str.Append("\t\t" + "public IHttpActionResult Get(string id)\r\n");
             str.Append("\t\t" + "{" + "\r\n");
-            str.Append("\t\t\t" + "throw new Exception_DG(\"The interface is not available\", 9999);" + "\r\n");
+            str.Append("\t\t\t" + "throw new Exception_DG_Internationalization(9999);" + "\r\n");
             str.Append("\t\t" + "}" + "\r\n");
             str.Append("\r\n");
 
@@ -81,7 +81,7 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
             str.Append("\t\t" + $"// POST: api/{ClassName}" + "\r\n");
             str.Append("\t\t" + "public IHttpActionResult Post([FromBody]dynamic query)\r\n");
             str.Append("\t\t" + "{" + "\r\n");
-            str.Append("\t\t\t" + "throw new Exception_DG(\"The interface is not available\", 9999);" + "\r\n");
+            str.Append("\t\t\t" + "throw new Exception_DG_Internationalization(9999);" + "\r\n");
             str.Append("\t\t" + "}" + "\r\n");
             str.Append("\r\n");
 
@@ -89,7 +89,7 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
             str.Append("\t\t" + $"// PUT: api/{ClassName}" + "\r\n");
             str.Append("\t\t" + "public IHttpActionResult Put([FromBody]dynamic query)\r\n");
             str.Append("\t\t" + "{" + "\r\n");
-            str.Append("\t\t\t" + "throw new Exception_DG(\"The interface is not available\", 9999);" + "\r\n");
+            str.Append("\t\t\t" + "throw new Exception_DG_Internationalization(9999);" + "\r\n");
             str.Append("\t\t" + "}" + "\r\n");
             str.Append("\r\n");
 
@@ -97,7 +97,7 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
             str.Append("\t\t" + $"// DELETE: api/{ClassName}" + "\r\n");
             str.Append("\t\t" + "public IHttpActionResult Delete([FromBody]dynamic query)\r\n");
             str.Append("\t\t" + "{" + "\r\n");
-            str.Append("\t\t\t" + "throw new Exception_DG(\"The interface is not available\", 9999);" + "\r\n");
+            str.Append("\t\t\t" + "throw new Exception_DG_Internationalization(9999);" + "\r\n");
             str.Append("\t\t" + "}" + "\r\n");
 
 
