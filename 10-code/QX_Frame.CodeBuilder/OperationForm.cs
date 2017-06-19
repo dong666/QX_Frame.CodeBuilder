@@ -15,6 +15,7 @@ namespace CSharp_FlowchartToCode_DG
         {
             e.Cancel = true;
             this.Hide();
+            MainForm.isOperationFormShow = false;
         }
 
         //Build Entities

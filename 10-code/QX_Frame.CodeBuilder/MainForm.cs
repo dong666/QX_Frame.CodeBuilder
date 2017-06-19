@@ -16,7 +16,7 @@ namespace CSharp_FlowchartToCode_DG
     {
         OperationForm operationForm = new OperationForm();
 
-        private static bool isOperationFormShow = false;
+        public static bool isOperationFormShow = false;
 
         #region 代码编辑全局变量
         public static Dictionary<string, dynamic> CreateInfoDic = new Dictionary<string, dynamic>();         //存储全部信息的List
@@ -61,7 +61,7 @@ namespace CSharp_FlowchartToCode_DG
                 comboBox2.Text = Ini_Helper_DG.selectStringValue(filePath, "config", "outputType");//output type
 
                 //set code builder config
-                textBox3.Text = Ini_Helper_DG.selectStringValue(filePath, "code", "using"); //using
+               // textBox3.Text = Ini_Helper_DG.selectStringValue(filePath, "code", "usings").Replace('&','\n'); //using
                 textBox2.Text = Ini_Helper_DG.selectStringValue(filePath, "code", "namespace");//namespace
                 textBox9.Text = Ini_Helper_DG.selectStringValue(filePath, "code", "TableName");//table name
                 textBox5.Text = Ini_Helper_DG.selectStringValue(filePath, "code", "class");//class name 
@@ -86,7 +86,7 @@ namespace CSharp_FlowchartToCode_DG
             Ini_Helper_DG.Update(filePath, "config", "outputType", comboBox2.Text);//output type
 
             //set code builder config
-            Ini_Helper_DG.Update(filePath, "code", "using", textBox3.Text); //using
+            //Ini_Helper_DG.Update(filePath, "code", "usings", textBox3.Text.Replace("\n","&")); //using
             Ini_Helper_DG.Update(filePath, "code", "namespace", textBox2.Text);//namespace
             Ini_Helper_DG.Update(filePath, "code", "TableName", textBox9.Text);//table name
             Ini_Helper_DG.Update(filePath, "code", "class", textBox5.Text);//class name
@@ -141,6 +141,7 @@ namespace CSharp_FlowchartToCode_DG
                         biao.Nodes.Add(biaovalue);
                     }
                 }
+                setInitConfigFile();//set init config file
             }
             catch (Exception ex)
             {
@@ -220,7 +221,9 @@ namespace CSharp_FlowchartToCode_DG
         //Export To Excel
         private void button22_Click(object sender, EventArgs e)
         {
-            string fileComplexPath = $"{ textBox6.Text.Trim() + DataBaseName}.xlsx";
+            string filePath = textBox6.Text.Trim();
+            string fileComplexPath = $"{ filePath + DataBaseName}.xlsx";
+            IO_Helper_DG.CreateDirectoryIfNotExist(filePath);
             new Thread(() =>
              {
                  Office_Helper_DG.DataTableToExcel(fileComplexPath, textBox9.Text.Trim(), this.DataBaseTable);
