@@ -480,6 +480,9 @@ namespace CSharp_FlowchartToCode_DG
                         CommonComponent(() => QX_FrameToDataContract.CreateCode(CreateInfoDic));
                     };
                     break;
+                case Opt_OperationType.Javascript_Ajax_Data:
+                    CommonComponent(() => CodeForJavascriptAjaxData.CreateCode(CreateInfoDic));
+                    break;
                 default:
                     throw new Exception("No operation type matched -- qixiao");
             }

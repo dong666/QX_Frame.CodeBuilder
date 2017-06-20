@@ -13,6 +13,8 @@
         /// QX_Frame_Data_Service,QX_Frame_Data_QueryObject,QX_Frame_Data_Contract
         /// </summary>
         QX_Frame_Data_SQC,
-        REST_WebApiController
+        REST_WebApiController,
+
+        Javascript_Ajax_Data
     }
 }

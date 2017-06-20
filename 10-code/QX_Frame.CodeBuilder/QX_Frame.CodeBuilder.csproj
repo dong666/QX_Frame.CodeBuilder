@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CodeCreate\CodeForInstance.cs" />
+    <Compile Include="CodeCreate\CodeForJavascriptAjaxData.cs" />
     <Compile Include="CodeCreate\CodeForSqlStatement.cs" />
     <Compile Include="CodeCreate\QX_FrameToDataContract.cs" />
     <Compile Include="CodeCreate\QX_FrameToDataService.cs" />

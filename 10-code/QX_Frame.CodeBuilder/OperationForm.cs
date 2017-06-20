@@ -41,15 +41,9 @@ namespace CSharp_FlowchartToCode_DG
         private void button8_Click(object sender, EventArgs e) => operationEvent(Opt_OperationType.REST_WebApiController);
 
         //Build Javascript
-        private void button9_Click(object sender, EventArgs e)
-        {
+        private void button9_Click(object sender, EventArgs e) => operationEvent(Opt_OperationType.REST_WebApiController);
 
-        }
-
-        private void button10_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void button10_Click(object sender, EventArgs e) => operationEvent(Opt_OperationType.Javascript_Ajax_Data);
 
         //Build Form
         private void button11_Click(object sender, EventArgs e)
