@@ -5,6 +5,7 @@ using QX_Frame.Helper_DG;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
@@ -39,7 +40,7 @@ namespace CSharp_FlowchartToCode_DG
 
         #endregion
 
-        public MainForm()=> InitializeComponent();
+        public MainForm() => InitializeComponent();
         private void MainForm_Load(object sender, EventArgs e)
         {
             try
@@ -61,7 +62,7 @@ namespace CSharp_FlowchartToCode_DG
                 comboBox2.Text = Ini_Helper_DG.selectStringValue(filePath, "config", "outputType");//output type
 
                 //set code builder config
-               // textBox3.Text = Ini_Helper_DG.selectStringValue(filePath, "code", "usings").Replace('&','\n'); //using
+                // textBox3.Text = Ini_Helper_DG.selectStringValue(filePath, "code", "usings").Replace('&','\n'); //using
                 textBox2.Text = Ini_Helper_DG.selectStringValue(filePath, "code", "namespace");//namespace
                 textBox9.Text = Ini_Helper_DG.selectStringValue(filePath, "code", "TableName");//table name
                 textBox5.Text = Ini_Helper_DG.selectStringValue(filePath, "code", "class");//class name 
@@ -260,7 +261,7 @@ namespace CSharp_FlowchartToCode_DG
                 sw.Write(CodeTxt);
                 sw.Close();
             }
-            MessageBox.Show("OutPut->" + fileComplexPath);
+            //MessageBox.Show("OutPut->" + fileComplexPath);
         }
 
         private void button6_Click(object sender, EventArgs e) => saveCodeToFile();
@@ -411,6 +412,7 @@ namespace CSharp_FlowchartToCode_DG
                 {
                     this.tabControl1.SelectedTab = tabPage2;//trasfer to code view
                 }
+                Timer1Start();//Start Timer1();
             }
             catch (Exception ee)
             {
@@ -453,12 +455,62 @@ namespace CSharp_FlowchartToCode_DG
                 case Opt_OperationType.REST_WebApiController:
                     CommonComponent(() => QX_FrameToRESTWebApiController.CreateCode(CreateInfoDic));
                     break;
+                case Opt_OperationType.QX_Frame_Data_SQC:
+                    {
+                        //Generate QX_Frame.Data.QueryObject
+                        textBox3.Text = "using QX_Frame.App.Base;\nusing QX_Frame.Data.Entities;\nusing System;\nusing System.Linq.Expressions;";
+                        textBox2.Text = "QX_Frame.Data.QueryObject";
+                        textBox7.Text = "QueryObject";
+                        textBox8.Text = $"WcfQueryObject<{DataBaseName}, {TableName}>";
+                        CommonComponent(() => QX_FrameToQueryObject.CreateCode(CreateInfoDic));
+
+                        //Generate QX_Frame.Data.Service
+                        textBox3.Text = "using QX_Frame.App.Base;\nusing QX_Frame.Data.Contract;\nusing QX_Frame.Data.Entities;";
+                        textBox2.Text = "QX_Frame.Data.Service";
+                        textBox7.Text = "Service";
+                        textBox8.Text = $"WcfService, I{TableName}Service";
+                        CommonComponent(() => QX_FrameToDataService.CreateCode(CreateInfoDic));
+
+                        //Generate QX_Frame.Data.Contract
+                        textBox3.Text = "using QX_Frame.Data.Entities;";
+                        textBox2.Text = "QX_Frame.Data.Contract";
+                        textBox5.Text = $"I{textBox5.Text}";
+                        textBox7.Text = "Service";
+                        textBox8.Text = "";
+                        CommonComponent(() => QX_FrameToDataContract.CreateCode(CreateInfoDic));
+                    };
+                    break;
                 default:
                     throw new Exception("No operation type matched -- qixiao");
             }
-
             #endregion
         }
 
+        //Special Effects Timer
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (toolStripProgressBar1.Value < 100)
+            {
+                toolStripProgressBar1.Value += 10;
+            }
+            else
+            {
+                this.toolStripStatusLabel1.ForeColor = Color.Green;
+                this.toolStripStatusLabel1.Text = "Generate Success!!!";
+                this.timer1.Stop();
+            }
+        }
+        //Init and Start timer
+        private void Timer1Start()
+        {
+            if (timer1.Enabled)
+            {
+                timer1.Stop();
+            }
+            this.toolStripProgressBar1.Value = 0;
+            this.toolStripStatusLabel1.ForeColor = Color.Red;
+            this.toolStripStatusLabel1.Text = "Generate Watting...";
+            this.timer1.Start();
+        }
     }
 }

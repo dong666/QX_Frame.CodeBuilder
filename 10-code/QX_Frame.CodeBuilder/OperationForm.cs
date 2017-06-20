@@ -34,6 +34,9 @@ namespace CSharp_FlowchartToCode_DG
 
         private void button7_Click(object sender, EventArgs e) => operationEvent(Opt_OperationType.QX_Frame_Data_Service);
 
+        //generate QX_Frame_Data_QueryObject/QX_Frame_Data_Contract/QX_Frame_Data_Service
+        private void button12_Click(object sender, EventArgs e)=> operationEvent(Opt_OperationType.QX_Frame_Data_SQC);
+
         //Build Controller
         private void button8_Click(object sender, EventArgs e) => operationEvent(Opt_OperationType.REST_WebApiController);
 
@@ -53,5 +56,6 @@ namespace CSharp_FlowchartToCode_DG
         {
 
         }
+
     }
 }

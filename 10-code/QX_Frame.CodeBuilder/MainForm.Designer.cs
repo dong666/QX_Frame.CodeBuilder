@@ -85,6 +85,10 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -95,23 +99,22 @@
             this.tabPage2.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Alignment = System.Windows.Forms.TabAlignment.Bottom;
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tabControl1.ItemSize = new System.Drawing.Size(100, 20);
-            this.tabControl1.Location = new System.Drawing.Point(208, 8);
+            this.tabControl1.Location = new System.Drawing.Point(205, 5);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(774, 646);
+            this.tabControl1.Size = new System.Drawing.Size(774, 682);
             this.tabControl1.TabIndex = 5;
             // 
             // tabPage1
@@ -125,7 +128,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(766, 618);
+            this.tabPage1.Size = new System.Drawing.Size(766, 654);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Code Config";
             // 
@@ -135,7 +138,7 @@
             this.groupBox4.Controls.Add(this.label_Description);
             this.groupBox4.Controls.Add(this.label_Author);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox4.Location = new System.Drawing.Point(3, 594);
+            this.groupBox4.Location = new System.Drawing.Point(3, 630);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(760, 21);
             this.groupBox4.TabIndex = 14;
@@ -197,7 +200,7 @@
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Location = new System.Drawing.Point(3, 347);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(760, 249);
+            this.groupBox2.Size = new System.Drawing.Size(760, 285);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Code Configration ->";
@@ -219,7 +222,7 @@
             this.button8.BackColor = System.Drawing.Color.Yellow;
             this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button8.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button8.Location = new System.Drawing.Point(643, 205);
+            this.button8.Location = new System.Drawing.Point(643, 213);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(99, 26);
             this.button8.TabIndex = 8;
@@ -267,7 +270,7 @@
             // textBox6
             // 
             this.textBox6.Font = new System.Drawing.Font("SimSun", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox6.Location = new System.Drawing.Point(114, 207);
+            this.textBox6.Location = new System.Drawing.Point(114, 216);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(518, 22);
             this.textBox6.TabIndex = 1;
@@ -276,16 +279,16 @@
             // textBox4
             // 
             this.textBox4.Font = new System.Drawing.Font("SimSun", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox4.Location = new System.Drawing.Point(513, 161);
+            this.textBox4.Location = new System.Drawing.Point(114, 183);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(229, 22);
+            this.textBox4.Size = new System.Drawing.Size(628, 22);
             this.textBox4.TabIndex = 1;
             this.textBox4.Text = "Class1.cs";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 210);
+            this.label7.Location = new System.Drawing.Point(11, 218);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(77, 14);
             this.label7.TabIndex = 0;
@@ -294,7 +297,7 @@
             // textBox7
             // 
             this.textBox7.Font = new System.Drawing.Font("SimSun", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox7.Location = new System.Drawing.Point(513, 130);
+            this.textBox7.Location = new System.Drawing.Point(513, 121);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(229, 22);
             this.textBox7.TabIndex = 1;
@@ -303,15 +306,15 @@
             // textBox8
             // 
             this.textBox8.Font = new System.Drawing.Font("SimSun", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox8.Location = new System.Drawing.Point(114, 160);
+            this.textBox8.Location = new System.Drawing.Point(114, 152);
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(269, 22);
+            this.textBox8.Size = new System.Drawing.Size(628, 22);
             this.textBox8.TabIndex = 1;
             // 
             // textBox5
             // 
             this.textBox5.Font = new System.Drawing.Font("SimSun", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox5.Location = new System.Drawing.Point(114, 130);
+            this.textBox5.Location = new System.Drawing.Point(114, 122);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(269, 22);
             this.textBox5.TabIndex = 1;
@@ -321,7 +324,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(405, 162);
+            this.label5.Location = new System.Drawing.Point(11, 185);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(77, 14);
             this.label5.TabIndex = 0;
@@ -330,7 +333,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(405, 132);
+            this.label1.Location = new System.Drawing.Point(402, 125);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(105, 14);
             this.label1.TabIndex = 0;
@@ -339,7 +342,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(8, 163);
+            this.label10.Location = new System.Drawing.Point(8, 158);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(98, 14);
             this.label10.TabIndex = 0;
@@ -357,7 +360,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 132);
+            this.label6.Location = new System.Drawing.Point(8, 126);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(77, 14);
             this.label6.TabIndex = 0;
@@ -561,7 +564,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(766, 618);
+            this.tabPage2.Size = new System.Drawing.Size(766, 626);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Code View";
             // 
@@ -672,7 +675,7 @@
             this.tabPage4.Controls.Add(this.richTextBox2);
             this.tabPage4.Location = new System.Drawing.Point(4, 4);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(766, 618);
+            this.tabPage4.Size = new System.Drawing.Size(766, 626);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Copy Board";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -732,7 +735,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(200, 652);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(200, 682);
             this.tableLayoutPanel1.TabIndex = 12;
             // 
             // label2
@@ -759,24 +762,53 @@
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1});
             this.treeView1.SelectedImageIndex = 16;
-            this.treeView1.Size = new System.Drawing.Size(194, 634);
+            this.treeView1.Size = new System.Drawing.Size(194, 664);
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
             this.treeView1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseDoubleClick);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripProgressBar1,
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(205, 665);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(774, 22);
+            this.statusStrip1.TabIndex = 13;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(640, 16);
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripStatusLabel1.ForeColor = System.Drawing.Color.Red;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(117, 17);
+            this.toolStripStatusLabel1.Text = "Generate Watting...";
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(984, 662);
+            this.ClientSize = new System.Drawing.Size(984, 692);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(1000, 700);
-            this.MinimumSize = new System.Drawing.Size(1000, 700);
+            this.MaximumSize = new System.Drawing.Size(1000, 730);
+            this.MinimumSize = new System.Drawing.Size(1000, 730);
             this.Name = "MainForm";
             this.Padding = new System.Windows.Forms.Padding(5);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -797,6 +829,8 @@
             this.tabPage4.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -857,6 +891,10 @@
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button button22;
         private System.Windows.Forms.Button button23;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
