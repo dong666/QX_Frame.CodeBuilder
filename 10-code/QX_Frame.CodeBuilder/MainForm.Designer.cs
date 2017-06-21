@@ -108,13 +108,13 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tabControl1.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tabControl1.ItemSize = new System.Drawing.Size(100, 20);
             this.tabControl1.Location = new System.Drawing.Point(205, 5);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(774, 682);
+            this.tabControl1.Size = new System.Drawing.Size(774, 657);
             this.tabControl1.TabIndex = 5;
             // 
             // tabPage1
@@ -128,7 +128,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(766, 654);
+            this.tabPage1.Size = new System.Drawing.Size(766, 629);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Code Config";
             // 
@@ -138,7 +138,7 @@
             this.groupBox4.Controls.Add(this.label_Description);
             this.groupBox4.Controls.Add(this.label_Author);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox4.Location = new System.Drawing.Point(3, 630);
+            this.groupBox4.Location = new System.Drawing.Point(3, 605);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(760, 21);
             this.groupBox4.TabIndex = 14;
@@ -200,7 +200,7 @@
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Location = new System.Drawing.Point(3, 347);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(760, 285);
+            this.groupBox2.Size = new System.Drawing.Size(760, 260);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Code Configration ->";
@@ -564,7 +564,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(766, 626);
+            this.tabPage2.Size = new System.Drawing.Size(766, 654);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Code View";
             // 
@@ -675,7 +675,7 @@
             this.tabPage4.Controls.Add(this.richTextBox2);
             this.tabPage4.Location = new System.Drawing.Point(4, 4);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(766, 626);
+            this.tabPage4.Size = new System.Drawing.Size(766, 654);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Copy Board";
             this.tabPage4.UseVisualStyleBackColor = true;
