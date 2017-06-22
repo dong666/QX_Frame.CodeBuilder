@@ -63,7 +63,7 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
 
             //添加 Get Method
             str.Append("\t\t" + $"// GET: api/{ClassName}" + "\r\n");
-            str.Append("\t\t" + "public IHttpActionResult Get()\r\n");
+            str.Append("\t\t" + "public IHttpActionResult Get(int pageIndex,int pageSize,bool isDesc)\r\n");
             str.Append("\t\t" + "{" + "\r\n");
             str.Append("\t\t\t" + "throw new Exception_DG_Internationalization(9999);" + "\r\n");
             str.Append("\t\t" + "}" + "\r\n");
