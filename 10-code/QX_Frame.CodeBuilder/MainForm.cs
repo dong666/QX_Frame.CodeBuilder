@@ -17,8 +17,6 @@ namespace CSharp_FlowchartToCode_DG
     {
         OperationForm operationForm = new OperationForm();
 
-        public static bool isOperationFormShow = false;
-
         #region 代码编辑全局变量
         public static Dictionary<string, dynamic> CreateInfoDic = new Dictionary<string, dynamic>();         //存储全部信息的List
 
@@ -49,7 +47,6 @@ namespace CSharp_FlowchartToCode_DG
                 MagneticMagnager test3 = new MagneticMagnager(this, operationForm, MagneticPosition.Right);
                 operationForm.operationEvent += OperationForm_operationEvent;
                 operationForm.Show();
-                isOperationFormShow = true;//mark as open
 
                 // set copyright
                 label_Author.Text += Info.Author;
@@ -57,19 +54,19 @@ namespace CSharp_FlowchartToCode_DG
                 label_Description.Text += Info.Description;
 
                 //set config
-                textBox1.Text = Ini_Helper_DG.selectStringValue(filePath, "config", "dataSource", ".");//data source
-                comboBox1.Text = Ini_Helper_DG.selectStringValue(filePath, "config", "loginType", "Integrated Security=True");// system or sa ?
-                comboBox2.Text = Ini_Helper_DG.selectStringValue(filePath, "config", "outputType");//output type
+                textBox1.Text = File_Helper_DG.Ini_SelectStringValue(filePath, "config", "dataSource", ".");//data source
+                comboBox1.Text = File_Helper_DG.Ini_SelectStringValue(filePath, "config", "loginType", "Integrated Security=True");// system or sa ?
+                comboBox2.Text = File_Helper_DG.Ini_SelectStringValue(filePath, "config", "outputType");//output type
 
                 //set code builder config
-                // textBox3.Text = Ini_Helper_DG.selectStringValue(filePath, "code", "usings").Replace('&','\n'); //using
-                textBox2.Text = Ini_Helper_DG.selectStringValue(filePath, "code", "namespace");//namespace
-                textBox9.Text = Ini_Helper_DG.selectStringValue(filePath, "code", "TableName");//table name
-                textBox5.Text = Ini_Helper_DG.selectStringValue(filePath, "code", "class");//class name 
-                textBox7.Text = Ini_Helper_DG.selectStringValue(filePath, "code", "ClassNamePlus");//ClassExtends
-                textBox8.Text = Ini_Helper_DG.selectStringValue(filePath, "code", "ClassExtends");//ClassExtends
-                textBox6.Text = dir + "\\" + Ini_Helper_DG.selectStringValue(filePath, "code", "filePathRelativeDeskTop") + "\\";//filePath
-                textBox4.Text = Ini_Helper_DG.selectStringValue(filePath, "code", "fileName");//fileName
+                // textBox3.Text = File_Helper_DG.Ini_SelectStringValue(filePath, "code", "usings").Replace('&','\n'); //using
+                textBox2.Text = File_Helper_DG.Ini_SelectStringValue(filePath, "code", "namespace");//namespace
+                textBox9.Text = File_Helper_DG.Ini_SelectStringValue(filePath, "code", "TableName");//table name
+                textBox5.Text = File_Helper_DG.Ini_SelectStringValue(filePath, "code", "class");//class name 
+                textBox7.Text = File_Helper_DG.Ini_SelectStringValue(filePath, "code", "ClassNamePlus");//ClassExtends
+                textBox8.Text = File_Helper_DG.Ini_SelectStringValue(filePath, "code", "ClassExtends");//ClassExtends
+                textBox6.Text = dir + "\\" + File_Helper_DG.Ini_SelectStringValue(filePath, "code", "filePathRelativeDeskTop") + "\\";//filePath
+                textBox4.Text = File_Helper_DG.Ini_SelectStringValue(filePath, "code", "fileName");//fileName
 
             }
             catch (Exception ex)
@@ -82,18 +79,18 @@ namespace CSharp_FlowchartToCode_DG
         private void setInitConfigFile()
         {
             //set config
-            Ini_Helper_DG.Update(filePath, "config", "dataSource", textBox1.Text);//data source
-            Ini_Helper_DG.Update(filePath, "config", "loginType", comboBox1.Text);// system or sa ?
-            Ini_Helper_DG.Update(filePath, "config", "outputType", comboBox2.Text);//output type
+            File_Helper_DG.Ini_Update(filePath, "config", "dataSource", textBox1.Text);//data source
+            File_Helper_DG.Ini_Update(filePath, "config", "loginType", comboBox1.Text);// system or sa ?
+            File_Helper_DG.Ini_Update(filePath, "config", "outputType", comboBox2.Text);//output type
 
             //set code builder config
-            //Ini_Helper_DG.Update(filePath, "code", "usings", textBox3.Text.Replace("\n","&")); //using
-            Ini_Helper_DG.Update(filePath, "code", "namespace", textBox2.Text);//namespace
-            Ini_Helper_DG.Update(filePath, "code", "TableName", textBox9.Text);//table name
-            Ini_Helper_DG.Update(filePath, "code", "class", textBox5.Text);//class name
-            Ini_Helper_DG.Update(filePath, "code", "ClassNamePlus", textBox7.Text);// ClassExtends
-            Ini_Helper_DG.Update(filePath, "code", "ClassExtends", textBox8.Text);// ClassExtends
-            Ini_Helper_DG.Update(filePath, "code", "fileName", textBox4.Text);//fileName
+            //File_Helper_DG.Ini_Update(filePath, "code", "usings", textBox3.Text.Replace("\n","&")); //using
+            File_Helper_DG.Ini_Update(filePath, "code", "namespace", textBox2.Text);//namespace
+            File_Helper_DG.Ini_Update(filePath, "code", "TableName", textBox9.Text);//table name
+            File_Helper_DG.Ini_Update(filePath, "code", "class", textBox5.Text);//class name
+            File_Helper_DG.Ini_Update(filePath, "code", "ClassNamePlus", textBox7.Text);// ClassExtends
+            File_Helper_DG.Ini_Update(filePath, "code", "ClassExtends", textBox8.Text);// ClassExtends
+            File_Helper_DG.Ini_Update(filePath, "code", "fileName", textBox4.Text);//fileName
         }
 
         #region 获取数据库结构的代码
@@ -192,6 +189,9 @@ namespace CSharp_FlowchartToCode_DG
         #endregion
 
         #region 操作栏按钮点击事件 全选、清空、导出到Excel...
+
+        //工具窗口按钮
+        private void button1_Click(object sender, EventArgs e)=> new ToolsForm().Show();
 
         //全选按钮
         private void button4_Click(object sender, EventArgs e)
@@ -313,16 +313,7 @@ namespace CSharp_FlowchartToCode_DG
         //Open Operation Form Event
         private void button23_Click(object sender, EventArgs e)
         {
-            if (isOperationFormShow)
-            {
-                this.operationForm.Hide();
-                isOperationFormShow = false;
-            }
-            else
-            {
                 this.operationForm.Show();
-                isOperationFormShow = true;
-            }
         }
 
         #endregion
@@ -515,5 +506,7 @@ namespace CSharp_FlowchartToCode_DG
             this.toolStripStatusLabel1.Text = "Generate Watting...";
             this.timer1.Start();
         }
+
+
     }
 }

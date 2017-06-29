@@ -15,7 +15,6 @@ namespace CSharp_FlowchartToCode_DG
         {
             e.Cancel = true;
             this.Hide();
-            MainForm.isOperationFormShow = false;
         }
 
         //Build Entities
@@ -41,7 +40,7 @@ namespace CSharp_FlowchartToCode_DG
         private void button8_Click(object sender, EventArgs e) => operationEvent(Opt_OperationType.REST_WebApiController);
 
         //Build Javascript
-        private void button9_Click(object sender, EventArgs e) => operationEvent(Opt_OperationType.REST_WebApiController);
+        private void button9_Click(object sender, EventArgs e) => operationEvent(Opt_OperationType.Javascript_Ajax_Data);
 
         private void button10_Click(object sender, EventArgs e) => operationEvent(Opt_OperationType.Javascript_Ajax_Data);
 

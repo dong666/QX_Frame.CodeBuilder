@@ -101,6 +101,12 @@
     <Compile Include="QX_Frame.Helper\SqlHelper.cs" />
     <Compile Include="QX_Frame.Helper\StringFormatHelper.cs" />
     <Compile Include="QX_Frame.Helper\TypeConvert.cs" />
+    <Compile Include="Tools.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools.Designer.cs">
+      <DependentUpon>Tools.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -117,6 +123,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Tools.resx">
+      <DependentUpon>Tools.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -131,6 +140,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="bin\Debug\qixiaoSrc\tools.ico" />
     <Content Include="images\dbview\db.gif" />
     <Content Include="images\dbview\db.ico" />
     <Content Include="images\dbview\db.JPG" />

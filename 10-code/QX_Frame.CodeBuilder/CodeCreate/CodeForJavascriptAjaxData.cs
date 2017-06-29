@@ -37,7 +37,7 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
             str.Append("\t\t" + "dataType: 'json'," + "\r\n");
             str.Append("\t\t" + "headers:" + "\r\n");
             str.Append("\t\t" + "{" + "\r\n");
-            str.Append("\t\t\t" + "\"_token\":\"\"" + "\r\n");
+            //str.Append("\t\t\t" + "\"token\":\"\"" + "\r\n");
             str.Append("\t\t" + "}," + "\r\n");
             str.Append("\t\t" + "data:  JSON.stringify(" + "\r\n");
             str.Append("\t\t" + "{" + "\r\n");
@@ -59,7 +59,7 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
             str.Append("\t\t" + "}," + "\r\n");
             str.Append("\t\t" + "success: function (data)" + "\r\n");
             str.Append("\t\t" + "{" + "\r\n");
-            str.Append("\t\t\t\t" + "console.log(JSON.stringify(data));" + "\r\n");
+            str.Append("\t\t\t" + "console.log(JSON.stringify(data));" + "\r\n");
             str.Append("\t\t" + "}," + "\r\n");
             str.Append("\t\t" + "error: function (data)" + "\r\n");
             str.Append("\t\t" + "{" + "\r\n");
