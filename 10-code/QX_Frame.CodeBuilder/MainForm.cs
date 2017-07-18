@@ -459,13 +459,14 @@ namespace CSharp_FlowchartToCode_DG
                         textBox3.Text = "using QX_Frame.App.Base;\nusing QX_Frame.Data.Contract;\nusing QX_Frame.Data.Entities;";
                         textBox2.Text = "QX_Frame.Data.Service";
                         textBox7.Text = "Service";
-                        textBox8.Text = $"WcfService, I{TableName}Service";
+                        textBox5.Text = TableName.Replace("TB_", "").Replace("tb_", "").Replace("t_", "").Replace("T_", "");
+                        textBox8.Text = $"WcfService, I{TableName.Replace("TB_", "").Replace("tb_", "").Replace("t_", "").Replace("T_", "")}Service";
                         CommonComponent(() => QX_FrameToDataService.CreateCode(CreateInfoDic));
 
                         //Generate QX_Frame.Data.Contract
                         textBox3.Text = "using QX_Frame.Data.Entities;";
                         textBox2.Text = "QX_Frame.Data.Contract";
-                        textBox5.Text = $"I{textBox5.Text}";
+                        textBox5.Text = $"I{textBox5.Text.Replace("TB_","").Replace("tb_","").Replace("t_","").Replace("T_","")}";
                         textBox7.Text = "Service";
                         textBox8.Text = "";
                         CommonComponent(() => QX_FrameToDataContract.CreateCode(CreateInfoDic));
