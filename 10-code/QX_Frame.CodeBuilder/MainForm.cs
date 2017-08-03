@@ -61,6 +61,7 @@ namespace CSharp_FlowchartToCode_DG
                 //set code builder config
                 // textBox3.Text = File_Helper_DG.Ini_SelectStringValue(filePath, "code", "usings").Replace('&','\n'); //using
                 textBox2.Text = File_Helper_DG.Ini_SelectStringValue(filePath, "code", "namespace");//namespace
+                textBox10.Text = File_Helper_DG.Ini_SelectStringValue(filePath, "code", "namespaceCommonPlus");//namespace
                 textBox9.Text = File_Helper_DG.Ini_SelectStringValue(filePath, "code", "TableName");//table name
                 textBox5.Text = File_Helper_DG.Ini_SelectStringValue(filePath, "code", "class");//class name 
                 textBox7.Text = File_Helper_DG.Ini_SelectStringValue(filePath, "code", "ClassNamePlus");//ClassExtends
@@ -86,6 +87,7 @@ namespace CSharp_FlowchartToCode_DG
             //set code builder config
             //File_Helper_DG.Ini_Update(filePath, "code", "usings", textBox3.Text.Replace("\n","&")); //using
             File_Helper_DG.Ini_Update(filePath, "code", "namespace", textBox2.Text);//namespace
+            File_Helper_DG.Ini_Update(filePath, "code", "namespaceCommonPlus", textBox10.Text);//namespace
             File_Helper_DG.Ini_Update(filePath, "code", "TableName", textBox9.Text);//table name
             File_Helper_DG.Ini_Update(filePath, "code", "class", textBox5.Text);//class name
             File_Helper_DG.Ini_Update(filePath, "code", "ClassNamePlus", textBox7.Text);// ClassExtends
@@ -368,6 +370,7 @@ namespace CSharp_FlowchartToCode_DG
 
             CreateInfoDic.Add("Using", textBox3.Text.Trim());
             CreateInfoDic.Add("NameSpace", textBox2.Text.Trim());
+            CreateInfoDic.Add("NameSpaceCommonPlus", textBox10.Text.Trim());
             CreateInfoDic.Add("TableName", textBox9.Text.Trim());
             CreateInfoDic.Add("Class", textBox5.Text.Trim());
             CreateInfoDic.Add("ClassNamePlus", textBox7.Text.Trim());

@@ -10,6 +10,7 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
             string usings = CreateCodeDic["Using"];                                             //Using
             string[] usingsArray = usings.Split(';');
             string NameSpace = CreateCodeDic["NameSpace"];                                      //NameSpace
+            string NameSpaceCommonPlus = CreateCodeDic["NameSpaceCommonPlus"];                  //NameSpaceCommonPlus
             string TableName = CreateCodeDic["TableName"];                                      //TableName
             string ClassName = CreateCodeDic["Class"];                                          //ClassName
             string ClassNamePlus = CreateCodeDic["ClassNamePlus"];                              //ClassName Plus

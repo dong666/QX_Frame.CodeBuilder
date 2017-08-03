@@ -51,12 +51,12 @@
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.button22 = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -89,7 +89,8 @@
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox10 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -183,6 +184,7 @@
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.groupBox2.Controls.Add(this.button23);
             this.groupBox2.Controls.Add(this.button8);
+            this.groupBox2.Controls.Add(this.textBox10);
             this.groupBox2.Controls.Add(this.textBox9);
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.textBox3);
@@ -234,15 +236,15 @@
             // textBox9
             // 
             this.textBox9.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(514, 90);
+            this.textBox9.Location = new System.Drawing.Point(603, 90);
             this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(228, 25);
+            this.textBox9.Size = new System.Drawing.Size(139, 25);
             this.textBox9.TabIndex = 7;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(405, 95);
+            this.label12.Location = new System.Drawing.Point(520, 96);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(77, 14);
             this.label12.TabIndex = 6;
@@ -331,15 +333,6 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "File Name:";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(402, 125);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 14);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "ClassNamePlus:";
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -393,6 +386,17 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Operatino ->";
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("SimSun", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button1.Image = global::CSharp_FlowchartToCode_DG.Properties.Resources.tools;
+            this.button1.Location = new System.Drawing.Point(11, 22);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(30, 30);
+            this.button1.TabIndex = 10;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button22
             // 
@@ -798,16 +802,22 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // button1
+            // label1
             // 
-            this.button1.Font = new System.Drawing.Font("SimSun", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Image = global::CSharp_FlowchartToCode_DG.Properties.Resources.tools;
-            this.button1.Location = new System.Drawing.Point(11, 22);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(30, 30);
-            this.button1.TabIndex = 10;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(402, 125);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(105, 14);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "ClassNamePlus:";
+            // 
+            // textBox10
+            // 
+            this.textBox10.Font = new System.Drawing.Font("SimSun", 9.75F);
+            this.textBox10.Location = new System.Drawing.Point(385, 94);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(122, 22);
+            this.textBox10.TabIndex = 7;
             // 
             // MainForm
             // 
@@ -890,7 +900,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Check;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TextBox textBox8;
@@ -909,6 +918,8 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.Label label1;
     }
 }
 
