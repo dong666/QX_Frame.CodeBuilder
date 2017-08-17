@@ -68,5 +68,10 @@ namespace CSharp_FlowchartToCode_DG
         {
             richTextBox_OutPut.Text = Encrypt_Helper_DG.Base64_Decode(richTextBox_Input.Text);
         }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            richTextBox_OutPut.Text = Info.CopyRight;
+        }
     }
 }
