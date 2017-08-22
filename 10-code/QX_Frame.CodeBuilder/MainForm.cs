@@ -428,6 +428,9 @@ namespace CSharp_FlowchartToCode_DG
                 case Opt_OperationType.Entities:
                     CommonComponent(() => CodeForEntity.CreateCode(CreateInfoDic));
                     break;
+                case Opt_OperationType.EntitiesWithBantina:
+                    CommonComponent(() => CodeForEntityWithBantina.CreateCode(CreateInfoDic));
+                    break;
                 case Opt_OperationType.CodeForInstance:
                     CommonComponent(() => CodeForInstance.CreateCode(CreateInfoDic));
                     break;

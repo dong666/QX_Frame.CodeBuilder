@@ -3,6 +3,7 @@
     public enum Opt_OperationType
     {
         Entities,
+        EntitiesWithBantina,
         CodeForInstance,
         CodeForInstance_Another,
         SqlStatements,

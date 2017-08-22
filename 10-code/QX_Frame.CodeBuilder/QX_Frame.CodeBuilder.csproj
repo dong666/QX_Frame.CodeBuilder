@@ -97,6 +97,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodeCreate\CodeForEntityWithBantina.cs" />
     <Compile Include="CodeCreate\CodeForInstance.cs" />
     <Compile Include="CodeCreate\CodeForJavascriptAjaxData.cs" />
     <Compile Include="CodeCreate\CodeForSqlStatement.cs" />

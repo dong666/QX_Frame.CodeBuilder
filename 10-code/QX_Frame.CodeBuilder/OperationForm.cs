@@ -20,6 +20,8 @@ namespace CSharp_FlowchartToCode_DG
         //Build Entities
         private void button1_Click(object sender, EventArgs e) => operationEvent(Opt_OperationType.Entities);
 
+        private void button13_Click(object sender, EventArgs e) => operationEvent(Opt_OperationType.EntitiesWithBantina);
+
         private void button2_Click(object sender, EventArgs e) => operationEvent(Opt_OperationType.CodeForInstance);
 
         private void button3_Click(object sender, EventArgs e) => operationEvent(Opt_OperationType.CodeForInstance_Another);
@@ -34,7 +36,7 @@ namespace CSharp_FlowchartToCode_DG
         private void button7_Click(object sender, EventArgs e) => operationEvent(Opt_OperationType.QX_Frame_Data_Service);
 
         //generate QX_Frame_Data_QueryObject/QX_Frame_Data_Contract/QX_Frame_Data_Service
-        private void button12_Click(object sender, EventArgs e)=> operationEvent(Opt_OperationType.QX_Frame_Data_SQC);
+        private void button12_Click(object sender, EventArgs e) => operationEvent(Opt_OperationType.QX_Frame_Data_SQC);
 
         //Build Controller
         private void button8_Click(object sender, EventArgs e) => operationEvent(Opt_OperationType.REST_WebApiController);
@@ -49,6 +51,5 @@ namespace CSharp_FlowchartToCode_DG
         {
 
         }
-
     }
 }

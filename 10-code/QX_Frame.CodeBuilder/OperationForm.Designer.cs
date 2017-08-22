@@ -50,6 +50,7 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -180,6 +181,7 @@
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.button13);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -194,7 +196,7 @@
             // 
             this.button3.BackColor = System.Drawing.Color.Silver;
             this.button3.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F);
-            this.button3.Location = new System.Drawing.Point(10, 102);
+            this.button3.Location = new System.Drawing.Point(10, 133);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(250, 30);
             this.button3.TabIndex = 1;
@@ -206,7 +208,7 @@
             // 
             this.button4.BackColor = System.Drawing.Color.Silver;
             this.button4.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F);
-            this.button4.Location = new System.Drawing.Point(10, 137);
+            this.button4.Location = new System.Drawing.Point(10, 168);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(250, 30);
             this.button4.TabIndex = 1;
@@ -218,7 +220,7 @@
             // 
             this.button2.BackColor = System.Drawing.Color.Silver;
             this.button2.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F);
-            this.button2.Location = new System.Drawing.Point(10, 66);
+            this.button2.Location = new System.Drawing.Point(10, 98);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(250, 30);
             this.button2.TabIndex = 1;
@@ -325,6 +327,18 @@
             this.button9.UseVisualStyleBackColor = false;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
+            // button13
+            // 
+            this.button13.BackColor = System.Drawing.Color.Silver;
+            this.button13.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F);
+            this.button13.Location = new System.Drawing.Point(10, 64);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(250, 30);
+            this.button13.TabIndex = 0;
+            this.button13.Text = "Entities With Bantina";
+            this.button13.UseVisualStyleBackColor = false;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
             // OperationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -372,5 +386,6 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button13;
     }
 }
