@@ -15,9 +15,10 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
             string[] usingsArray = usings.Split(';');
             string NameSpace = CreateCodeDic["NameSpace"];                                      //NameSpace
             string NameSpaceCommonPlus = CreateCodeDic["NameSpaceCommonPlus"];                  //NameSpaceCommonPlus
+            string DataBaseName = CreateCodeDic["DataBaseName"];                                //DataBaseName
             string TableName = CreateCodeDic["TableName"];                                      //TableName
             string ClassName = CreateCodeDic["Class"];                                          //ClassName
-            string ClassNamePlus = CreateCodeDic["ClassNamePlus"];                               //ClassName Plus
+            string ClassNamePlus = CreateCodeDic["ClassNamePlus"];                              //ClassName Plus
             string ClassNameExtends = CreateCodeDic["ClassExtends"];                            //ClassExtends
             if (!string.IsNullOrEmpty(ClassNameExtends))
             {
@@ -50,8 +51,9 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
             #endregion
 
             //添加using
-            str.Append("using QX_Frame.Helper_DG.Bantina;\r\n");
             str.Append("using System;\r\n");
+            str.Append("using QX_Frame.App.Base;\r\n");
+            str.Append("using QX_Frame.Bantina.Data;\r\n");
             str.Append("\r\n");//引用结束换行
 
             //添加命名空间
@@ -60,11 +62,11 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
 
             //添加实体类
             str.Append("\t" + "/// <summary>" + "\r\n");
-            str.Append("\t" + "/// public class " + ClassName + ClassNamePlus + "\r\n");
+            str.Append("\t" + $"/// public class {ClassName}\r\n");
             str.Append("\t" + "/// </summary>" + "\r\n");
             str.Append("\t" + "[Serializable]" + "\r\n");
             str.Append("\t" + $"[Table(TableName = \"{ClassName}\")]" + "\r\n");
-            str.Append("\t" + $"public class {ClassNameAndExtends}\r\n");
+            str.Append("\t" + $"public class {ClassName}: Entity<{DataBaseName}, {ClassName}>\r\n");
             str.Append("\t" + "{" + "\r\n");
             //添加构造方法
             str.Append("\t\t" + "/// <summary>" + "\r\n");

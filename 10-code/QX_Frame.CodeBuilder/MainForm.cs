@@ -1,6 +1,4 @@
 ﻿using CSharp_FlowchartToCode_DG.CodeCreate;
-using CSharp_FlowchartToCode_DG.config;
-using CSharp_FlowchartToCode_DG.Options;
 using QX_Frame.Helper_DG;
 using System;
 using System.Collections.Generic;
@@ -15,8 +13,6 @@ namespace CSharp_FlowchartToCode_DG
 {
     public partial class MainForm : Form
     {
-        OperationForm operationForm = new OperationForm();
-
         #region 代码编辑全局变量
         public static Dictionary<string, dynamic> CreateInfoDic = new Dictionary<string, dynamic>();         //存储全部信息的List
 
@@ -43,11 +39,6 @@ namespace CSharp_FlowchartToCode_DG
         {
             try
             {
-                //Open OperationWindow 
-                MagneticMagnager test3 = new MagneticMagnager(this, operationForm, MagneticPosition.Right);
-                operationForm.operationEvent += OperationForm_operationEvent;
-                operationForm.Show();
-
                 // set copyright
                 label_Author.Text += Info.Author;
                 label_Version.Text += Info.VersionNum;
@@ -312,12 +303,6 @@ namespace CSharp_FlowchartToCode_DG
             }
         }
 
-        //Open Operation Form Event
-        private void button23_Click(object sender, EventArgs e)
-        {
-                this.operationForm.Show();
-        }
-
         #endregion
 
         #region code builder settings
@@ -371,6 +356,7 @@ namespace CSharp_FlowchartToCode_DG
             CreateInfoDic.Add("Using", textBox3.Text.Trim());
             CreateInfoDic.Add("NameSpace", textBox2.Text.Trim());
             CreateInfoDic.Add("NameSpaceCommonPlus", textBox10.Text.Trim());
+            CreateInfoDic.Add("DataBaseName", DataBaseName);
             CreateInfoDic.Add("TableName", textBox9.Text.Trim());
             CreateInfoDic.Add("Class", textBox5.Text.Trim());
             CreateInfoDic.Add("ClassNamePlus", textBox7.Text.Trim());
@@ -415,78 +401,6 @@ namespace CSharp_FlowchartToCode_DG
         }
         #endregion
 
-        #region Code Generate
-
-        /// <summary>
-        /// OperationForm_operationEvent
-        /// </summary>
-        /// <param name="operationType"></param>
-        private void OperationForm_operationEvent(Opt_OperationType operationType)
-        {
-            switch (operationType)
-            {
-                case Opt_OperationType.Entities:
-                    CommonComponent(() => CodeForEntity.CreateCode(CreateInfoDic));
-                    break;
-                case Opt_OperationType.EntitiesWithBantina:
-                    CommonComponent(() => CodeForEntityWithBantina.CreateCode(CreateInfoDic));
-                    break;
-                case Opt_OperationType.CodeForInstance:
-                    CommonComponent(() => CodeForInstance.CreateCode(CreateInfoDic));
-                    break;
-                case Opt_OperationType.CodeForInstance_Another:
-                    CommonComponent(() => CodeForInstance.CreateCode_otherObject(CreateInfoDic));
-                    break;
-                case Opt_OperationType.SqlStatements:
-                    CommonComponent(() => CodeForSqlStatement.CreateCode(CreateInfoDic));
-                    break;
-                case Opt_OperationType.QX_Frame_Data_Service:
-                    CommonComponent(() => QX_FrameToDataService.CreateCode(CreateInfoDic));
-                    break;
-                case Opt_OperationType.QX_Frame_Data_QueryObject:
-                    CommonComponent(() => QX_FrameToQueryObject.CreateCode(CreateInfoDic));
-                    break;
-                case Opt_OperationType.QX_Frame_Data_Contract:
-                    CommonComponent(() => QX_FrameToDataContract.CreateCode(CreateInfoDic));
-                    break;
-                case Opt_OperationType.REST_WebApiController:
-                    CommonComponent(() => QX_FrameToRESTWebApiController.CreateCode(CreateInfoDic));
-                    break;
-                case Opt_OperationType.QX_Frame_Data_SQC:
-                    {
-                        //Generate QX_Frame.Data.QueryObject
-                        textBox3.Text = "using QX_Frame.App.Base;\nusing QX_Frame.Data.Entities;\nusing System;\nusing System.Linq.Expressions;";
-                        textBox2.Text = "QX_Frame.Data.QueryObject";
-                        textBox7.Text = "QueryObject";
-                        textBox8.Text = $"WcfQueryObject<{DataBaseName}, {TableName}>";
-                        CommonComponent(() => QX_FrameToQueryObject.CreateCode(CreateInfoDic));
-
-                        //Generate QX_Frame.Data.Service
-                        textBox3.Text = "using QX_Frame.App.Base;\nusing QX_Frame.Data.Contract;\nusing QX_Frame.Data.Entities;";
-                        textBox2.Text = "QX_Frame.Data.Service";
-                        textBox7.Text = "Service";
-                        textBox5.Text = TableName.Replace("TB_", "").Replace("tb_", "").Replace("t_", "").Replace("T_", "");
-                        textBox8.Text = $"WcfService, I{TableName.Replace("TB_", "").Replace("tb_", "").Replace("t_", "").Replace("T_", "")}Service";
-                        CommonComponent(() => QX_FrameToDataService.CreateCode(CreateInfoDic));
-
-                        //Generate QX_Frame.Data.Contract
-                        textBox3.Text = "using QX_Frame.Data.Entities;";
-                        textBox2.Text = "QX_Frame.Data.Contract";
-                        textBox5.Text = $"I{textBox5.Text.Replace("TB_","").Replace("tb_","").Replace("t_","").Replace("T_","")}";
-                        textBox7.Text = "Service";
-                        textBox8.Text = "";
-                        CommonComponent(() => QX_FrameToDataContract.CreateCode(CreateInfoDic));
-                    };
-                    break;
-                case Opt_OperationType.Javascript_Ajax_Data:
-                    CommonComponent(() => CodeForJavascriptAjaxData.CreateCode(CreateInfoDic));
-                    break;
-                default:
-                    throw new Exception("No operation type matched -- qixiao");
-            }
-            #endregion
-        }
-
         //Special Effects Timer
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -514,6 +428,72 @@ namespace CSharp_FlowchartToCode_DG
             this.timer1.Start();
         }
 
+        #region CodeGenerate Opration
+        //Entities
+        private void button11_Click(object sender, EventArgs e)=>CommonComponent(() => CodeForEntity.CreateCode(CreateInfoDic));
 
+        #endregion
+        //Entities With Bantina
+        private void button10_Click_1(object sender, EventArgs e)=> CommonComponent(() => CodeForEntityWithBantina.CreateCode(CreateInfoDic));
+        //Entity-Instance
+        private void button9_Click(object sender, EventArgs e)=> CommonComponent(() => CodeForInstance.CreateCode(CreateInfoDic));
+        //Entity-Inst(FO)
+        private void button3_Click(object sender, EventArgs e)=> CommonComponent(() => CodeForInstance.CreateCode_otherObject(CreateInfoDic));
+        //SqlStatement
+        private void button7_Click(object sender, EventArgs e) => CommonComponent(() => CodeForSqlStatement.CreateCode(CreateInfoDic));
+        //QueryObject
+        private void button18_Click(object sender, EventArgs e)=> CommonComponent(() => QX_FrameToQueryObject.CreateCode(CreateInfoDic));
+        //Data.Contract
+        private void button17_Click(object sender, EventArgs e)=> CommonComponent(() => QX_FrameToDataContract.CreateCode(CreateInfoDic));
+        //Data.Service
+        private void button16_Click(object sender, EventArgs e)=> CommonComponent(() => QX_FrameToDataService.CreateCode(CreateInfoDic));
+        //Generate Three-Layout-Frame
+        private void button15_Click(object sender, EventArgs e)
+        {
+            //Generate QX_Frame.Data.Entities
+            textBox2.Text = "QX_Frame.Data.Entities";
+            textBox7.Text = "";
+            textBox8.Text = $"Entity<{DataBaseName}, {TableName}>";
+            CommonComponent(() => CodeForEntityWithBantina.CreateCode(CreateInfoDic));
+            //Generate QX_Frame.Data.QueryObject
+            textBox3.Text = "using QX_Frame.App.Base;\nusing QX_Frame.Data.Entities;\nusing System;\nusing System.Linq.Expressions;";
+            textBox2.Text = "QX_Frame.Data.QueryObject";
+            textBox7.Text = "QueryObject";
+            textBox8.Text = $"WcfQueryObject<{DataBaseName}, {TableName}>";
+            CommonComponent(() => QX_FrameToQueryObject.CreateCode(CreateInfoDic));
+
+            //Generate QX_Frame.Data.Service
+            textBox3.Text = "using QX_Frame.App.Base;\nusing QX_Frame.Data.Contract;\nusing QX_Frame.Data.Entities;";
+            textBox2.Text = "QX_Frame.Data.Service";
+            textBox7.Text = "Service";
+            string tableNameRelace = TableName.Replace("TB_", "").Replace("tb_", "").Replace("t_", "").Replace("T_", "");
+            textBox5.Text = tableNameRelace;
+            textBox8.Text = $"WcfService, I{tableNameRelace}Service";
+            CommonComponent(() => QX_FrameToDataService.CreateCode(CreateInfoDic));
+
+            string dirPath = textBox6.Text;
+            string fileComplexPath = dirPath + "ClassRegister.txt";
+            IO_Helper_DG.CreateDirectoryIfNotExist(dirPath);
+            using (FileStream fs = new FileStream(fileComplexPath, FileMode.Create))
+            {
+                StreamWriter sw = new StreamWriter(fs);
+                sw.Write($"AppBase.Register(c => new {tableNameRelace}Service());");
+                sw.Close();
+            }
+
+            //Generate QX_Frame.Data.Contract
+            textBox3.Text = "using QX_Frame.Data.Entities;";
+            textBox2.Text = "QX_Frame.Data.Contract";
+            textBox5.Text = $"I{textBox5.Text.Replace("TB_", "").Replace("tb_", "").Replace("t_", "").Replace("T_", "")}";
+            textBox7.Text = "Service";
+            textBox8.Text = "";
+            CommonComponent(() => QX_FrameToDataContract.CreateCode(CreateInfoDic));
+        }
+        //REST WebApi Controller
+        private void button21_Click(object sender, EventArgs e)=> CommonComponent(() => QX_FrameToRESTWebApiController.CreateCode(CreateInfoDic));
+        //Jquery-Ajax
+        private void button28_Click(object sender, EventArgs e)=> CommonComponent(() => CodeForJavascriptAjaxData.CreateCode(CreateInfoDic));
+        //Jquery-Ajax-Data
+        private void button27_Click(object sender, EventArgs e) => CommonComponent(() => CodeForJavascriptAjaxData.CreateCode(CreateInfoDic));
     }
 }

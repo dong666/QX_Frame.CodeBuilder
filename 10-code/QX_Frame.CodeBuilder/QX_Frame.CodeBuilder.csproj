@@ -111,13 +111,6 @@
     <Compile Include="CodeCreate\QX_FrameToRESTWebApiController.cs" />
     <Compile Include="config\Info.cs" />
     <Compile Include="config\MagneticMagnager.cs" />
-    <Compile Include="OperationForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OperationForm.Designer.cs">
-      <DependentUpon>OperationForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Options\Opt_OperationType.cs" />
     <Compile Include="QX_Frame.Helper\Iniclass.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -141,9 +134,6 @@
     </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OperationForm.resx">
-      <DependentUpon>OperationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
