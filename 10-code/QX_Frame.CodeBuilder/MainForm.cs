@@ -115,8 +115,10 @@ namespace CSharp_FlowchartToCode_DG
 
 
                     //获取表名
-                    string sqltable = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE'";
-                    DataSet ds2 = SqlHelper.ExecuteDataSet("Data Source=" + textBox1.Text.Trim() + ";Initial Catalog=" + row["name"] + ";Integrated Security=True", sqltable);
+                    //string sqltable = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE'";
+                    //DataSet ds2 = SqlHelper.ExecuteDataSet("Data Source=" + textBox1.Text.Trim() + ";Initial Catalog=" + row["name"] + ";Integrated Security=True", sqltable);
+                    string sqlTable = $"use [{root.Name}] SELECT name FROM sysobjects WHERE xtype = 'U' AND OBJECTPROPERTY (id, 'IsMSShipped') = 0";
+                    DataSet ds2 = SqlHelper.ExecuteDataSet(ConnectionStr, sqlTable);
                     DataTable dt2 = ds2.Tables[0];
                     List<string> tableNameList = new List<string>();
                     foreach (DataRow row2 in dt2.Rows)
@@ -160,9 +162,10 @@ namespace CSharp_FlowchartToCode_DG
                 textBox5.Text = table;//将table的表名赋值给TableName变量，方便后续传值; Model
                 textBox9.Text = table;//将table的表名赋值给TableName变量，方便后续传值; Model
                 textBox4.Text = table + textBox7.Text.Trim() + ".cs";//fileName
-                string connStr = "Data Source=" + textBox1.Text.Trim() + ";Initial Catalog=" + database + ";Integrated Security=True";
-                string sql = @"select syscolumns.name as Field ,systypes.name as FieldType , syscolumns.length as Length,syscolumns.isnullable as Nullable, sys.extended_properties.value as Description  ,IsPK = Case  when exists ( select 1 from sysobjects  inner join sysindexes  on sysindexes.name = sysobjects.name  inner join sysindexkeys  on sysindexes.id = sysindexkeys.id  and  sysindexes.indid = sysindexkeys.indid  where xtype='PK'  and parent_obj = syscolumns.id and sysindexkeys.colid = syscolumns.colid ) then 1 else 0 end ,IsIdentity = Case syscolumns.status when 128 then 1 else 0 end  from syscolumns inner join systypes on(  syscolumns.xtype = systypes.xtype and systypes.name <>'_default_' and systypes.name<>'sysname'  ) left outer join sys.extended_properties on  ( sys.extended_properties.major_id=syscolumns.id and minor_id=syscolumns.colid  ) where syscolumns.id = (select id from sysobjects where name='" + table + @"') order by syscolumns.colid ";
-                DataSet ds = SqlHelper.ExecuteDataSet(connStr, sql);
+                //string connStr = "Data Source=" + textBox1.Text.Trim() + ";Initial Catalog=" + database + ";Integrated Security=True";
+                string ConnectionStr = $"Data Source={textBox1.Text.Trim()};Initial Catalog=master;{comboBox1.Text.Trim()};";
+                string sql = $@"use [{DataBaseName}] select syscolumns.name as Field ,systypes.name as FieldType , syscolumns.length as Length,syscolumns.isnullable as Nullable, sys.extended_properties.value as Description  ,IsPK = Case  when exists ( select 1 from sysobjects  inner join sysindexes  on sysindexes.name = sysobjects.name  inner join sysindexkeys  on sysindexes.id = sysindexkeys.id  and  sysindexes.indid = sysindexkeys.indid  where xtype='PK'  and parent_obj = syscolumns.id and sysindexkeys.colid = syscolumns.colid ) then 1 else 0 end ,IsIdentity = Case syscolumns.status when 128 then 1 else 0 end  from syscolumns inner join systypes on(  syscolumns.xtype = systypes.xtype and systypes.name <>'_default_' and systypes.name<>'sysname'  ) left outer join sys.extended_properties on  ( sys.extended_properties.major_id=syscolumns.id and minor_id=syscolumns.colid  ) where syscolumns.id = (select id from sysobjects where name='" + table + @"') order by syscolumns.colid ";
+                DataSet ds = SqlHelper.ExecuteDataSet(ConnectionStr, sql);
 
                 DataTable dt = ds.Tables[0];
                 this.DataBaseTable = dt;//将获取到的表信息保存到全局变量
