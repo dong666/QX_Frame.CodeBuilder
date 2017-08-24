@@ -53,7 +53,7 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
             //添加using
             str.Append("using System;\r\n");
             str.Append("using QX_Frame.App.Base;\r\n");
-            str.Append("using QX_Frame.Bantina.Data;\r\n");
+            str.Append("using QX_Frame.Bantina.Bankinate;\r\n");
             str.Append("\r\n");//引用结束换行
 
             //添加命名空间
