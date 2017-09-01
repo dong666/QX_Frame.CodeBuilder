@@ -21,11 +21,12 @@ namespace CSharp_FlowchartToCode_DG
         private void button1_Click(object sender, EventArgs e)
         {
             richTextBox_OutPut.Text = Guid.NewGuid().ToString();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            richTextBox_OutPut.Text = DateTime_Helper_DG.GetCurrentTimeStamp().ToString();
+            richTextBox_OutPut.Text += "\n";
+            richTextBox_OutPut.Text += DateTime_Helper_DG.GetCurrentTimeStamp().ToString();
+            richTextBox_OutPut.Text += "\n";
+            richTextBox_OutPut.Text += DateTime_Helper_DG.Get_DateTime_Now_24HourType();
+            richTextBox_OutPut.Text += "\n";
+            richTextBox_OutPut.Text += DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         }
 
         private void button3_Click(object sender, EventArgs e)
