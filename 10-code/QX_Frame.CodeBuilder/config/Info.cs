@@ -30,7 +30,8 @@ namespace CSharp_FlowchartToCode_DG
                 str.Append(" * Create:" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\r\n");
                 str.Append(" * Update:" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\r\n");
                 str.Append(" * E-mail: dong@qixiao.me | wd8622088@foxmail.com \r\n");
-                str.Append(" * Personal WebSit: http://qixiao.me \r\n");
+                str.Append(" * GitHub: https://github.com/dong666 \r\n");
+                str.Append(" * Personal web site: http://qixiao.me \r\n");
                 str.Append(" * Technical WebSit: http://www.cnblogs.com/qixiaoyizhan/ \r\n");
                 str.Append(" * Description:\r\n");
                 str.Append(" * Thx , Best Regards ~\r\n");
