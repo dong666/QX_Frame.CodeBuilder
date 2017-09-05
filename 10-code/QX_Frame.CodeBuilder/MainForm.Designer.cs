@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Server");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Server");
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -112,6 +112,7 @@
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.button27 = new System.Windows.Forms.Button();
             this.button28 = new System.Windows.Forms.Button();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -793,10 +794,10 @@
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(3, 15);
             this.treeView1.Name = "treeView1";
-            treeNode2.Name = "fuwuqi";
-            treeNode2.Text = "Server";
+            treeNode1.Name = "fuwuqi";
+            treeNode1.Text = "Server";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2});
+            treeNode1});
             this.treeView1.SelectedImageIndex = 16;
             this.treeView1.Size = new System.Drawing.Size(194, 684);
             this.treeView1.TabIndex = 0;
@@ -836,6 +837,7 @@
             // tabControl2
             // 
             this.tabControl2.Controls.Add(this.tabPage3);
+            this.tabControl2.Controls.Add(this.tabPage6);
             this.tabControl2.Controls.Add(this.tabPage5);
             this.tabControl2.Dock = System.Windows.Forms.DockStyle.Right;
             this.tabControl2.Location = new System.Drawing.Point(1008, 5);
@@ -854,7 +856,7 @@
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(263, 676);
             this.tabPage3.TabIndex = 0;
-            this.tabPage3.Text = "Code-1";
+            this.tabPage3.Text = "C#";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // groupBox7
@@ -1034,7 +1036,7 @@
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage5.Size = new System.Drawing.Size(263, 676);
             this.tabPage5.TabIndex = 1;
-            this.tabPage5.Text = "Code-2";
+            this.tabPage5.Text = "WEB";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // groupBox10
@@ -1110,6 +1112,15 @@
             this.button28.Text = "Jquery-Ajax";
             this.button28.UseVisualStyleBackColor = false;
             this.button28.Click += new System.EventHandler(this.button28_Click);
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(263, 676);
+            this.tabPage6.TabIndex = 2;
+            this.tabPage6.Text = "JAVA";
+            this.tabPage6.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -1242,6 +1253,7 @@
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.Button button27;
         private System.Windows.Forms.Button button28;
+        private System.Windows.Forms.TabPage tabPage6;
     }
 }
 
