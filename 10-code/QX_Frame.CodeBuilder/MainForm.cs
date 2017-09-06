@@ -1,5 +1,5 @@
 ﻿using CSharp_FlowchartToCode_DG.CodeCreate;
-using QX_Frame.Helper_DG;
+using QX_Frame.Bantina;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -31,6 +31,7 @@ namespace CSharp_FlowchartToCode_DG
         string dir = IO_Helper_DG.DeskTopPath;                  //获取路径
         string filePath = @"qixiaoSrc\QixiaoConfig.ini";          //获取配置文件的路径
         DataTable DataBaseTable = default(DataTable); //数据库表数据DataTable
+        string ConnectionStr = default(string);
 
         #endregion
 
@@ -45,21 +46,23 @@ namespace CSharp_FlowchartToCode_DG
                 label_Description.Text += Info.Description;
 
                 //set config
-                textBox1.Text = File_Helper_DG.Ini_SelectStringValue(filePath, "config", "dataSource", ".");//data source
-                comboBox1.Text = File_Helper_DG.Ini_SelectStringValue(filePath, "config", "loginType", "Integrated Security=True");// system or sa ?
-                comboBox2.Text = File_Helper_DG.Ini_SelectStringValue(filePath, "config", "outputType");//output type
+                textBox1.Text = IO_Helper_DG.Ini_SelectStringValue(filePath, "config", "dataSource", ".");//data source
+                comboBox1.Text = IO_Helper_DG.Ini_SelectStringValue(filePath, "config", "loginType", "Integrated Security=True");// system or sa ?
+                comboBox2.Text = IO_Helper_DG.Ini_SelectStringValue(filePath, "config", "outputType");//output type
 
                 //set code builder config
-                // textBox3.Text = File_Helper_DG.Ini_SelectStringValue(filePath, "code", "usings").Replace('&','\n'); //using
-                textBox2.Text = File_Helper_DG.Ini_SelectStringValue(filePath, "code", "namespace");//namespace
-                textBox10.Text = File_Helper_DG.Ini_SelectStringValue(filePath, "code", "namespaceCommonPlus");//namespace
-                textBox9.Text = File_Helper_DG.Ini_SelectStringValue(filePath, "code", "TableName");//table name
-                textBox5.Text = File_Helper_DG.Ini_SelectStringValue(filePath, "code", "class");//class name 
-                textBox7.Text = File_Helper_DG.Ini_SelectStringValue(filePath, "code", "ClassNamePlus");//ClassExtends
-                textBox8.Text = File_Helper_DG.Ini_SelectStringValue(filePath, "code", "ClassExtends");//ClassExtends
-                textBox6.Text = dir + "\\" + File_Helper_DG.Ini_SelectStringValue(filePath, "code", "filePathRelativeDeskTop") + "\\";//filePath
-                textBox4.Text = File_Helper_DG.Ini_SelectStringValue(filePath, "code", "fileName");//fileName
+                // textBox3.Text = IO_Helper_DG.Ini_SelectStringValue(filePath, "code", "usings").Replace('&','\n'); //using
+                textBox2.Text = IO_Helper_DG.Ini_SelectStringValue(filePath, "code", "namespace");//namespace
+                textBox10.Text = IO_Helper_DG.Ini_SelectStringValue(filePath, "code", "namespaceCommonPlus");//namespace
+                textBox9.Text = IO_Helper_DG.Ini_SelectStringValue(filePath, "code", "TableName");//table name
+                textBox5.Text = IO_Helper_DG.Ini_SelectStringValue(filePath, "code", "class");//class name 
+                textBox7.Text = IO_Helper_DG.Ini_SelectStringValue(filePath, "code", "ClassNamePlus");//ClassExtends
+                textBox8.Text = IO_Helper_DG.Ini_SelectStringValue(filePath, "code", "ClassExtends");//ClassExtends
+                textBox6.Text = dir + "\\" + IO_Helper_DG.Ini_SelectStringValue(filePath, "code", "filePathRelativeDeskTop") + "\\";//filePath
+                textBox4.Text = IO_Helper_DG.Ini_SelectStringValue(filePath, "code", "fileName");//fileName
 
+                colorRichTextBox1.Language = CSharp_FlowchartToCode_DG.Controls.ColorRichTextBox.Languages.SQL;
+                colorRichTextBox1.Language = CSharp_FlowchartToCode_DG.Controls.ColorRichTextBox.Languages.SQL;
             }
             catch (Exception ex)
             {
@@ -71,19 +74,19 @@ namespace CSharp_FlowchartToCode_DG
         private void setInitConfigFile()
         {
             //set config
-            File_Helper_DG.Ini_Update(filePath, "config", "dataSource", textBox1.Text);//data source
-            File_Helper_DG.Ini_Update(filePath, "config", "loginType", comboBox1.Text);// system or sa ?
-            File_Helper_DG.Ini_Update(filePath, "config", "outputType", comboBox2.Text);//output type
+            IO_Helper_DG.Ini_Update(filePath, "config", "dataSource", textBox1.Text);//data source
+            IO_Helper_DG.Ini_Update(filePath, "config", "loginType", comboBox1.Text);// system or sa ?
+            IO_Helper_DG.Ini_Update(filePath, "config", "outputType", comboBox2.Text);//output type
 
             //set code builder config
-            //File_Helper_DG.Ini_Update(filePath, "code", "usings", textBox3.Text.Replace("\n","&")); //using
-            File_Helper_DG.Ini_Update(filePath, "code", "namespace", textBox2.Text);//namespace
-            File_Helper_DG.Ini_Update(filePath, "code", "namespaceCommonPlus", textBox10.Text);//namespace
-            File_Helper_DG.Ini_Update(filePath, "code", "TableName", textBox9.Text);//table name
-            File_Helper_DG.Ini_Update(filePath, "code", "class", textBox5.Text);//class name
-            File_Helper_DG.Ini_Update(filePath, "code", "ClassNamePlus", textBox7.Text);// ClassExtends
-            File_Helper_DG.Ini_Update(filePath, "code", "ClassExtends", textBox8.Text);// ClassExtends
-            File_Helper_DG.Ini_Update(filePath, "code", "fileName", textBox4.Text);//fileName
+            //IO_Helper_DG.Ini_Update(filePath, "code", "usings", textBox3.Text.Replace("\n","&")); //using
+            IO_Helper_DG.Ini_Update(filePath, "code", "namespace", textBox2.Text);//namespace
+            IO_Helper_DG.Ini_Update(filePath, "code", "namespaceCommonPlus", textBox10.Text);//namespace
+            IO_Helper_DG.Ini_Update(filePath, "code", "TableName", textBox9.Text);//table name
+            IO_Helper_DG.Ini_Update(filePath, "code", "class", textBox5.Text);//class name
+            IO_Helper_DG.Ini_Update(filePath, "code", "ClassNamePlus", textBox7.Text);// ClassExtends
+            IO_Helper_DG.Ini_Update(filePath, "code", "ClassExtends", textBox8.Text);// ClassExtends
+            IO_Helper_DG.Ini_Update(filePath, "code", "fileName", textBox4.Text);//fileName
         }
 
         #region 获取数据库结构的代码
@@ -94,7 +97,8 @@ namespace CSharp_FlowchartToCode_DG
             try
             {
                 string sql = "select name from sys.databases where database_id > 4";//查询sqlserver中的非系统库
-                string ConnectionStr = $"Data Source={textBox1.Text.Trim()};Initial Catalog=master;{comboBox1.Text.Trim()};";
+                ConnectionStr = $"Data Source={textBox1.Text.Trim()};Initial Catalog=master;{comboBox1.Text.Trim()};";
+
                 DataSet ds = SqlHelper.ExecuteDataSet(ConnectionStr, sql);
                 DataTable dataTable = ds.Tables[0];
 
@@ -102,16 +106,21 @@ namespace CSharp_FlowchartToCode_DG
                 grand.ImageIndex = 1;
                 treeView1.Nodes[0].Nodes.Add(grand);
 
+                comboBox3.Items.Clear();//清空SqlPower里面的数据库下拉框数据
+
                 foreach (DataRow row in dataTable.Rows)
                 {
-                    TreeNode root = new TreeNode(row["name"].ToString());//创建节点
-                    root.Name = row["name"].ToString();
+                    string dbName = row["name"].ToString();
+                    TreeNode root = new TreeNode(dbName);//创建节点
+                    root.Name = dbName;
                     root.ImageIndex = 2;
                     grand.Nodes.Add(root);
                     TreeNode biao = new TreeNode("Tables");
                     biao.Name = "Tables";
                     biao.ImageIndex = 3;
                     root.Nodes.Add(biao);
+
+                    comboBox3.Items.Add(dbName);//添加SqlPower里面的数据库下拉框数据
 
 
                     //获取表名
@@ -163,7 +172,7 @@ namespace CSharp_FlowchartToCode_DG
                 textBox9.Text = table;//将table的表名赋值给TableName变量，方便后续传值; Model
                 textBox4.Text = table + textBox7.Text.Trim() + ".cs";//fileName
                 //string connStr = "Data Source=" + textBox1.Text.Trim() + ";Initial Catalog=" + database + ";Integrated Security=True";
-                string ConnectionStr = $"Data Source={textBox1.Text.Trim()};Initial Catalog=master;{comboBox1.Text.Trim()};";
+                ConnectionStr = $"Data Source={textBox1.Text.Trim()};Initial Catalog=master;{comboBox1.Text.Trim()};";
                 string sql = $@"use [{DataBaseName}] select syscolumns.name as Field ,systypes.name as FieldType , syscolumns.length as Length,syscolumns.isnullable as Nullable, sys.extended_properties.value as Description  ,IsPK = Case  when exists ( select 1 from sysobjects  inner join sysindexes  on sysindexes.name = sysobjects.name  inner join sysindexkeys  on sysindexes.id = sysindexkeys.id  and  sysindexes.indid = sysindexkeys.indid  where xtype='PK'  and parent_obj = syscolumns.id and sysindexkeys.colid = syscolumns.colid ) then 1 else 0 end ,IsIdentity = Case syscolumns.status when 128 then 1 else 0 end  from syscolumns inner join systypes on(  syscolumns.xtype = systypes.xtype and systypes.name <>'_default_' and systypes.name<>'sysname'  ) left outer join sys.extended_properties on  ( sys.extended_properties.major_id=syscolumns.id and minor_id=syscolumns.colid  ) where syscolumns.id = (select id from sysobjects where name='" + table + @"') order by syscolumns.colid ";
                 DataSet ds = SqlHelper.ExecuteDataSet(ConnectionStr, sql);
 
@@ -266,16 +275,16 @@ namespace CSharp_FlowchartToCode_DG
         private void button14_Click(object sender, EventArgs e) => this.tabControl1.SelectedTab = tabPage1;//转换到首页
 
         //全选的按钮 的事件
-        private void button12_Click(object sender, EventArgs e) => richTextBox1.SelectAll();//全选
+        private void button12_Click(object sender, EventArgs e) => colorRichTextBox2.SelectAll();//全选
 
         //复制按钮的事件
-        private void button13_Click(object sender, EventArgs e) => richTextBox1.Copy();//复制选择文本
+        private void button13_Click(object sender, EventArgs e) => colorRichTextBox2.Copy();//复制选择文本
 
         //left to right
-        private void button19_Click(object sender, EventArgs e) => this.richTextBox1.RightToLeft = RightToLeft.No;
+        private void button19_Click(object sender, EventArgs e) => this.colorRichTextBox2.RightToLeft = RightToLeft.No;
 
         //right to left
-        private void button20_Click(object sender, EventArgs e) => this.richTextBox1.RightToLeft = RightToLeft.Yes;
+        private void button20_Click(object sender, EventArgs e) => this.colorRichTextBox2.RightToLeft = RightToLeft.Yes;
 
         #endregion
 
@@ -382,11 +391,11 @@ namespace CSharp_FlowchartToCode_DG
                 setInitConfigFile();//record the opration history
                 InitCreateInfoDic();//init create info to dictionary
 
-                richTextBox1.Text = null;
+                colorRichTextBox2.Text = null;
 
                 CodeTxt = method();
 
-                richTextBox1.Text = CodeTxt;    //获取代码
+                colorRichTextBox2.Text = CodeTxt;    //获取代码
                 if (comboBox2.Text.Equals("To File"))
                 {
                     saveCodeToFile();//save code to file
@@ -498,5 +507,33 @@ namespace CSharp_FlowchartToCode_DG
         private void button28_Click(object sender, EventArgs e)=> CommonComponent(() => CodeForJavascriptAjaxData.CreateCode(CreateInfoDic));
         //Jquery-Ajax-Data
         private void button27_Click(object sender, EventArgs e) => CommonComponent(() => CodeForJavascriptAjaxData.CreateCode(CreateInfoDic));
+
+        //Execute Sql
+        private void button23_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(comboBox3.Text))
+            {
+                MessageBox.Show("Choose DataBase First !");
+            }
+            else
+            {
+                try
+                {
+                    string executeSql = string.IsNullOrEmpty(colorRichTextBox1.SelectedText) ? colorRichTextBox1.Text : colorRichTextBox1.SelectedText;
+                    string sql = $"USE {comboBox3.Text.Trim()};{executeSql}";
+                    DataSet ds = SqlHelper.ExecuteDataSet(ConnectionStr, sql);
+                    this.dataGridView2.DataSource = ds.Tables[0]?.DefaultView;
+                }
+                catch (Exception)
+                {
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add(new DataColumn("Result"));
+                    DataRow row = dt.NewRow();
+                    row[0] = "SqlStatements Error ! (0 line affected)";
+                    dt.Rows.Add(row);
+                    this.dataGridView2.DataSource = dt;
+                }
+            }
+        }
     }
 }

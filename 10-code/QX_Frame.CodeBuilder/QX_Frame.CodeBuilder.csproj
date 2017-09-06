@@ -80,8 +80,9 @@
     <Reference Include="NPOI.OpenXmlFormats">
       <HintPath>QX_Frame.Reference\NPOI.OpenXmlFormats.dll</HintPath>
     </Reference>
-    <Reference Include="QX_Frame.Helper_DG">
-      <HintPath>QX_Frame.Reference\QX_Frame.Helper_DG.dll</HintPath>
+    <Reference Include="QX_Frame.Bantina, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\QX_Frame.Bantina.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -111,6 +112,18 @@
     <Compile Include="CodeCreate\QX_FrameToRESTWebApiController.cs" />
     <Compile Include="config\Info.cs" />
     <Compile Include="config\MagneticMagnager.cs" />
+    <Compile Include="Controls\ColorRichTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ColorRichTextBox.Designer.cs">
+      <DependentUpon>ColorRichTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Parser.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="QX_Frame.Helper\Iniclass.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -137,14 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Tools.resx">
       <DependentUpon>Tools.cs</DependentUpon>
     </EmbeddedResource>
@@ -163,7 +171,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="bin\Debug\qixiaoSrc\tools.ico" />
+    <None Include="bin\Debug\qixiaoSrc\tanhao.jpg" />
+    <None Include="bin\Debug\qixiaoSrc\tanhao.png" />
     <Content Include="images\dbview\db.gif" />
     <Content Include="images\dbview\db.ico" />
     <Content Include="images\dbview\db.JPG" />
