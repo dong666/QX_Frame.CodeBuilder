@@ -63,6 +63,10 @@ namespace CSharp_FlowchartToCode_DG
 
                 colorRichTextBox1.Language = CSharp_FlowchartToCode_DG.Controls.ColorRichTextBox.Languages.SQL;
                 colorRichTextBox1.Language = CSharp_FlowchartToCode_DG.Controls.ColorRichTextBox.Languages.SQL;
+
+                dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dataGridView2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                dataGridView1.ColumnHeadersHeight = 22;
             }
             catch (Exception ex)
             {
