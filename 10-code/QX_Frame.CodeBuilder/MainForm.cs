@@ -200,7 +200,7 @@ namespace CSharp_FlowchartToCode_DG
         #region 操作栏按钮点击事件 全选、清空、导出到Excel...
 
         //工具窗口按钮
-        private void button1_Click(object sender, EventArgs e)=> new ToolsForm().Show();
+        private void button1_Click(object sender, EventArgs e) => new ToolsForm().Show();
 
         //全选按钮
         private void button4_Click(object sender, EventArgs e)
@@ -446,23 +446,23 @@ namespace CSharp_FlowchartToCode_DG
 
         #region CodeGenerate Opration
         //Entities
-        private void button11_Click(object sender, EventArgs e)=>CommonComponent(() => CodeForEntity.CreateCode(CreateInfoDic));
+        private void button11_Click(object sender, EventArgs e) => CommonComponent(() => CodeForEntity.CreateCode(CreateInfoDic));
 
         #endregion
         //Entities With Bantina
-        private void button10_Click_1(object sender, EventArgs e)=> CommonComponent(() => CodeForEntityWithBantina.CreateCode(CreateInfoDic));
+        private void button10_Click_1(object sender, EventArgs e) => CommonComponent(() => CodeForEntityWithBantina.CreateCode(CreateInfoDic));
         //Entity-Instance
-        private void button9_Click(object sender, EventArgs e)=> CommonComponent(() => CodeForInstance.CreateCode(CreateInfoDic));
+        private void button9_Click(object sender, EventArgs e) => CommonComponent(() => CodeForInstance.CreateCode(CreateInfoDic));
         //Entity-Inst(FO)
-        private void button3_Click(object sender, EventArgs e)=> CommonComponent(() => CodeForInstance.CreateCode_otherObject(CreateInfoDic));
+        private void button3_Click(object sender, EventArgs e) => CommonComponent(() => CodeForInstance.CreateCode_otherObject(CreateInfoDic));
         //SqlStatement
         private void button7_Click(object sender, EventArgs e) => CommonComponent(() => CodeForSqlStatement.CreateCode(CreateInfoDic));
         //QueryObject
-        private void button18_Click(object sender, EventArgs e)=> CommonComponent(() => QX_FrameToQueryObject.CreateCode(CreateInfoDic));
+        private void button18_Click(object sender, EventArgs e) => CommonComponent(() => QX_FrameToQueryObject.CreateCode(CreateInfoDic));
         //Data.Contract
-        private void button17_Click(object sender, EventArgs e)=> CommonComponent(() => QX_FrameToDataContract.CreateCode(CreateInfoDic));
+        private void button17_Click(object sender, EventArgs e) => CommonComponent(() => QX_FrameToDataContract.CreateCode(CreateInfoDic));
         //Data.Service
-        private void button16_Click(object sender, EventArgs e)=> CommonComponent(() => QX_FrameToDataService.CreateCode(CreateInfoDic));
+        private void button16_Click(object sender, EventArgs e) => CommonComponent(() => QX_FrameToDataService.CreateCode(CreateInfoDic));
         //Generate Three-Layout-Frame
         private void button15_Click(object sender, EventArgs e)
         {
@@ -490,10 +490,10 @@ namespace CSharp_FlowchartToCode_DG
             string dirPath = textBox6.Text;
             string fileComplexPath = dirPath + "ClassRegister.txt";
             IO_Helper_DG.CreateDirectoryIfNotExist(dirPath);
-            using (FileStream fs = new FileStream(fileComplexPath, FileMode.Create))
+
+            using (StreamWriter sw = new StreamWriter(fileComplexPath, true))
             {
-                StreamWriter sw = new StreamWriter(fs);
-                sw.Write($"AppBase.Register(c => new {tableNameRelace}Service());");
+                sw.WriteLine($"AppBase.Register(c => new {tableNameRelace}Service());");
                 sw.Close();
             }
 
@@ -506,9 +506,9 @@ namespace CSharp_FlowchartToCode_DG
             CommonComponent(() => QX_FrameToDataContract.CreateCode(CreateInfoDic));
         }
         //REST WebApi Controller
-        private void button21_Click(object sender, EventArgs e)=> CommonComponent(() => QX_FrameToRESTWebApiController.CreateCode(CreateInfoDic));
+        private void button21_Click(object sender, EventArgs e) => CommonComponent(() => QX_FrameToRESTWebApiController.CreateCode(CreateInfoDic));
         //Jquery-Ajax
-        private void button28_Click(object sender, EventArgs e)=> CommonComponent(() => CodeForJavascriptAjaxData.CreateCode(CreateInfoDic));
+        private void button28_Click(object sender, EventArgs e) => CommonComponent(() => CodeForJavascriptAjaxData.CreateCode(CreateInfoDic));
         //Jquery-Ajax-Data
         private void button27_Click(object sender, EventArgs e) => CommonComponent(() => CodeForJavascriptAjaxData.CreateCode(CreateInfoDic));
 
