@@ -14,13 +14,20 @@ namespace CSharp_FlowchartToCode_DG
 
         private void button1_Click(object sender, EventArgs e)
         {
-            richTextBox_OutPut.Text = Guid.NewGuid().ToString();
-            richTextBox_OutPut.Text += "\n";
-            richTextBox_OutPut.Text += DateTime_Helper_DG.GetCurrentTimeStamp().ToString();
-            richTextBox_OutPut.Text += "\n";
-            richTextBox_OutPut.Text += DateTime_Helper_DG.Get_DateTime_Now_24HourType();
-            richTextBox_OutPut.Text += "\n";
-            richTextBox_OutPut.Text += DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            StringBuilder builder = new StringBuilder();
+
+            builder.Append(default(Guid).ToString());
+            builder.Append("\n");
+            builder.Append(Guid.NewGuid().ToString());
+            builder.Append("\n");
+            builder.Append(DateTime_Helper_DG.GetCurrentTimeStamp().ToString());
+            builder.Append("\n");
+            builder.Append(DateTime_Helper_DG.Get_DateTime_Now_24HourType());
+            builder.Append("\n");
+            builder.Append(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+            builder.Append("\n");
+
+            richTextBox_OutPut.Text = builder.ToString();
         }
 
         private void button3_Click(object sender, EventArgs e)
