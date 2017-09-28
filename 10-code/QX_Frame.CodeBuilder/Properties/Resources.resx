@@ -127,4 +127,25 @@
   <data name="tanhao" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\qixiaoSrc\tanhao.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="microsoftsqlserverlogintopback" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\microsoftsqlserverlogintopback.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="server" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\dbview\server.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MongoDbIco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\MongoDbIco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mysqlIco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\mysqlIco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OracleIco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\OracleIco.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RedisIco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\RedisIco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SqlserverIco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\SqlserverIco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

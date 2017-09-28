@@ -46,8 +46,8 @@ namespace CSharp_FlowchartToCode_DG
                 label_Description.Text += Info.Description;
 
                 //set config
-                textBox1.Text = IO_Helper_DG.Ini_SelectStringValue(filePath, "config", "dataSource", ".");//data source
-                comboBox1.Text = IO_Helper_DG.Ini_SelectStringValue(filePath, "config", "loginType", "Integrated Security=True");// system or sa ?
+                //textBox1.Text = IO_Helper_DG.Ini_SelectStringValue(filePath, "config", "dataSource", ".");//data source
+                //comboBox1.Text = IO_Helper_DG.Ini_SelectStringValue(filePath, "config", "loginType", "Integrated Security=True");// system or sa ?
                 comboBox2.Text = IO_Helper_DG.Ini_SelectStringValue(filePath, "config", "outputType");//output type
 
                 //set code builder config
@@ -78,8 +78,8 @@ namespace CSharp_FlowchartToCode_DG
         private void setInitConfigFile()
         {
             //set config
-            IO_Helper_DG.Ini_Update(filePath, "config", "dataSource", textBox1.Text);//data source
-            IO_Helper_DG.Ini_Update(filePath, "config", "loginType", comboBox1.Text);// system or sa ?
+            //IO_Helper_DG.Ini_Update(filePath, "config", "dataSource", textBox1.Text);//data source
+            //IO_Helper_DG.Ini_Update(filePath, "config", "loginType", comboBox1.Text);// system or sa ?
             IO_Helper_DG.Ini_Update(filePath, "config", "outputType", comboBox2.Text);//output type
 
             //set code builder config
@@ -95,8 +95,8 @@ namespace CSharp_FlowchartToCode_DG
 
         #region 获取数据库结构的代码
 
-        //获取数据库信息
-        private void button2_Click(object sender, EventArgs e)
+        
+        private void GetDataBaseInfo()
         {
             try
             {
@@ -166,38 +166,39 @@ namespace CSharp_FlowchartToCode_DG
         {
             try
             {
-                string database = this.treeView1.SelectedNode.Parent.Parent.Name;
-                string table = this.treeView1.SelectedNode.Name;
+                //string database = this.treeView1.SelectedNode.Parent.Parent.Name;
+                //string table = this.treeView1.SelectedNode.Name;
 
-                this.DataBaseName = database;//保存数据库名
-                this.TableName = table;
+                //this.DataBaseName = database;//保存数据库名
+                //this.TableName = table;
 
-                textBox5.Text = table;//将table的表名赋值给TableName变量，方便后续传值; Model
-                textBox9.Text = table;//将table的表名赋值给TableName变量，方便后续传值; Model
-                textBox4.Text = table + textBox7.Text.Trim() + ".cs";//fileName
-                //string connStr = "Data Source=" + textBox1.Text.Trim() + ";Initial Catalog=" + database + ";Integrated Security=True";
-                ConnectionStr = $"Data Source={textBox1.Text.Trim()};Initial Catalog=master;{comboBox1.Text.Trim()};";
-                string sql = $@"use [{DataBaseName}] select syscolumns.name as Field ,systypes.name as FieldType , syscolumns.length as Length,syscolumns.isnullable as Nullable, sys.extended_properties.value as Description  ,IsPK = Case  when exists ( select 1 from sysobjects  inner join sysindexes  on sysindexes.name = sysobjects.name  inner join sysindexkeys  on sysindexes.id = sysindexkeys.id  and  sysindexes.indid = sysindexkeys.indid  where xtype='PK'  and parent_obj = syscolumns.id and sysindexkeys.colid = syscolumns.colid ) then 1 else 0 end ,IsIdentity = Case syscolumns.status when 128 then 1 else 0 end  from syscolumns inner join systypes on(  syscolumns.xtype = systypes.xtype and systypes.name <>'_default_' and systypes.name<>'sysname'  ) left outer join sys.extended_properties on  ( sys.extended_properties.major_id=syscolumns.id and minor_id=syscolumns.colid  ) where syscolumns.id = (select id from sysobjects where name='" + table + @"') order by syscolumns.colid ";
-                DataSet ds = SqlHelper.ExecuteDataSet(ConnectionStr, sql);
+                //textBox5.Text = table;//将table的表名赋值给TableName变量，方便后续传值; Model
+                //textBox9.Text = table;//将table的表名赋值给TableName变量，方便后续传值; Model
+                //textBox4.Text = table + textBox7.Text.Trim() + ".cs";//fileName
+                ////string connStr = "Data Source=" + textBox1.Text.Trim() + ";Initial Catalog=" + database + ";Integrated Security=True";
+                //ConnectionStr = $"Data Source={textBox1.Text.Trim()};Initial Catalog=master;{comboBox1.Text.Trim()};";
+                //string sql = $@"use [{DataBaseName}] select syscolumns.name as Field ,systypes.name as FieldType , syscolumns.length as Length,syscolumns.isnullable as Nullable, sys.extended_properties.value as Description  ,IsPK = Case  when exists ( select 1 from sysobjects  inner join sysindexes  on sysindexes.name = sysobjects.name  inner join sysindexkeys  on sysindexes.id = sysindexkeys.id  and  sysindexes.indid = sysindexkeys.indid  where xtype='PK'  and parent_obj = syscolumns.id and sysindexkeys.colid = syscolumns.colid ) then 1 else 0 end ,IsIdentity = Case syscolumns.status when 128 then 1 else 0 end  from syscolumns inner join systypes on(  syscolumns.xtype = systypes.xtype and systypes.name <>'_default_' and systypes.name<>'sysname'  ) left outer join sys.extended_properties on  ( sys.extended_properties.major_id=syscolumns.id and minor_id=syscolumns.colid  ) where syscolumns.id = (select id from sysobjects where name='" + table + @"') order by syscolumns.colid ";
+                //DataSet ds = SqlHelper.ExecuteDataSet(ConnectionStr, sql);
 
-                DataTable dt = ds.Tables[0];
-                this.DataBaseTable = dt;//将获取到的表信息保存到全局变量
-                this.dataGridView1.DataSource = dt.DefaultView;
-                //设置初始值为全选中
-                for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
-                {
-                    this.dataGridView1.Rows[i].Cells[0].Value = true;
-                }
+                //DataTable dt = ds.Tables[0];
+                //this.DataBaseTable = dt;//将获取到的表信息保存到全局变量
+                //this.dataGridView1.DataSource = dt.DefaultView;
+                ////设置初始值为全选中
+                //for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+                //{
+                //    this.dataGridView1.Rows[i].Cells[0].Value = true;
+                //}
             }
             catch (Exception)
-            {
-                //throw;
-                //MessageBox.Show("无法检索到字段！");
-            }
+            {            }
         }
         #endregion
 
         #region 操作栏按钮点击事件 全选、清空、导出到Excel...
+
+        //Choose DataBase Connection
+        private void button2_Click(object sender, EventArgs e)=> new DataBaseChooseForm(this).ShowDialog();
+
 
         //工具窗口按钮
         private void button1_Click(object sender, EventArgs e) => new ToolsForm().Show();

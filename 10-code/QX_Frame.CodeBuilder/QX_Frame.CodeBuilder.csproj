@@ -82,7 +82,7 @@
     </Reference>
     <Reference Include="QX_Frame.Bantina, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\QX_Frame.Bantina.dll</HintPath>
+      <HintPath>QX_Frame.Reference\QX_Frame.Bantina.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -119,6 +119,18 @@
       <DependentUpon>ColorRichTextBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\Parser.cs" />
+    <Compile Include="DataBaseChooseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataBaseChooseForm.Designer.cs">
+      <DependentUpon>DataBaseChooseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MicrosoftSqlServerLoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MicrosoftSqlServerLoginForm.Designer.cs">
+      <DependentUpon>MicrosoftSqlServerLoginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -145,8 +157,14 @@
     <Compile Include="Tools.Designer.cs">
       <DependentUpon>Tools.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DataBaseChooseForm.resx">
+      <DependentUpon>DataBaseChooseForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MicrosoftSqlServerLoginForm.resx">
+      <DependentUpon>MicrosoftSqlServerLoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -171,8 +189,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="bin\Debug\qixiaoSrc\tanhao.jpg" />
-    <None Include="bin\Debug\qixiaoSrc\tanhao.png" />
     <Content Include="images\dbview\db.gif" />
     <Content Include="images\dbview\db.ico" />
     <Content Include="images\dbview\db.JPG" />
@@ -196,8 +212,14 @@
     <Content Include="images\dbview\sp_return.gif" />
     <Content Include="images\dbview\tab2.gif" />
     <Content Include="images\dbview\view.gif" />
+    <None Include="images\microsoftsqlserverlogintopback.png" />
+    <None Include="images\MongoDbIco.png" />
+    <None Include="images\mysqlIco.png" />
+    <None Include="images\OracleIco.jpg" />
     <Content Include="images\qixiao %282%29.ico" />
     <Content Include="images\qixiao.png" />
+    <None Include="images\RedisIco.png" />
+    <None Include="images\SqlserverIco.png" />
     <Content Include="info.txt" />
   </ItemGroup>
   <ItemGroup>
