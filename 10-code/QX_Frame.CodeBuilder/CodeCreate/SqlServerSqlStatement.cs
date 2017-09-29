@@ -158,6 +158,51 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
             str.Append("\r\n");
             #endregion
 
+            #region MySqlParameters
+            str.Append("\r\n//MySqlParameters ->\r\n\r\n");
+
+            str.Append("MySqlParameter[] parms = new MySqlParameter[]{" + "\r\n");
+            for (int i = 0; i < FeildName.Count; i++)
+            {
+                if (FeildIsIdentity[i].Trim() != "1")
+                {
+                    str.Append("\t\t" + $"new MySqlParameter(\"@{FeildName[i].Trim()}\",{TableName}.{FeildName[i].Trim()})," + "\r\n");
+                }
+            }
+            str.Append("" + "};" + "\r\n");
+            str.Append("\r\n");
+            #endregion
+
+            #region OracleParameters
+            str.Append("\r\n//OracleParameters ->\r\n\r\n");
+
+            str.Append("OracleParameter[] parms = new OracleParameter[]{" + "\r\n");
+            for (int i = 0; i < FeildName.Count; i++)
+            {
+                if (FeildIsIdentity[i].Trim() != "1")
+                {
+                    str.Append("\t\t" + $"new OracleParameter(\"@{FeildName[i].Trim()}\",{TableName}.{FeildName[i].Trim()})," + "\r\n");
+                }
+            }
+            str.Append("" + "};" + "\r\n");
+            str.Append("\r\n");
+            #endregion
+
+            #region Dictionary
+            str.Append("\r\n//Dictionary ->\r\n\r\n");
+
+            str.Append("Dictionary<string,object> dictionary = new Dictionary<string,object> {" + "\r\n");
+            for (int i = 0; i < FeildName.Count; i++)
+            {
+                if (FeildIsIdentity[i].Trim() != "1")
+                {
+                    str.Append("\t\t" + $"{{\"@{FeildName[i].Trim()}\",{TableName}.{FeildName[i].Trim()})}}," + "\r\n");
+                }
+            }
+            str.Append("" + "};" + "\r\n");
+            str.Append("\r\n");
+            #endregion
+
             return str.ToString();
         }
     }
