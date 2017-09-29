@@ -118,11 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="tools" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\qixiaoSrc\tools.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="OracleIco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\OracleIco.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="qixiao" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\qixiao.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="RedisIco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\RedisIco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="server" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\dbview\server.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tanhao" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\qixiaoSrc\tanhao.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -130,22 +133,22 @@
   <data name="microsoftsqlserverlogintopback" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\microsoftsqlserverlogintopback.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="server" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\dbview\server.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="MongoDbIco" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\MongoDbIco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="mysqlIco" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\mysqlIco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="OracleIco" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\OracleIco.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="RedisIco" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\RedisIco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="qixiao" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\qixiao.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SqlserverIco" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\SqlserverIco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tools" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\qixiaoSrc\tools.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mysqllogintopback" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\mysqllogintopback.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

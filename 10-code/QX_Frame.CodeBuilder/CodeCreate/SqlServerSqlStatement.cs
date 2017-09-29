@@ -10,7 +10,7 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
     * author:qixiao
     * time:2017年4月3日12:32:14
     * */
-    public class CodeForSqlStatement
+    public class SqlServerSqlStatement
     {
         public static string CreateCode(Dictionary<string, dynamic> CreateCodeDic)
         {

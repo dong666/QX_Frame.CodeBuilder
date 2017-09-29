@@ -98,18 +98,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CodeCreate\CodeForEntityWithBantina.cs" />
-    <Compile Include="CodeCreate\CodeForInstance.cs" />
-    <Compile Include="CodeCreate\CodeForJavascriptAjaxData.cs" />
-    <Compile Include="CodeCreate\CodeForSqlStatement.cs" />
+    <Compile Include="CodeCreate\JavaEntityInstance.cs" />
+    <Compile Include="CodeCreate\NetEntityWithBantina.cs" />
+    <Compile Include="CodeCreate\NetEntityInstance.cs" />
+    <Compile Include="CodeCreate\JavascriptAjaxData.cs" />
+    <Compile Include="CodeCreate\SqlServerSqlStatement.cs" />
+    <Compile Include="CodeCreate\JavaEntity.cs" />
     <Compile Include="CodeCreate\QX_FrameToDataContract.cs" />
     <Compile Include="CodeCreate\QX_FrameToDataService.cs" />
-    <Compile Include="CodeCreate\CodeForEntity.cs" />
+    <Compile Include="CodeCreate\NetEntity.cs" />
     <Compile Include="CodeCreate\QX_FrameToQueryObject.cs" />
-    <Compile Include="CodeCreate\CodeToControllers.cs" />
-    <Compile Include="CodeCreate\CodeToHTML.cs" />
-    <Compile Include="CodeCreate\CodeToJavascript.cs" />
+    <Compile Include="CodeCreate\NetMVCControllers.cs" />
+    <Compile Include="CodeCreate\HTML.cs" />
+    <Compile Include="CodeCreate\JavascriptAjax.cs" />
     <Compile Include="CodeCreate\QX_FrameToRESTWebApiController.cs" />
+    <Compile Include="CommonVariables.cs" />
     <Compile Include="config\Info.cs" />
     <Compile Include="config\MagneticMagnager.cs" />
     <Compile Include="Controls\ColorRichTextBox.cs">
@@ -131,12 +134,17 @@
     <Compile Include="MicrosoftSqlServerLoginForm.Designer.cs">
       <DependentUpon>MicrosoftSqlServerLoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MySqlLoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MySqlLoginForm.Designer.cs">
+      <DependentUpon>MySqlLoginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="QX_Frame.Helper\Iniclass.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,7 +156,7 @@
     <Compile Include="CodeCreate\ThreelayeToDAL.cs" />
     <Compile Include="CodeCreate\ThreelayeToModel.cs" />
     <Compile Include="CodeCreate\ThreelayeToBLL.cs" />
-    <Compile Include="QX_Frame.Helper\SqlHelper.cs" />
+    <Compile Include="QX_Frame.Helper\JavaTypeConvert.cs" />
     <Compile Include="QX_Frame.Helper\StringFormatHelper.cs" />
     <Compile Include="QX_Frame.Helper\TypeConvert.cs" />
     <Compile Include="Tools.cs">
@@ -165,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MicrosoftSqlServerLoginForm.resx">
       <DependentUpon>MicrosoftSqlServerLoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MySqlLoginForm.resx">
+      <DependentUpon>MySqlLoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -183,7 +194,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="QX_Frame.CodeBuilder_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -216,6 +226,7 @@
     <None Include="images\MongoDbIco.png" />
     <None Include="images\mysqlIco.png" />
     <None Include="images\OracleIco.jpg" />
+    <None Include="images\mysqllogintopback.png" />
     <Content Include="images\qixiao %282%29.ico" />
     <Content Include="images\qixiao.png" />
     <None Include="images\RedisIco.png" />

@@ -3,7 +3,7 @@ using System.Text;
 
 namespace CSharp_FlowchartToCode_DG.CodeCreate
 {
-    public class CodeForJavascriptAjaxData
+    public class JavascriptAjaxData
     {
         public static string CreateCode(Dictionary<string, dynamic> CreateCodeDic)
         {

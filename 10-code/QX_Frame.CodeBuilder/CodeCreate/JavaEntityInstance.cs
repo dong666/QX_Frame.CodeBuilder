@@ -1,12 +1,10 @@
-﻿using System;
+﻿using CSharp_FlowchartToCode_DG.QX_Frame.Helper;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace CSharp_FlowchartToCode_DG.CodeCreate
 {
-    class CodeForInstance
+    public class JavaEntityInstance
     {
         public static string CreateCode(Dictionary<string, dynamic> CreateCodeDic)
         {
@@ -16,12 +14,8 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
             string NameSpaceCommonPlus = CreateCodeDic["NameSpaceCommonPlus"];                  //NameSpaceCommonPlus
             string TableName = CreateCodeDic["TableName"];                                      //TableName
             string ClassName = CreateCodeDic["Class"];                                          //ClassName
-            string ClassNamePlus = CreateCodeDic["ClassNamePlus"];                               //ClassName Plus
+            string ClassNamePlus = CreateCodeDic["ClassNamePlus"];                              //ClassName Plus
             string ClassNameExtends = CreateCodeDic["ClassExtends"];                            //ClassExtends
-            if (!string.IsNullOrEmpty(ClassNameExtends))
-            {
-                ClassNameExtends = ":" + ClassNameExtends;
-            }
             string ClassNameAndExtends = ClassName + ClassNamePlus + ClassNameExtends;          //Class whole name
             List<string> FeildName = CreateCodeDic["FeildName"];                                //表字段名称
             List<string> FeildType = CreateCodeDic["FeildType"];                                //表字段类型
@@ -37,7 +31,7 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
             str.Append($"{TableName} {GetFirstLowerStr(RemoveTB_(TableName))} = new {TableName}();\r\n");
             for (int i = 0; i < FeildName.Count; i++)
             {
-                str.Append($"{GetFirstLowerStr(RemoveTB_(TableName))}.{FeildName[i]} = default({TypeConvert.RT_Type(FeildType[i])}) ;\r\n");
+                str.Append($"{GetFirstLowerStr(RemoveTB_(TableName))}.set{FeildName[i]}();\r\n");
             }
 
             return str.ToString();
@@ -47,14 +41,11 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
             string usings = CreateCodeDic["Using"];                                             //Using
             string[] usingsArray = usings.Split(';');
             string NameSpace = CreateCodeDic["NameSpace"];                                      //NameSpace
+            string NameSpaceCommonPlus = CreateCodeDic["NameSpaceCommonPlus"];                  //NameSpaceCommonPlus
             string TableName = CreateCodeDic["TableName"];                                      //TableName
             string ClassName = CreateCodeDic["Class"];                                          //ClassName
-            string ClassNamePlus = CreateCodeDic["ClassNamePlus"];                               //ClassName Plus
+            string ClassNamePlus = CreateCodeDic["ClassNamePlus"];                              //ClassName Plus
             string ClassNameExtends = CreateCodeDic["ClassExtends"];                            //ClassExtends
-            if (!string.IsNullOrEmpty(ClassNameExtends))
-            {
-                ClassNameExtends = ":" + ClassNameExtends;
-            }
             string ClassNameAndExtends = ClassName + ClassNamePlus + ClassNameExtends;          //Class whole name
             List<string> FeildName = CreateCodeDic["FeildName"];                                //表字段名称
             List<string> FeildType = CreateCodeDic["FeildType"];                                //表字段类型
@@ -70,12 +61,11 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
             str.Append($"{TableName} {GetFirstLowerStr(RemoveTB_(TableName))} = new {TableName}();\r\n");
             for (int i = 0; i < FeildName.Count; i++)
             {
-                str.Append($"{GetFirstLowerStr(RemoveTB_(TableName))}.{FeildName[i]} = otherObject.{FeildName[i]};\r\n");
+                str.Append($"{GetFirstLowerStr(RemoveTB_(TableName))}.set{FeildName[i]}(otherObject.get{FeildName[i]}());\r\n");
             }
 
             return str.ToString();
         }
-
         //remove tb_
         private static string RemoveTB_(string str)
         {
@@ -103,6 +93,5 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
             }
             return null;
         }
-
     }
 }

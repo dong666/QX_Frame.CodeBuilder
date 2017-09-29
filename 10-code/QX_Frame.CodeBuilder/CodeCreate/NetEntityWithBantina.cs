@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CSharp_FlowchartToCode_DG.CodeCreate
 {
-    public class CodeForEntityWithBantina
+    public class NetEntityWithBantina
     {
         public static string CreateCode(Dictionary<string, dynamic> CreateCodeDic)
         {

@@ -93,6 +93,16 @@ namespace CSharp_FlowchartToCode_DG.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap mysqllogintopback {
+            get {
+                object obj = ResourceManager.GetObject("mysqllogintopback", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap OracleIco {
             get {
                 object obj = ResourceManager.GetObject("OracleIco", resourceCulture);

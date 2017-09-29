@@ -7,7 +7,8 @@ using System.Drawing;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
-
+using QX_Frame.Bantina.Extends;
+using QX_Frame.Bantina.Options;
 
 namespace CSharp_FlowchartToCode_DG
 {
@@ -29,9 +30,7 @@ namespace CSharp_FlowchartToCode_DG
 
         string CodeTxt = "";        //代码字符串，用于输出到文件
         string dir = IO_Helper_DG.DeskTopPath;                  //获取路径
-        string filePath = @"qixiaoSrc\QixiaoConfig.ini";          //获取配置文件的路径
         DataTable DataBaseTable = default(DataTable); //数据库表数据DataTable
-        string ConnectionStr = default(string);
 
         #endregion
 
@@ -46,21 +45,20 @@ namespace CSharp_FlowchartToCode_DG
                 label_Description.Text += Info.Description;
 
                 //set config
-                //textBox1.Text = IO_Helper_DG.Ini_SelectStringValue(filePath, "config", "dataSource", ".");//data source
-                //comboBox1.Text = IO_Helper_DG.Ini_SelectStringValue(filePath, "config", "loginType", "Integrated Security=True");// system or sa ?
-                comboBox2.Text = IO_Helper_DG.Ini_SelectStringValue(filePath, "config", "outputType");//output type
+                comboBox2.Text = IO_Helper_DG.Ini_SelectStringValue(CommonVariables.configFilePath, "config", "outputType");//output type
 
                 //set code builder config
-                // textBox3.Text = IO_Helper_DG.Ini_SelectStringValue(filePath, "code", "usings").Replace('&','\n'); //using
-                textBox2.Text = IO_Helper_DG.Ini_SelectStringValue(filePath, "code", "namespace");//namespace
-                textBox10.Text = IO_Helper_DG.Ini_SelectStringValue(filePath, "code", "namespaceCommonPlus");//namespace
-                textBox9.Text = IO_Helper_DG.Ini_SelectStringValue(filePath, "code", "TableName");//table name
-                textBox5.Text = IO_Helper_DG.Ini_SelectStringValue(filePath, "code", "class");//class name 
-                textBox7.Text = IO_Helper_DG.Ini_SelectStringValue(filePath, "code", "ClassNamePlus");//ClassExtends
-                textBox8.Text = IO_Helper_DG.Ini_SelectStringValue(filePath, "code", "ClassExtends");//ClassExtends
-                textBox6.Text = dir + "\\" + IO_Helper_DG.Ini_SelectStringValue(filePath, "code", "filePathRelativeDeskTop") + "\\";//filePath
-                textBox4.Text = IO_Helper_DG.Ini_SelectStringValue(filePath, "code", "fileName");//fileName
+                // textBox3.Text = IO_Helper_DG.Ini_SelectStringValue(CommonVariables.configFilePath, "code", "usings").Replace('&','\n'); //using
+                textBox2.Text = IO_Helper_DG.Ini_SelectStringValue(CommonVariables.configFilePath, "code", "namespace");//namespace
+                textBox10.Text = IO_Helper_DG.Ini_SelectStringValue(CommonVariables.configFilePath, "code", "namespaceCommonPlus");//namespace
+                textBox9.Text = IO_Helper_DG.Ini_SelectStringValue(CommonVariables.configFilePath, "code", "TableName");//table name
+                textBox5.Text = IO_Helper_DG.Ini_SelectStringValue(CommonVariables.configFilePath, "code", "class");//class name 
+                textBox7.Text = IO_Helper_DG.Ini_SelectStringValue(CommonVariables.configFilePath, "code", "ClassNamePlus");//ClassExtends
+                textBox8.Text = IO_Helper_DG.Ini_SelectStringValue(CommonVariables.configFilePath, "code", "ClassExtends");//ClassExtends
+                textBox4.Text = IO_Helper_DG.Ini_SelectStringValue(CommonVariables.configFilePath, "code", "fileName");//fileName
+                comboBox1.Text = IO_Helper_DG.Ini_SelectStringValue(CommonVariables.configFilePath, "code", "fileNameSuffix",".txt");//fileNameSuffix
 
+                textBox6.Text = dir + "\\qixiaoCodeBuilder\\";
                 colorRichTextBox1.Language = CSharp_FlowchartToCode_DG.Controls.ColorRichTextBox.Languages.SQL;
                 colorRichTextBox1.Language = CSharp_FlowchartToCode_DG.Controls.ColorRichTextBox.Languages.SQL;
 
@@ -78,82 +76,21 @@ namespace CSharp_FlowchartToCode_DG
         private void setInitConfigFile()
         {
             //set config
-            //IO_Helper_DG.Ini_Update(filePath, "config", "dataSource", textBox1.Text);//data source
-            //IO_Helper_DG.Ini_Update(filePath, "config", "loginType", comboBox1.Text);// system or sa ?
-            IO_Helper_DG.Ini_Update(filePath, "config", "outputType", comboBox2.Text);//output type
+            IO_Helper_DG.Ini_Update(CommonVariables.configFilePath, "config", "outputType", comboBox2.Text);//output type
 
             //set code builder config
-            //IO_Helper_DG.Ini_Update(filePath, "code", "usings", textBox3.Text.Replace("\n","&")); //using
-            IO_Helper_DG.Ini_Update(filePath, "code", "namespace", textBox2.Text);//namespace
-            IO_Helper_DG.Ini_Update(filePath, "code", "namespaceCommonPlus", textBox10.Text);//namespace
-            IO_Helper_DG.Ini_Update(filePath, "code", "TableName", textBox9.Text);//table name
-            IO_Helper_DG.Ini_Update(filePath, "code", "class", textBox5.Text);//class name
-            IO_Helper_DG.Ini_Update(filePath, "code", "ClassNamePlus", textBox7.Text);// ClassExtends
-            IO_Helper_DG.Ini_Update(filePath, "code", "ClassExtends", textBox8.Text);// ClassExtends
-            IO_Helper_DG.Ini_Update(filePath, "code", "fileName", textBox4.Text);//fileName
+            //IO_Helper_DG.Ini_Update(CommonVariables.configFilePath, "code", "usings", textBox3.Text.Replace("\n","&")); //using
+            IO_Helper_DG.Ini_Update(CommonVariables.configFilePath, "code", "namespace", textBox2.Text);//namespace
+            IO_Helper_DG.Ini_Update(CommonVariables.configFilePath, "code", "namespaceCommonPlus", textBox10.Text);//namespace
+            IO_Helper_DG.Ini_Update(CommonVariables.configFilePath, "code", "TableName", textBox9.Text);//table name
+            IO_Helper_DG.Ini_Update(CommonVariables.configFilePath, "code", "class", textBox5.Text);//class name
+            IO_Helper_DG.Ini_Update(CommonVariables.configFilePath, "code", "ClassNamePlus", textBox7.Text);// ClassExtends
+            IO_Helper_DG.Ini_Update(CommonVariables.configFilePath, "code", "ClassExtends", textBox8.Text);// ClassExtends
+            IO_Helper_DG.Ini_Update(CommonVariables.configFilePath, "code", "fileName", textBox4.Text);//fileName
+            IO_Helper_DG.Ini_Update(CommonVariables.configFilePath, "code", "fileNameSuffix", comboBox1.Text);//fileName
         }
 
         #region 获取数据库结构的代码
-
-        
-        private void GetDataBaseInfo()
-        {
-            try
-            {
-                string sql = "select name from sys.databases where database_id > 4";//查询sqlserver中的非系统库
-                ConnectionStr = $"Data Source={textBox1.Text.Trim()};Initial Catalog=master;{comboBox1.Text.Trim()};";
-
-                DataSet ds = SqlHelper.ExecuteDataSet(ConnectionStr, sql);
-                DataTable dataTable = ds.Tables[0];
-
-                TreeNode grand = new TreeNode(textBox1.Text.Trim());//添加节点服务器地址
-                grand.ImageIndex = 1;
-                treeView1.Nodes[0].Nodes.Add(grand);
-
-                comboBox3.Items.Clear();//清空SqlPower里面的数据库下拉框数据
-
-                foreach (DataRow row in dataTable.Rows)
-                {
-                    string dbName = row["name"].ToString();
-                    TreeNode root = new TreeNode(dbName);//创建节点
-                    root.Name = dbName;
-                    root.ImageIndex = 2;
-                    grand.Nodes.Add(root);
-                    TreeNode biao = new TreeNode("Tables");
-                    biao.Name = "Tables";
-                    biao.ImageIndex = 3;
-                    root.Nodes.Add(biao);
-
-                    comboBox3.Items.Add(dbName);//添加SqlPower里面的数据库下拉框数据
-
-
-                    //获取表名
-                    //string sqltable = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE'";
-                    //DataSet ds2 = SqlHelper.ExecuteDataSet("Data Source=" + textBox1.Text.Trim() + ";Initial Catalog=" + row["name"] + ";Integrated Security=True", sqltable);
-                    string sqlTable = $"use [{root.Name}] SELECT name FROM sysobjects WHERE xtype = 'U' AND OBJECTPROPERTY (id, 'IsMSShipped') = 0";
-                    DataSet ds2 = SqlHelper.ExecuteDataSet(ConnectionStr, sqlTable);
-                    DataTable dt2 = ds2.Tables[0];
-                    List<string> tableNameList = new List<string>();
-                    foreach (DataRow row2 in dt2.Rows)
-                    {
-                        tableNameList.Add(row2[0].ToString());
-                    }
-                    tableNameList.Sort();// sort the list
-                    foreach (var item in tableNameList)
-                    {
-                        TreeNode biaovalue = new TreeNode(item);
-                        biaovalue.Name = item;
-                        biaovalue.ImageIndex = 4;
-                        biao.Nodes.Add(biaovalue);
-                    }
-                }
-                setInitConfigFile();//set init config file
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
 
         private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e) => getTableInfo();
 
@@ -166,66 +103,63 @@ namespace CSharp_FlowchartToCode_DG
         {
             try
             {
-                //string database = this.treeView1.SelectedNode.Parent.Parent.Name;
-                //string table = this.treeView1.SelectedNode.Name;
+                string database = this.treeView1.SelectedNode.Parent.Parent.Name;
+                string table = this.treeView1.SelectedNode.Name;
 
-                //this.DataBaseName = database;//保存数据库名
-                //this.TableName = table;
+                this.DataBaseName = database;//当前操作的数据库名
+                this.TableName = table;//当前操作的表名
 
-                //textBox5.Text = table;//将table的表名赋值给TableName变量，方便后续传值; Model
-                //textBox9.Text = table;//将table的表名赋值给TableName变量，方便后续传值; Model
-                //textBox4.Text = table + textBox7.Text.Trim() + ".cs";//fileName
-                ////string connStr = "Data Source=" + textBox1.Text.Trim() + ";Initial Catalog=" + database + ";Integrated Security=True";
-                //ConnectionStr = $"Data Source={textBox1.Text.Trim()};Initial Catalog=master;{comboBox1.Text.Trim()};";
-                //string sql = $@"use [{DataBaseName}] select syscolumns.name as Field ,systypes.name as FieldType , syscolumns.length as Length,syscolumns.isnullable as Nullable, sys.extended_properties.value as Description  ,IsPK = Case  when exists ( select 1 from sysobjects  inner join sysindexes  on sysindexes.name = sysobjects.name  inner join sysindexkeys  on sysindexes.id = sysindexkeys.id  and  sysindexes.indid = sysindexkeys.indid  where xtype='PK'  and parent_obj = syscolumns.id and sysindexkeys.colid = syscolumns.colid ) then 1 else 0 end ,IsIdentity = Case syscolumns.status when 128 then 1 else 0 end  from syscolumns inner join systypes on(  syscolumns.xtype = systypes.xtype and systypes.name <>'_default_' and systypes.name<>'sysname'  ) left outer join sys.extended_properties on  ( sys.extended_properties.major_id=syscolumns.id and minor_id=syscolumns.colid  ) where syscolumns.id = (select id from sysobjects where name='" + table + @"') order by syscolumns.colid ";
-                //DataSet ds = SqlHelper.ExecuteDataSet(ConnectionStr, sql);
+                textBox5.Text = table;//将table的表名赋值给TableName变量，方便后续传值; Model
+                textBox9.Text = table;//将table的表名赋值给TableName变量，方便后续传值; Model
+                textBox4.Text = table + textBox7.Text.Trim();//fileName
 
-                //DataTable dt = ds.Tables[0];
-                //this.DataBaseTable = dt;//将获取到的表信息保存到全局变量
-                //this.dataGridView1.DataSource = dt.DefaultView;
-                ////设置初始值为全选中
-                //for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
-                //{
-                //    this.dataGridView1.Rows[i].Cells[0].Value = true;
-                //}
+                string sql = string.Empty;
+                switch (Db_Helper_DG.dataBaseType)
+                {
+                    case Opt_DataBaseType.SqlServer:
+                        sql = $@"use [{this.DataBaseName}] select syscolumns.name as Field ,systypes.name as FieldType , syscolumns.length as Length,syscolumns.isnullable as Nullable, sys.extended_properties.value as Description  ,IsPK = Case  when exists ( select 1 from sysobjects  inner join sysindexes  on sysindexes.name = sysobjects.name  inner join sysindexkeys  on sysindexes.id = sysindexkeys.id  and  sysindexes.indid = sysindexkeys.indid  where xtype='PK'  and parent_obj = syscolumns.id and sysindexkeys.colid = syscolumns.colid ) then 1 else 0 end ,IsIdentity = Case syscolumns.status when 128 then 1 else 0 end  from syscolumns inner join systypes on(  syscolumns.xtype = systypes.xtype and systypes.name <>'_default_' and systypes.name<>'sysname'  ) left outer join sys.extended_properties on  ( sys.extended_properties.major_id=syscolumns.id and minor_id=syscolumns.colid  ) where syscolumns.id = (select id from sysobjects where name='" + this.TableName + @"') order by syscolumns.colid ";
+                        break;
+                    case Opt_DataBaseType.MySql:
+                        sql = $"select COLUMN_NAME as Field,DATA_TYPE as DataType,SUBSTRING_INDEX(SUBSTRING_INDEX(COLUMN_TYPE,'(',-1),')',1) as Length,iF(IS_NULLABLE='YES',1,0) as Nullable,COLUMN_COMMENT as Description,IF(COLUMN_KEY='PRI',1,0) as IsPK,(SELECT IFNULL(0,1)) as IsIdentity from information_schema.columns where TABLE_SCHEMA='{this.DataBaseName}' AND TABLE_NAME='{this.TableName}'";
+                        break;
+                    case Opt_DataBaseType.Oracle:
+                        sql = "";
+                        break;
+                    default:
+                        break;
+                }
+                DataTable dt = Db_Helper_DG.ExecuteDataTable(sql);
+                this.DataBaseTable = dt;//将获取到的表信息保存到全局变量
+                this.dataGridView1.DataSource = dt.DefaultView;
+                foreach (DataGridViewRow row in dataGridView1.Rows) row.Cells[0].Value = true;  //设置初始值为全选中
             }
-            catch (Exception)
-            {            }
+            catch (Exception) { }
         }
+
         #endregion
 
         #region 操作栏按钮点击事件 全选、清空、导出到Excel...
 
         //Choose DataBase Connection
-        private void button2_Click(object sender, EventArgs e)=> new DataBaseChooseForm(this).ShowDialog();
-
+        private void button2_Click(object sender, EventArgs e) => new DataBaseChooseForm(this).ShowDialog();
 
         //工具窗口按钮
         private void button1_Click(object sender, EventArgs e) => new ToolsForm().Show();
 
-        //全选按钮
+        //select all mark
+        bool isCheckAll = false;
+        //select all or clear
         private void button4_Click(object sender, EventArgs e)
         {
-            int count = Convert.ToInt32(this.dataGridView1.Rows.Count.ToString());
-            for (int i = 0; i < count; i++)
+            if (isCheckAll)
             {
-                //如果DataGridView是可编辑的，将数据提交，否则处于编辑状态的行无法取到 
-                this.dataGridView1.EndEdit();
-                DataGridViewCheckBoxCell checkCell = (DataGridViewCheckBoxCell)this.dataGridView1.Rows[i].Cells["Check"];
-                checkCell.Value = true;
+                foreach (DataGridViewRow row in dataGridView1.Rows) ((DataGridViewCheckBoxCell)row.Cells["Check"]).Value = true;
+                isCheckAll = false;
             }
-        }
-
-        //清空按钮
-        private void button5_Click(object sender, EventArgs e)
-        {
-            int count = Convert.ToInt32(this.dataGridView1.Rows.Count.ToString());
-            for (int i = 0; i < count; i++)
+            else
             {
-                //如果DataGridView是可编辑的，将数据提交，否则处于编辑状态的行无法取到 
-                this.dataGridView1.EndEdit();
-                DataGridViewCheckBoxCell checkCell = (DataGridViewCheckBoxCell)this.dataGridView1.Rows[i].Cells["Check"];
-                checkCell.Value = false;
+                foreach (DataGridViewRow row in dataGridView1.Rows) ((DataGridViewCheckBoxCell)row.Cells["Check"]).Value = false;
+                isCheckAll = true;
             }
         }
 
@@ -246,8 +180,7 @@ namespace CSharp_FlowchartToCode_DG
         {
             try
             {
-                string dirPath = textBox6.Text;
-                using (System.Diagnostics.Process.Start("Explorer.exe", dirPath)) { }
+                using (System.Diagnostics.Process.Start("Explorer.exe", textBox6.Text)) { }
             }
             catch (Exception ex)
             {
@@ -263,7 +196,7 @@ namespace CSharp_FlowchartToCode_DG
         private void saveCodeToFile()
         {
             string dirPath = textBox6.Text;
-            string fileComplexPath = dirPath + textBox4.Text;
+            string fileComplexPath = dirPath + textBox4.Text+comboBox1.Text;
             IO_Helper_DG.CreateDirectoryIfNotExist(dirPath);
             using (FileStream fs = new FileStream(fileComplexPath, FileMode.Create))
             {
@@ -271,7 +204,6 @@ namespace CSharp_FlowchartToCode_DG
                 sw.Write(CodeTxt);
                 sw.Close();
             }
-            //MessageBox.Show("OutPut->" + fileComplexPath);
         }
 
         private void button6_Click(object sender, EventArgs e) => saveCodeToFile();
@@ -302,23 +234,7 @@ namespace CSharp_FlowchartToCode_DG
         private void button10_Click(object sender, EventArgs e) => ChangeTexBox4();
         private void textBox5_TextChanged(object sender, EventArgs e) => ChangeTexBox4();
         private void textBox7_TextChanged(object sender, EventArgs e) => ChangeTexBox4();
-        private void ChangeTexBox4()
-        {
-            try
-            {
-                string[] createFileName = new string[2];
-                if (textBox4.Text.Contains("."))
-                {
-                    createFileName = textBox4.Text.Trim().Split('.');
-                }
-                createFileName[0] = textBox5.Text.Trim() + textBox7.Text.Trim();
-                textBox4.Text = $"{createFileName[0]}.{createFileName[1]}";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
+        private void ChangeTexBox4()=> textBox4.Text = textBox5.Text.Trim() + textBox7.Text.Trim();
 
         #endregion
 
@@ -326,7 +242,6 @@ namespace CSharp_FlowchartToCode_DG
         //common set infoList
         private void SetInfoList()
         {
-            //先将字段列表全部清空
             CreateInfoDic.Clear();
 
             FeildName.Clear();
@@ -337,30 +252,19 @@ namespace CSharp_FlowchartToCode_DG
             FeildIsPK.Clear();
             FeildIsIdentity.Clear();
 
-            int count = Convert.ToInt32(this.dataGridView1.Rows.Count.ToString());
-            for (int i = 0; i < count; i++)
+            foreach (DataGridViewRow row in this.dataGridView1.Rows)
             {
-                //如果DataGridView是可编辑的，将数据提交，否则处于编辑状态的行无法取到 
-                this.dataGridView1.EndEdit();
-                DataGridViewCheckBoxCell checkCell = (DataGridViewCheckBoxCell)this.dataGridView1.Rows[i].Cells["Check"];
-                Boolean flag = Convert.ToBoolean(checkCell.Value);
-                if (flag == true)     //查找被选择的数据行 
+                this.dataGridView1.EndEdit();//如果DataGridView是可编辑的，将数据提交，否则处于编辑状态的行无法取到
+                DataGridViewCheckBoxCell checkBoxCell = (DataGridViewCheckBoxCell)row.Cells["Check"];
+                if (checkBoxCell.Value.ToBoolean())//查找被选择的数据行 
                 {
-                    //从 DATAGRIDVIEW 中获取数据项 
-                    string FName = this.dataGridView1.Rows[i].Cells[1].Value.ToString().Trim();
-                    FeildName.Add(FName);
-                    string FType = this.dataGridView1.Rows[i].Cells[2].Value.ToString().Trim();
-                    FeildType.Add(FType);
-                    string FLength = this.dataGridView1.Rows[i].Cells[3].Value.ToString().Trim();
-                    FeildLength.Add(FLength);
-                    string FIsNullable = this.dataGridView1.Rows[i].Cells[4].Value.ToString().Trim();
-                    FeildIsNullable.Add(FIsNullable);
-                    string FMark = this.dataGridView1.Rows[i].Cells[5].Value.ToString().Trim();
-                    FeildDescription.Add(FMark);
-                    string FIsPK = this.dataGridView1.Rows[i].Cells[6].Value.ToString().Trim();
-                    FeildIsPK.Add(FIsPK);
-                    string FIsIdentity = this.dataGridView1.Rows[i].Cells[7].Value.ToString().Trim();
-                    FeildIsIdentity.Add(FIsIdentity);
+                    FeildName.Add(row.Cells[1].Value.ToString().Trim());
+                    FeildType.Add(row.Cells[2].Value.ToString().Trim());
+                    FeildLength.Add(row.Cells[3].Value.ToString().Trim());
+                    FeildIsNullable.Add(row.Cells[4].Value.ToString().Trim());
+                    FeildDescription.Add(row.Cells[5].Value.ToString().Trim());
+                    FeildIsPK.Add(row.Cells[6].Value.ToString().Trim());
+                    FeildIsIdentity.Add(row.Cells[7].Value.ToString().Trim());
                 }
             }
         }
@@ -416,6 +320,7 @@ namespace CSharp_FlowchartToCode_DG
                 MessageBox.Show(ee.ToString());
             }
         }
+
         #endregion
 
         //Special Effects Timer
@@ -444,20 +349,61 @@ namespace CSharp_FlowchartToCode_DG
             this.toolStripStatusLabel1.Text = "Generate Watting...";
             this.timer1.Start();
         }
+        //Execute Sql
+        private void button23_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(comboBox3.Text))
+            {
+                MessageBox.Show("Choose DataBase First !");
+            }
+            else
+            {
+                try
+                {
+                    string executeSql = string.IsNullOrEmpty(colorRichTextBox1.SelectedText) ? colorRichTextBox1.Text : colorRichTextBox1.SelectedText;
+                    string sql = string.Empty;
+                    switch (Db_Helper_DG.dataBaseType)
+                    {
+                        case Opt_DataBaseType.SqlServer:
+                            sql = $"USE {comboBox3.Text.Trim()};{executeSql}";
+                            break;
+                        case Opt_DataBaseType.MySql:
+                            sql = $"USE {comboBox3.Text.Trim()};{executeSql}";
+                            break;
+                        case Opt_DataBaseType.Oracle:
+                            break;
+                        default:
+                            break;
+                    }
+                    DataTable dataTable = Db_Helper_DG.ExecuteDataTable(sql);
+                    this.dataGridView2.DataSource = dataTable?.DefaultView;
+                }
+                catch (Exception)
+                {
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add(new DataColumn("Result"));
+                    DataRow row = dt.NewRow();
+                    row[0] = "SqlStatements Error ! (0 line affected)";
+                    dt.Rows.Add(row);
+                    this.dataGridView2.DataSource = dt;
+                }
+            }
+        }
 
-        #region CodeGenerate Opration
+        // --- CodeGenerate Opration --------------------------------
+
+        //--- BaseGenerate ---
+        private void button7_Click_1(object sender, EventArgs e) => CommonComponent(() => SqlServerSqlStatement.CreateCode(CreateInfoDic));
+
+        //--- C#---
         //Entities
-        private void button11_Click(object sender, EventArgs e) => CommonComponent(() => CodeForEntity.CreateCode(CreateInfoDic));
-
-        #endregion
+        private void button11_Click(object sender, EventArgs e) => CommonComponent(() => NetEntity.CreateCode(CreateInfoDic));
         //Entities With Bantina
-        private void button10_Click_1(object sender, EventArgs e) => CommonComponent(() => CodeForEntityWithBantina.CreateCode(CreateInfoDic));
+        private void button10_Click_1(object sender, EventArgs e) => CommonComponent(() => NetEntityWithBantina.CreateCode(CreateInfoDic));
         //Entity-Instance
-        private void button9_Click(object sender, EventArgs e) => CommonComponent(() => CodeForInstance.CreateCode(CreateInfoDic));
+        private void button9_Click(object sender, EventArgs e) => CommonComponent(() => NetEntityInstance.CreateCode(CreateInfoDic));
         //Entity-Inst(FO)
-        private void button3_Click(object sender, EventArgs e) => CommonComponent(() => CodeForInstance.CreateCode_otherObject(CreateInfoDic));
-        //SqlStatement
-        private void button7_Click(object sender, EventArgs e) => CommonComponent(() => CodeForSqlStatement.CreateCode(CreateInfoDic));
+        private void button3_Click(object sender, EventArgs e) => CommonComponent(() => NetEntityInstance.CreateCode_otherObject(CreateInfoDic));
         //QueryObject
         private void button18_Click(object sender, EventArgs e) => CommonComponent(() => QX_FrameToQueryObject.CreateCode(CreateInfoDic));
         //Data.Contract
@@ -471,7 +417,7 @@ namespace CSharp_FlowchartToCode_DG
             textBox2.Text = "QX_Frame.Data.Entities";
             textBox7.Text = "";
             textBox8.Text = $"Entity<{DataBaseName}, {TableName}>";
-            CommonComponent(() => CodeForEntityWithBantina.CreateCode(CreateInfoDic));
+            CommonComponent(() => NetEntityWithBantina.CreateCode(CreateInfoDic));
             //Generate QX_Frame.Data.QueryObject
             textBox3.Text = "using QX_Frame.App.Base;\nusing QX_Frame.Data.Entities;\nusing System;\nusing System.Linq.Expressions;";
             textBox2.Text = "QX_Frame.Data.QueryObject";
@@ -508,37 +454,19 @@ namespace CSharp_FlowchartToCode_DG
         }
         //REST WebApi Controller
         private void button21_Click(object sender, EventArgs e) => CommonComponent(() => QX_FrameToRESTWebApiController.CreateCode(CreateInfoDic));
-        //Jquery-Ajax
-        private void button28_Click(object sender, EventArgs e) => CommonComponent(() => CodeForJavascriptAjaxData.CreateCode(CreateInfoDic));
-        //Jquery-Ajax-Data
-        private void button27_Click(object sender, EventArgs e) => CommonComponent(() => CodeForJavascriptAjaxData.CreateCode(CreateInfoDic));
 
-        //Execute Sql
-        private void button23_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(comboBox3.Text))
-            {
-                MessageBox.Show("Choose DataBase First !");
-            }
-            else
-            {
-                try
-                {
-                    string executeSql = string.IsNullOrEmpty(colorRichTextBox1.SelectedText) ? colorRichTextBox1.Text : colorRichTextBox1.SelectedText;
-                    string sql = $"USE {comboBox3.Text.Trim()};{executeSql}";
-                    DataSet ds = SqlHelper.ExecuteDataSet(ConnectionStr, sql);
-                    this.dataGridView2.DataSource = ds.Tables[0]?.DefaultView;
-                }
-                catch (Exception)
-                {
-                    DataTable dt = new DataTable();
-                    dt.Columns.Add(new DataColumn("Result"));
-                    DataRow row = dt.NewRow();
-                    row[0] = "SqlStatements Error ! (0 line affected)";
-                    dt.Rows.Add(row);
-                    this.dataGridView2.DataSource = dt;
-                }
-            }
-        }
+        //--- Java ---
+        //Java Entities
+        private void button29_Click(object sender, EventArgs e) => CommonComponent(() => JavaEntity.CreateCode(CreateInfoDic));
+        //JavaEntityInstance
+        private void button25_Click(object sender, EventArgs e) => CommonComponent(() => JavaEntityInstance.CreateCode(CreateInfoDic));
+        //JavaEntityInstance
+        private void button5_Click(object sender, EventArgs e) => CommonComponent(() => JavaEntityInstance.CreateCode_otherObject(CreateInfoDic));
+
+        //--- Web ---
+        //Jquery-Ajax
+        private void button28_Click(object sender, EventArgs e) => CommonComponent(() => JavascriptAjaxData.CreateCode(CreateInfoDic));
+        //Jquery-Ajax-Data
+        private void button27_Click(object sender, EventArgs e) => CommonComponent(() => JavascriptAjaxData.CreateCode(CreateInfoDic));
     }
 }

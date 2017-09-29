@@ -1,18 +1,29 @@
-﻿using System;
+﻿/*********************************************************
+ * CopyRight: QIXIAO CODE BUILDER. 
+ * Version:4.2.0
+ * Author:qixiao(柒小)
+ * Create:2015-xx-xx xx:xx:xx
+ * Update:2017-4-4 16:39:40     4.2.0
+ * Desc:Layout Update
+ * Update:2017-9-29 15:11:35    5.0.0
+ * Desc:Connect Type Update,MySql Connect Support
+ * E-mail: dong@qixiao.me | wd8622088@foxmail.com 
+ * GitHub: https://github.com/dong666 
+ * Personal web site: http://qixiao.me 
+ * Technical WebSit: http://www.cnblogs.com/qixiaoyizhan/ 
+ * Description:
+ * Thx , Best Regards ~
+ *********************************************************/
+using System;
 using System.Text;
 
 namespace CSharp_FlowchartToCode_DG
 {
     public abstract class Info
     {
-        /**
-         * author:qixiao
-         * update 4.2.0:2017-4-4 16:39:40
-         * */
-
         //版权信息通用模块
-        public const string VersionNum = "4.2.0";         //版本号
-        public const string Author = "qixiao(柒小)";        //作者
+        public const string VersionNum = "5.0.0";         //版本号
+        public const string Author = "qixiao(柒小)";      //作者
         public static readonly string Description = $"qixiao code builder start at:{DateTime.Now.ToString("yyyyMMdd HH:mm:ss")}";
 
         //设置版权信息

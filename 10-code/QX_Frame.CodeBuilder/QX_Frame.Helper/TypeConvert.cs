@@ -81,7 +81,7 @@ namespace CSharp_FlowchartToCode_DG
                 case SqlDbType.BigInt:
                     return typeof(long);
                 case SqlDbType.Binary:
-                    return typeof(Object);
+                    return typeof(byte[]);
                 case SqlDbType.Bit:
                     return typeof(Boolean);
                 case SqlDbType.Char:
