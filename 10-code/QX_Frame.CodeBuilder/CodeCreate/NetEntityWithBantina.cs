@@ -1,4 +1,5 @@
-﻿using QX_Frame.Bantina.Extends;
+﻿using CSharp_FlowchartToCode_DG.QX_Frame.Helper;
+using QX_Frame.Bantina.Extends;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -95,8 +96,8 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
                     str.Append($"\t\t[AutoIncrease]\r\n");
                 }
 
-                string IsNull = TypeConvert.RT_Type(FeildType[i]).Equals("String") ? "" : TypeConvert.RT_Nullable(FeildIsNullable[i]);
-                str.Append("\t\t" + $"public {TypeConvert.RT_Type(FeildType[i])}{IsNull} {FeildName[i]} {"{ get;set; }"}" + "\r\n");
+                string IsNull = SQLServerTypeConvert.SqlServerTypeStringToNetTypeString(FeildType[i]).Equals("String") ? "" : TypeConvert.RT_Nullable(FeildIsNullable[i]);
+                str.Append("\t\t" + $"public {SQLServerTypeConvert.SqlServerTypeStringToNetTypeString(FeildType[i])}{IsNull} {FeildName[i]} {"{ get;set; }"}" + "\r\n");
             }
 
             str.Append("\t" + "}" + "\r\n");//public class }

@@ -6,6 +6,7 @@ namespace CSharp_FlowchartToCode_DG
     {
 
         public static string configFilePath = @"qixiaoSrc\QixiaoConfig.ini";          //配置文件的路径
+        public static Opt_DataBaseType currentDataBaseType = Opt_DataBaseType.SqlServer;
 
         /// <summary>
         /// SetCurrentDbConnection
@@ -16,7 +17,7 @@ namespace CSharp_FlowchartToCode_DG
         {
             Db_Helper_DG.ConnString_Default = connectionStr;
             Db_Helper_DG.dataBaseType = dataBaseType;
+            CommonVariables.currentDataBaseType = dataBaseType;
         }
-
     }
 }

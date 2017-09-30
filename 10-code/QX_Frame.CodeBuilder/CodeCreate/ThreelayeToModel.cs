@@ -1,8 +1,6 @@
-﻿using System;
+﻿using CSharp_FlowchartToCode_DG.QX_Frame.Helper;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace CSharp_FlowchartToCode_DG
 {
@@ -52,14 +50,14 @@ namespace CSharp_FlowchartToCode_DG
             //添加私有属性行
             for (int i = 0; i < FeildName.Count; i++)
             {
-                str.Append("\t\t" + "private " + TypeConvert.RT_Type(FeildType[i]) + TypeConvert.RT_Nullable(FeildIsNullable[i]) + " _" + FeildName[i].ToLower() + ";\t\t//"+TypeConvert.RT_PK(FeildIsPK[i])+FeildMark[i]+ "\r\n");
+                str.Append("\t\t" + "private " + SQLServerTypeConvert.SqlServerTypeStringToNetTypeString(FeildType[i]) + TypeConvert.RT_Nullable(FeildIsNullable[i]) + " _" + FeildName[i].ToLower() + ";\t\t//"+TypeConvert.RT_PK(FeildIsPK[i])+FeildMark[i]+ "\r\n");
             }
             str.Append("\r\n");//换行
             //添加私有属性的公有方法
             for (int i = 0; i < FeildName.Count; i++)
             {
                 str.Append("\t\t" + "/// <summary>" + "\r\n" + "\t\t" + "///" + FeildMark[i] + "\r\n" + "\t\t"+"/// </summary>" + "\r\n");//添加方法介绍
-                str.Append("\t\t" + "public " + TypeConvert.RT_Type(FeildType[i]) + TypeConvert.RT_Nullable(FeildIsNullable[i]) + " " + FeildName[i] + "\r\n");
+                str.Append("\t\t" + "public " + SQLServerTypeConvert.SqlServerTypeStringToNetTypeString(FeildType[i]) + TypeConvert.RT_Nullable(FeildIsNullable[i]) + " " + FeildName[i] + "\r\n");
                 str.Append("\t\t" + "{" + "\r\n");
                 str.Append("\t\t\t" + "set{_" + FeildName[i].ToLower() + "=value;}" + "\r\n");
                 str.Append("\t\t\t" + "get{return _" + FeildName[i].ToLower() + ";}" + "\r\n");

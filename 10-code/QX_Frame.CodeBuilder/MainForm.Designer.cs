@@ -29,7 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Server");
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -93,6 +96,11 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.button30 = new System.Windows.Forms.Button();
+            this.button24 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.button21 = new System.Windows.Forms.Button();
@@ -119,11 +127,6 @@
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.button27 = new System.Windows.Forms.Button();
             this.button28 = new System.Windows.Forms.Button();
-            this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.button24 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button30 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -142,6 +145,8 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabControl2.SuspendLayout();
+            this.tabPage8.SuspendLayout();
+            this.groupBox11.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -151,8 +156,6 @@
             this.tabPage5.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
-            this.tabPage8.SuspendLayout();
-            this.groupBox11.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -542,12 +545,36 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Check});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(787, 274);
@@ -658,8 +685,8 @@
             this.dataGridView2.Location = new System.Drawing.Point(0, 0);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView2.Size = new System.Drawing.Size(787, 377);
             this.dataGridView2.TabIndex = 0;
             // 
@@ -908,6 +935,65 @@
             this.tabControl2.SelectedIndex = 0;
             this.tabControl2.Size = new System.Drawing.Size(271, 702);
             this.tabControl2.TabIndex = 14;
+            // 
+            // tabPage8
+            // 
+            this.tabPage8.Controls.Add(this.groupBox11);
+            this.tabPage8.Location = new System.Drawing.Point(4, 22);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Size = new System.Drawing.Size(263, 676);
+            this.tabPage8.TabIndex = 3;
+            this.tabPage8.Text = "Common";
+            this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.groupBox11.Controls.Add(this.button30);
+            this.groupBox11.Controls.Add(this.button24);
+            this.groupBox11.Controls.Add(this.button7);
+            this.groupBox11.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox11.Location = new System.Drawing.Point(0, 0);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(263, 261);
+            this.groupBox11.TabIndex = 2;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "BaseGenerate";
+            // 
+            // button30
+            // 
+            this.button30.BackColor = System.Drawing.Color.Silver;
+            this.button30.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F);
+            this.button30.Location = new System.Drawing.Point(10, 97);
+            this.button30.Name = "button30";
+            this.button30.Size = new System.Drawing.Size(241, 30);
+            this.button30.TabIndex = 4;
+            this.button30.Text = "Oracle-SqlStatements";
+            this.button30.UseVisualStyleBackColor = false;
+            // 
+            // button24
+            // 
+            this.button24.BackColor = System.Drawing.Color.Silver;
+            this.button24.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F);
+            this.button24.Location = new System.Drawing.Point(10, 62);
+            this.button24.Name = "button24";
+            this.button24.Size = new System.Drawing.Size(241, 30);
+            this.button24.TabIndex = 4;
+            this.button24.Text = "MySql-SqlStatements";
+            this.button24.UseVisualStyleBackColor = false;
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.Silver;
+            this.button7.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F);
+            this.button7.Location = new System.Drawing.Point(10, 28);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(241, 30);
+            this.button7.TabIndex = 3;
+            this.button7.Text = "SqlServer-SqlStatements";
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click_1);
             // 
             // tabPage3
             // 
@@ -1236,65 +1322,6 @@
             this.button28.UseVisualStyleBackColor = false;
             this.button28.Click += new System.EventHandler(this.button28_Click);
             // 
-            // tabPage8
-            // 
-            this.tabPage8.Controls.Add(this.groupBox11);
-            this.tabPage8.Location = new System.Drawing.Point(4, 22);
-            this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(263, 676);
-            this.tabPage8.TabIndex = 3;
-            this.tabPage8.Text = "Common";
-            this.tabPage8.UseVisualStyleBackColor = true;
-            // 
-            // groupBox11
-            // 
-            this.groupBox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.groupBox11.Controls.Add(this.button30);
-            this.groupBox11.Controls.Add(this.button24);
-            this.groupBox11.Controls.Add(this.button7);
-            this.groupBox11.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox11.Location = new System.Drawing.Point(0, 0);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(263, 261);
-            this.groupBox11.TabIndex = 2;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "BaseGenerate";
-            // 
-            // button24
-            // 
-            this.button24.BackColor = System.Drawing.Color.Silver;
-            this.button24.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F);
-            this.button24.Location = new System.Drawing.Point(10, 62);
-            this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(241, 30);
-            this.button24.TabIndex = 4;
-            this.button24.Text = "MySql-SqlStatements";
-            this.button24.UseVisualStyleBackColor = false;
-            // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.Silver;
-            this.button7.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F);
-            this.button7.Location = new System.Drawing.Point(10, 28);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(241, 30);
-            this.button7.TabIndex = 3;
-            this.button7.Text = "SqlServer-SqlStatements";
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click_1);
-            // 
-            // button30
-            // 
-            this.button30.BackColor = System.Drawing.Color.Silver;
-            this.button30.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F);
-            this.button30.Location = new System.Drawing.Point(10, 97);
-            this.button30.Name = "button30";
-            this.button30.Size = new System.Drawing.Size(241, 30);
-            this.button30.TabIndex = 4;
-            this.button30.Text = "Oracle-SqlStatements";
-            this.button30.UseVisualStyleBackColor = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1337,6 +1364,8 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.tabControl2.ResumeLayout(false);
+            this.tabPage8.ResumeLayout(false);
+            this.groupBox11.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
@@ -1346,8 +1375,6 @@
             this.tabPage5.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
-            this.tabPage8.ResumeLayout(false);
-            this.groupBox11.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

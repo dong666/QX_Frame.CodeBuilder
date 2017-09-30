@@ -36,6 +36,7 @@ namespace CSharp_FlowchartToCode_DG
         {
             try
             {
+                mainForm.treeView1.Nodes[0].Nodes.Clear();//clear nodes
                 GetDataBaseInfo();
                 WriteConfiguration();
                 this.Close();
@@ -137,6 +138,7 @@ namespace CSharp_FlowchartToCode_DG
                 root.Name = dbName;
                 root.ImageIndex = 2;
                 grand.Nodes.Add(root);
+
                 TreeNode biao = new TreeNode("Tables");
                 biao.Name = "Tables";
                 biao.ImageIndex = 3;
@@ -156,6 +158,10 @@ namespace CSharp_FlowchartToCode_DG
                     biao.Nodes.Add(biaovalue);
                 }
             }
+
+            //Nodes Expand
+            grand.Expand();
+            mainForm.treeView1.Nodes[0].Expand();
         }
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e) => CheckConnectTypeChoose();
         private void CheckConnectTypeChoose()

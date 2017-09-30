@@ -52,17 +52,17 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
             for (int i = 0; i < FeildName.Count; i++)
             {
                 str.Append("\t" + $"//{ TypeConvert.RT_PK(FeildIsPK[i])} {FeildDescription[i]}" + "\r\n");
-                str.Append("\t" + $"private {JavaTypeConvert.SqlTypeStringToJavaTypeString(FeildType[i])} {FeildName[i]};" + "\r\n");
+                str.Append("\t" + $"private {MySqlTypeConvert.MySqlTypeStringToJavaTypeString(FeildType[i])} {FeildName[i]};" + "\r\n");
             }
             str.Append("\r\n");
 
             for (int i = 0; i < FeildName.Count; i++)
             {
                 str.Append("\r\n");
-                str.Append("\t" + $"public {JavaTypeConvert.SqlTypeStringToJavaTypeString(FeildType[i])} get{FeildName[i]}() {{" + "\r\n");
+                str.Append("\t" + $"public {MySqlTypeConvert.MySqlTypeStringToJavaTypeString(FeildType[i])} get{FeildName[i]}() {{" + "\r\n");
                 str.Append("\t\t" + $"return this.{FeildName[i]};" + "\r\n");
                 str.Append("\t" + "}" + "\r\n");
-                str.Append("\t" + $"public void set{FeildName[i]}({JavaTypeConvert.SqlTypeStringToJavaTypeString(FeildType[i])} {FeildName[i]}) {{" + "\r\n");
+                str.Append("\t" + $"public void set{FeildName[i]}({MySqlTypeConvert.MySqlTypeStringToJavaTypeString(FeildType[i])} {FeildName[i]}) {{" + "\r\n");
                 str.Append("\t\t" + $"this.{FeildName[i]}={FeildName[i]};" + "\r\n");
                 str.Append("\t" + "}" + "\r\n");
 

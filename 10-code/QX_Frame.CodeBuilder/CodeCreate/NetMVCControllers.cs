@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSharp_FlowchartToCode_DG.QX_Frame.Helper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -38,13 +39,13 @@ namespace CSharp_FlowchartToCode_DG
                 str.Append("\t" + TableName + " " + TableName + "Object = new " + TableName + "();" + "\r\n");//添加方法介绍
                 for (int i = 0; i < FeildName.Count; i++)
                 {
-                    if (TypeConvert.RT_Type(FeildType[i].Trim()) == "Int32")
+                    if (SQLServerTypeConvert.SqlServerTypeStringToNetTypeString(FeildType[i].Trim()) == "Int32")
                     {
                         str.Append("\t" + TableName + "Object." + FeildName[i].Trim() + "=Convert.ToInt32(Request[\"" + FeildName[i].Trim() + "\"]);" + "\r\n");
                     }
                     else
                     {
-                        str.Append("\t" + TableName + "Object." + FeildName[i].Trim() + "=(" + TypeConvert.RT_Type(FeildType[i].Trim()) + ")Request[\"" + FeildName[i].Trim() + "\"];" + "\r\n");
+                        str.Append("\t" + TableName + "Object." + FeildName[i].Trim() + "=(" + SQLServerTypeConvert.SqlServerTypeStringToNetTypeString(FeildType[i]) + ")Request[\"" + FeildName[i].Trim() + "\"];" + "\r\n");
                     }
                 }
                 str.Append("\r\n");

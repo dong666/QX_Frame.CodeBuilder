@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSharp_FlowchartToCode_DG.QX_Frame.Helper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -73,9 +74,9 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
             //add filed
             for (int i = 0; i < FeildName.Count; i++)
             {
-                string IsNull = TypeConvert.RT_Type(FeildType[i]).Equals("String") ? "" : TypeConvert.RT_Nullable(FeildIsNullable[i]);
+                string IsNull = SQLServerTypeConvert.SqlServerTypeStringToNetTypeString(FeildType[i]).Equals("String") ? "" : TypeConvert.RT_Nullable(FeildIsNullable[i]);
                 str.Append("\t\t" + $"//{ TypeConvert.RT_PK(FeildIsPK[i])} {FeildDescription[i]}" + "\r\n");
-                str.Append("\t\t" + $"public {TypeConvert.RT_Type(FeildType[i])}{IsNull} {FeildName[i]} {"{ get;set; }"}" + "\r\n");
+                str.Append("\t\t" + $"public {SQLServerTypeConvert.SqlServerTypeStringToNetTypeString(FeildType[i])}{IsNull} {FeildName[i]} {"{ get;set; }"}" + "\r\n");
                 str.Append("\r\n");//换行
             }
 

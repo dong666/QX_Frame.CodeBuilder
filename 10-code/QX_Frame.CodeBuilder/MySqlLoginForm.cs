@@ -76,6 +76,7 @@ namespace CSharp_FlowchartToCode_DG
         {
             try
             {
+                mainForm.treeView1.Nodes[0].Nodes.Clear();//clear nodes
                 GetDataBaseInfo();
                 WriteConfiguration();
                 WindowClose();
@@ -128,6 +129,9 @@ namespace CSharp_FlowchartToCode_DG
                     biao.Nodes.Add(biaovalue);
                 }
             }
+            //Nodes Expand
+            grand.Expand();
+            mainForm.treeView1.Nodes[0].Expand();
         }
     }
 }

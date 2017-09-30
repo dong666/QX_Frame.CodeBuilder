@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSharp_FlowchartToCode_DG.QX_Frame.Helper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,7 +38,7 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
             str.Append($"{TableName} {GetFirstLowerStr(RemoveTB_(TableName))} = new {TableName}();\r\n");
             for (int i = 0; i < FeildName.Count; i++)
             {
-                str.Append($"{GetFirstLowerStr(RemoveTB_(TableName))}.{FeildName[i]} = default({TypeConvert.RT_Type(FeildType[i])}) ;\r\n");
+                str.Append($"{GetFirstLowerStr(RemoveTB_(TableName))}.{FeildName[i]} = default({SQLServerTypeConvert.SqlServerTypeStringToNetTypeString(FeildType[i])}) ;\r\n");
             }
 
             return str.ToString();
