@@ -39,13 +39,13 @@ namespace CSharp_FlowchartToCode_DG
                 str.Append("\t" + TableName + " " + TableName + "Object = new " + TableName + "();" + "\r\n");//添加方法介绍
                 for (int i = 0; i < FeildName.Count; i++)
                 {
-                    if (SQLServerTypeConvert.SqlServerTypeStringToNetTypeString(FeildType[i].Trim()) == "Int32")
+                    if (SqlTypeConvert.SqlTypeToLanguageType(CommonVariables.currentDataBaseType, Options.Opt_Language.Net, FeildType[i].Trim()) == "Int32")
                     {
                         str.Append("\t" + TableName + "Object." + FeildName[i].Trim() + "=Convert.ToInt32(Request[\"" + FeildName[i].Trim() + "\"]);" + "\r\n");
                     }
                     else
                     {
-                        str.Append("\t" + TableName + "Object." + FeildName[i].Trim() + "=(" + SQLServerTypeConvert.SqlServerTypeStringToNetTypeString(FeildType[i]) + ")Request[\"" + FeildName[i].Trim() + "\"];" + "\r\n");
+                        str.Append("\t" + TableName + "Object." + FeildName[i].Trim() + "=(" + SqlTypeConvert.SqlTypeToLanguageType(CommonVariables.currentDataBaseType, Options.Opt_Language.Net, FeildType[i]) + ")Request[\"" + FeildName[i].Trim() + "\"];" + "\r\n");
                     }
                 }
                 str.Append("\r\n");

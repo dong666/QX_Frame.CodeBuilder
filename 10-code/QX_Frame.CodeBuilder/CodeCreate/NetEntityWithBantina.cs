@@ -96,8 +96,8 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
                     str.Append($"\t\t[AutoIncrease]\r\n");
                 }
 
-                string IsNull = SQLServerTypeConvert.SqlServerTypeStringToNetTypeString(FeildType[i]).Equals("String") ? "" : TypeConvert.RT_Nullable(FeildIsNullable[i]);
-                str.Append("\t\t" + $"public {SQLServerTypeConvert.SqlServerTypeStringToNetTypeString(FeildType[i])}{IsNull} {FeildName[i]} {"{ get;set; }"}" + "\r\n");
+                string IsNull = SqlTypeConvert.SqlTypeToLanguageType(CommonVariables.currentDataBaseType, Options.Opt_Language.Net, FeildType[i]).Equals("String") ? "" : TypeConvert.RT_Nullable(FeildIsNullable[i]);
+                str.Append("\t\t" + $"public {SqlTypeConvert.SqlTypeToLanguageType(CommonVariables.currentDataBaseType, Options.Opt_Language.Net, FeildType[i])}{IsNull} {FeildName[i]} {"{ get;set; }"}" + "\r\n");
             }
 
             str.Append("\t" + "}" + "\r\n");//public class }

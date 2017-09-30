@@ -16,7 +16,7 @@ namespace CSharp_FlowchartToCode_DG.QX_Frame.Helper
 {
     internal class MySqlTypeConvert
     {
-        public static string MySqlTypeStringToJavaTypeString(string mySqlTypeString)
+        public static string SqlTypeStringToJavaTypeString(string mySqlTypeString)
         {
             switch (mySqlTypeString)
             {

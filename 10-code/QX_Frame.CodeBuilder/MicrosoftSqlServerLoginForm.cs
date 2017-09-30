@@ -22,6 +22,11 @@ namespace CSharp_FlowchartToCode_DG
             //CheckConnectTypeChoose
             CheckConnectTypeChoose();
             //init configuration
+
+            mainForm.button7.Enabled = true;//SqlServerStatement
+            mainForm.button24.Enabled = false;//MySqlStatement
+            mainForm.button30.Enabled = false;//OracleSqlStatement
+
             ReadConfiguration();
         }
 

@@ -50,14 +50,14 @@ namespace CSharp_FlowchartToCode_DG
             //添加私有属性行
             for (int i = 0; i < FeildName.Count; i++)
             {
-                str.Append("\t\t" + "private " + SQLServerTypeConvert.SqlServerTypeStringToNetTypeString(FeildType[i]) + TypeConvert.RT_Nullable(FeildIsNullable[i]) + " _" + FeildName[i].ToLower() + ";\t\t//"+TypeConvert.RT_PK(FeildIsPK[i])+FeildMark[i]+ "\r\n");
+                str.Append("\t\t" + "private " + SqlTypeConvert.SqlTypeToLanguageType(CommonVariables.currentDataBaseType, Options.Opt_Language.Net, FeildType[i]) + TypeConvert.RT_Nullable(FeildIsNullable[i]) + " _" + FeildName[i].ToLower() + ";\t\t//"+TypeConvert.RT_PK(FeildIsPK[i])+FeildMark[i]+ "\r\n");
             }
             str.Append("\r\n");//换行
             //添加私有属性的公有方法
             for (int i = 0; i < FeildName.Count; i++)
             {
                 str.Append("\t\t" + "/// <summary>" + "\r\n" + "\t\t" + "///" + FeildMark[i] + "\r\n" + "\t\t"+"/// </summary>" + "\r\n");//添加方法介绍
-                str.Append("\t\t" + "public " + SQLServerTypeConvert.SqlServerTypeStringToNetTypeString(FeildType[i]) + TypeConvert.RT_Nullable(FeildIsNullable[i]) + " " + FeildName[i] + "\r\n");
+                str.Append("\t\t" + "public " + SqlTypeConvert.SqlTypeToLanguageType(CommonVariables.currentDataBaseType, Options.Opt_Language.Net, FeildType[i]) + TypeConvert.RT_Nullable(FeildIsNullable[i]) + " " + FeildName[i] + "\r\n");
                 str.Append("\t\t" + "{" + "\r\n");
                 str.Append("\t\t\t" + "set{_" + FeildName[i].ToLower() + "=value;}" + "\r\n");
                 str.Append("\t\t\t" + "get{return _" + FeildName[i].ToLower() + ";}" + "\r\n");

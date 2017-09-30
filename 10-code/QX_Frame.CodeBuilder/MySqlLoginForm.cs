@@ -78,6 +78,11 @@ namespace CSharp_FlowchartToCode_DG
             {
                 mainForm.treeView1.Nodes[0].Nodes.Clear();//clear nodes
                 GetDataBaseInfo();
+
+                mainForm.button7.Enabled = false;//SqlServerStatement
+                mainForm.button24.Enabled = true;//MySqlStatement
+                mainForm.button30.Enabled = false;//OracleSqlStatement
+
                 WriteConfiguration();
                 WindowClose();
             }

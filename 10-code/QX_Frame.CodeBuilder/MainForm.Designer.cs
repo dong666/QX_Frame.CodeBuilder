@@ -1470,9 +1470,9 @@
         private System.Windows.Forms.Button button29;
         private System.Windows.Forms.TabPage tabPage8;
         private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.Button button30;
-        private System.Windows.Forms.Button button24;
-        private System.Windows.Forms.Button button7;
+        public System.Windows.Forms.Button button30;
+        public System.Windows.Forms.Button button24;
+        public System.Windows.Forms.Button button7;
     }
 }
 

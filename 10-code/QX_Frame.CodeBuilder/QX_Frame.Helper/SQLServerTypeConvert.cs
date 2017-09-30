@@ -18,7 +18,7 @@ namespace CSharp_FlowchartToCode_DG.QX_Frame.Helper
 {
     internal class SQLServerTypeConvert
     {
-        public static string SqlServerTypeStringToJavaTypeString(string sqlServerTypeString)
+        public static string SqlTypeStringToJavaTypeString(string sqlServerTypeString)
         {
             switch (sqlServerTypeString)
             {
@@ -57,12 +57,13 @@ namespace CSharp_FlowchartToCode_DG.QX_Frame.Helper
         /// </summary>
         /// <param name="sqlTypeString"></param>
         /// <returns></returns>
-        public static string SqlServerTypeStringToNetTypeString(string sqlTypeString)
+        public static string SqlTypeStringToNetTypeString(string sqlTypeString)
         {
             SqlDbType dbTpe = SqlTypeString2SqlType(sqlTypeString);
             Type type = SqlType2CsharpType(dbTpe);
             return type.Name;
         }
+
 
         // SqlDbType转换为C#数据类型
         private static Type SqlType2CsharpType(SqlDbType sqlType)

@@ -38,7 +38,7 @@ namespace CSharp_FlowchartToCode_DG.CodeCreate
             str.Append($"{TableName} {GetFirstLowerStr(RemoveTB_(TableName))} = new {TableName}();\r\n");
             for (int i = 0; i < FeildName.Count; i++)
             {
-                str.Append($"{GetFirstLowerStr(RemoveTB_(TableName))}.{FeildName[i]} = default({SQLServerTypeConvert.SqlServerTypeStringToNetTypeString(FeildType[i])}) ;\r\n");
+                str.Append($"{GetFirstLowerStr(RemoveTB_(TableName))}.{FeildName[i]} = default({SqlTypeConvert.SqlTypeToLanguageType(CommonVariables.currentDataBaseType, Options.Opt_Language.Net, FeildType[i])}) ;\r\n");
             }
 
             return str.ToString();

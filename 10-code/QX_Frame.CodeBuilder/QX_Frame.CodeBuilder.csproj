@@ -140,6 +140,7 @@
     <Compile Include="MySqlLoginForm.Designer.cs">
       <DependentUpon>MySqlLoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Options\Opt_Language.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -158,6 +159,7 @@
     <Compile Include="CodeCreate\ThreelayeToBLL.cs" />
     <Compile Include="QX_Frame.Helper\MySqlTypeConvert.cs" />
     <Compile Include="QX_Frame.Helper\SQLServerTypeConvert.cs" />
+    <Compile Include="QX_Frame.Helper\SqlTypeConvert.cs" />
     <Compile Include="QX_Frame.Helper\StringFormatHelper.cs" />
     <Compile Include="QX_Frame.Helper\TypeConvert.cs" />
     <Compile Include="Tools.cs">
