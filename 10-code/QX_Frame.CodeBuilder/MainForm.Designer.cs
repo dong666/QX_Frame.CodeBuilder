@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Server");
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -124,8 +127,8 @@
             this.button28 = new System.Windows.Forms.Button();
             this.contextMenuStrip_Tables = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.netToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.javaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.entityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.javaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.entityToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip_Table = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -551,12 +554,36 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Check});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(787, 274);
@@ -654,8 +681,8 @@
             this.dataGridView2.Location = new System.Drawing.Point(0, 0);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView2.Size = new System.Drawing.Size(787, 377);
             this.dataGridView2.TabIndex = 0;
             // 
@@ -1293,6 +1320,13 @@
             this.netToolStripMenuItem.Size = new System.Drawing.Size(71, 22);
             this.netToolStripMenuItem.Text = ".Net";
             // 
+            // entityToolStripMenuItem
+            // 
+            this.entityToolStripMenuItem.Name = "entityToolStripMenuItem";
+            this.entityToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.entityToolStripMenuItem.Text = "Entity";
+            this.entityToolStripMenuItem.Click += new System.EventHandler(this.entityToolStripMenuItem_Click);
+            // 
             // javaToolStripMenuItem
             // 
             this.javaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1300,12 +1334,6 @@
             this.javaToolStripMenuItem.Name = "javaToolStripMenuItem";
             this.javaToolStripMenuItem.Size = new System.Drawing.Size(71, 22);
             this.javaToolStripMenuItem.Text = "Java";
-            // 
-            // entityToolStripMenuItem
-            // 
-            this.entityToolStripMenuItem.Name = "entityToolStripMenuItem";
-            this.entityToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
-            this.entityToolStripMenuItem.Text = "Entity";
             // 
             // entityToolStripMenuItem1
             // 
@@ -1319,12 +1347,12 @@
             this.toolStripMenuItem1});
             this.contextMenuStrip_Table.Name = "contextMenuStrip_Table";
             this.contextMenuStrip_Table.ShowImageMargin = false;
-            this.contextMenuStrip_Table.Size = new System.Drawing.Size(128, 48);
+            this.contextMenuStrip_Table.Size = new System.Drawing.Size(120, 26);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(127, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(119, 22);
             this.toolStripMenuItem1.Text = "SqlStatement";
             // 
             // colorRichTextBox1

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using QX_Frame.Bantina.Extends;
 using QX_Frame.Bantina.Options;
 using QX_Frame.Bantina.Validation;
+using System.Linq;
 
 namespace CSharp_FlowchartToCode_DG
 {
@@ -95,6 +96,7 @@ namespace CSharp_FlowchartToCode_DG
 
         private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
+            this.treeView1.SelectedNode = e.Node;//select current node
             if (e.Node.Level == 4)
             {
                 getTableInfo();
@@ -103,13 +105,14 @@ namespace CSharp_FlowchartToCode_DG
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
+            this.treeView1.SelectedNode = e.Node;//select current node
             if (e.Button == MouseButtons.Left && e.Node.Level == 4)
             {
                 getTableInfo();
             }
             else if (e.Button == MouseButtons.Right)
             {
-                Point pos = new Point(e.Node.Bounds.X + e.Node.Bounds.Width, e.Node.Bounds.Y + e.Node.Bounds.Height / 2);
+                Point pos = new Point(e.Node.Bounds.X + e.Node.Bounds.Width/2, e.Node.Bounds.Y + e.Node.Bounds.Height / 2);
                 if (e.Node.Level == 3)
                 {
                     this.contextMenuStrip_Tables.Show(this.treeView1, pos);
@@ -138,24 +141,34 @@ namespace CSharp_FlowchartToCode_DG
                 textBox9.Text = table;//将table的表名赋值给TableName变量，方便后续传值; Model
                 textBox4.Text = table + textBox7.Text.Trim();//fileName
 
-                string sql = string.Empty;
-                switch (Db_Helper_DG.dataBaseType)
+                //if has obtain , get from static variables , it will be quickly
+                if (CommonVariables.getServerInfoFinished)
                 {
-                    case Opt_DataBaseType.SqlServer:
-                        sql = $@"use [{this.DataBaseName}] select syscolumns.name as Field ,systypes.name as FieldType , syscolumns.length as Length,syscolumns.isnullable as Nullable, sys.extended_properties.value as Description  ,IsPK = Case  when exists ( select 1 from sysobjects  inner join sysindexes  on sysindexes.name = sysobjects.name  inner join sysindexkeys  on sysindexes.id = sysindexkeys.id  and  sysindexes.indid = sysindexkeys.indid  where xtype='PK'  and parent_obj = syscolumns.id and sysindexkeys.colid = syscolumns.colid ) then 1 else 0 end ,IsIdentity = Case syscolumns.status when 128 then 1 else 0 end  from syscolumns inner join systypes on(  syscolumns.xtype = systypes.xtype and systypes.name <>'_default_' and systypes.name<>'sysname'  ) left outer join sys.extended_properties on  ( sys.extended_properties.major_id=syscolumns.id and minor_id=syscolumns.colid  ) where syscolumns.id = (select id from sysobjects where name='" + this.TableName + @"') order by syscolumns.colid ";
-                        break;
-                    case Opt_DataBaseType.MySql:
-                        sql = $"select COLUMN_NAME as Field,DATA_TYPE as DataType,SUBSTRING_INDEX(SUBSTRING_INDEX(COLUMN_TYPE,'(',-1),')',1) as Length,iF(IS_NULLABLE='YES',1,0) as Nullable,COLUMN_COMMENT as Description,IF(COLUMN_KEY='PRI',1,0) as IsPK,(SELECT IFNULL(0,1)) as IsIdentity from information_schema.columns where TABLE_SCHEMA='{this.DataBaseName}' AND TABLE_NAME='{this.TableName}'";
-                        break;
-                    case Opt_DataBaseType.Oracle:
-                        sql = "";
-                        break;
-                    default:
-                        break;
+                    DataTable dt = CommonVariables.serverInfo.DataBaseInfos.Where(t => t.DataBaseName.Equals(this.DataBaseName)).FirstOrDefault().Tables.Where(t => t.TableName.Equals(this.TableName)).FirstOrDefault().FieldInfosTable;
+                    this.DataBaseTable = dt;//将获取到的表信息保存到全局变量
+                    this.dataGridView1.DataSource = dt.DefaultView;
                 }
-                DataTable dt = Db_Helper_DG.ExecuteDataTable(sql);
-                this.DataBaseTable = dt;//将获取到的表信息保存到全局变量
-                this.dataGridView1.DataSource = dt.DefaultView;
+                else
+                {
+                    string sql = string.Empty;
+                    switch (Db_Helper_DG.dataBaseType)
+                    {
+                        case Opt_DataBaseType.SqlServer:
+                            sql = $@"use [{this.DataBaseName}] select syscolumns.name as Field ,systypes.name as FieldType , syscolumns.length as Length,syscolumns.isnullable as Nullable, sys.extended_properties.value as Description  ,IsPK = Case  when exists ( select 1 from sysobjects  inner join sysindexes  on sysindexes.name = sysobjects.name  inner join sysindexkeys  on sysindexes.id = sysindexkeys.id  and  sysindexes.indid = sysindexkeys.indid  where xtype='PK'  and parent_obj = syscolumns.id and sysindexkeys.colid = syscolumns.colid ) then 1 else 0 end ,IsIdentity = Case syscolumns.status when 128 then 1 else 0 end  from syscolumns inner join systypes on(  syscolumns.xtype = systypes.xtype and systypes.name <>'_default_' and systypes.name<>'sysname'  ) left outer join sys.extended_properties on  ( sys.extended_properties.major_id=syscolumns.id and minor_id=syscolumns.colid  ) where syscolumns.id = (select id from sysobjects where name='" + this.TableName + @"') order by syscolumns.colid ";
+                            break;
+                        case Opt_DataBaseType.MySql:
+                            sql = $"select COLUMN_NAME as Field,DATA_TYPE as DataType,SUBSTRING_INDEX(SUBSTRING_INDEX(COLUMN_TYPE,'(',-1),')',1) as Length,iF(IS_NULLABLE='YES',1,0) as Nullable,COLUMN_COMMENT as Description,IF(COLUMN_KEY='PRI',1,0) as IsPK,(SELECT IFNULL(0,1)) as IsIdentity from information_schema.columns where TABLE_SCHEMA='{this.DataBaseName}' AND TABLE_NAME='{this.TableName}'";
+                            break;
+                        case Opt_DataBaseType.Oracle:
+                            sql = "";
+                            break;
+                        default:
+                            break;
+                    }
+                    DataTable dt = Db_Helper_DG.ExecuteDataTable(sql);
+                    this.DataBaseTable = dt;//将获取到的表信息保存到全局变量
+                    this.dataGridView1.DataSource = dt.DefaultView;
+                }
                 foreach (DataGridViewRow row in dataGridView1.Rows) row.Cells[0].Value = true;  //设置初始值为全选中
             }
             catch (Exception) { }
@@ -493,5 +506,20 @@ namespace CSharp_FlowchartToCode_DG
         private void button28_Click(object sender, EventArgs e) => CommonComponent(() => JavascriptAjaxData.CreateCode(CreateInfoDic));
         //Jquery-Ajax-Data
         private void button27_Click(object sender, EventArgs e) => CommonComponent(() => JavascriptAjaxData.CreateCode(CreateInfoDic));
+
+        //MouseButton right menue operation
+        private void entityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //check database information obtain operation finished ?
+            if (CommonVariables.getServerInfoFinished)
+            {
+                MessageBox.Show(this.treeView1.SelectedNode.Name);
+                //这里遍历子节点，然后直接调用生成实体的方法即可
+            }
+            else
+            {
+                MessageBox.Show("Access to the detailed database information action not complete , Please Wait ...");
+            }
+        }
     }
 }

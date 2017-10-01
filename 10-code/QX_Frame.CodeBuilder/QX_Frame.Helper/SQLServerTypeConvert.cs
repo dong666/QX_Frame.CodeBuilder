@@ -45,7 +45,7 @@ namespace CSharp_FlowchartToCode_DG.QX_Frame.Helper
                 case "image": return "object";
                 case "real": return "Single";
                 case "sql_variant": return "Object";
-                case "uniqueidentifier": return "Guid";
+                case "uniqueidentifier": return "UUID";
                 case "varbinary": return "Object";
                 case "xml": return "Object";
                 default: return "Object";

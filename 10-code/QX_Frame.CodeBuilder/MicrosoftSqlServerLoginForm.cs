@@ -13,6 +13,12 @@ namespace CSharp_FlowchartToCode_DG
     public partial class MicrosoftSqlServerLoginForm : Form
     {
         MainForm mainForm;
+
+        private static string dataBase;
+        private static string authentication;
+        private static string loginId;
+        private static string pwd;
+
         public MicrosoftSqlServerLoginForm()
         {
             InitializeComponent();
@@ -44,6 +50,12 @@ namespace CSharp_FlowchartToCode_DG
             try
             {
                 mainForm.treeView1.Nodes[0].Nodes.Clear();//clear nodes
+
+                dataBase = comboBox2.Text.Trim();
+                authentication = comboBox3.Text.Trim();
+                loginId = comboBox4.Text.Trim();
+                pwd = textBox1.Text.Trim();
+
                 GetDataBaseInfo();
                 WriteConfiguration();
 
@@ -126,20 +138,20 @@ namespace CSharp_FlowchartToCode_DG
         //get database info fill mainForm.TreeView1
         private void GetDataBaseInfo()
         {
-            if (comboBox3.Text.Equals("Windows Authentication"))
+            if (authentication.Equals("Windows Authentication"))
             {
-                CommonVariables.SetCurrentDbConnection($"Data Source={comboBox2.Text.Trim()};Initial Catalog=master;Integrated Security = True", Opt_DataBaseType.SqlServer);
+                CommonVariables.SetCurrentDbConnection($"Data Source={dataBase};Initial Catalog=master;Integrated Security = True", Opt_DataBaseType.SqlServer);
             }
-            else if (comboBox3.Text.Equals("SQL Server Authentication"))
+            else if (authentication.Equals("SQL Server Authentication"))
             {
-                CommonVariables.SetCurrentDbConnection($"Data Source={comboBox2.Text.Trim()};Initial Catalog=master;Persist Security Info=True; User ID={comboBox4.Text.Trim()};Password={textBox1.Text.Trim()};", Opt_DataBaseType.SqlServer);
+                CommonVariables.SetCurrentDbConnection($"Data Source={dataBase};Initial Catalog=master;Persist Security Info=True; User ID={loginId};Password={pwd};", Opt_DataBaseType.SqlServer);
             }
 
             string sql = "select name from sys.databases where database_id > 4";//查询sqlserver中的非系统库
 
             DataTable dataTable = Db_Helper_DG.ExecuteDataTable(sql);
 
-            TreeNode grand = new TreeNode(comboBox2.Text.Trim());//添加节点服务器地址
+            TreeNode grand = new TreeNode(dataBase);//添加节点服务器地址
             grand.ImageIndex = 1;
             mainForm.treeView1.Nodes[0].Nodes.Add(grand);
 
@@ -184,20 +196,20 @@ namespace CSharp_FlowchartToCode_DG
         {
             CommonVariables.getServerInfoFinished = false;
 
-            if (comboBox3.Text.Equals("Windows Authentication"))
+            if (authentication.Equals("Windows Authentication"))
             {
-                CommonVariables.SetCurrentDbConnection($"Data Source={comboBox2.Text.Trim()};Initial Catalog=master;Integrated Security = True", Opt_DataBaseType.SqlServer);
+                CommonVariables.SetCurrentDbConnection($"Data Source={dataBase};Initial Catalog=master;Integrated Security = True", Opt_DataBaseType.SqlServer);
             }
-            else if (comboBox3.Text.Equals("SQL Server Authentication"))
+            else if (authentication.Equals("SQL Server Authentication"))
             {
-                CommonVariables.SetCurrentDbConnection($"Data Source={comboBox2.Text.Trim()};Initial Catalog=master;Persist Security Info=True; User ID={comboBox4.Text.Trim()};Password={textBox1.Text.Trim()};", Opt_DataBaseType.SqlServer);
+                CommonVariables.SetCurrentDbConnection($"Data Source={dataBase};Initial Catalog=master;Persist Security Info=True; User ID={loginId};Password={pwd};", Opt_DataBaseType.SqlServer);
             }
 
             string sql = "select name from sys.databases where database_id > 4";//查询sqlserver中的非系统库
 
             DataTable dataTable = Db_Helper_DG.ExecuteDataTable(sql);
 
-            ServerInfo serverInfo = new ServerInfo { ServerName = comboBox2.Text.Trim() };
+            ServerInfo serverInfo = new ServerInfo { ServerName = dataBase };
 
             List<DataBaseInfo> dataBaseInfos = new List<DataBaseInfo>();
 
@@ -217,13 +229,17 @@ namespace CSharp_FlowchartToCode_DG
                     tableInfos.Add(new TableInfo
                     {
                         TableName = row2[0].ToString(),
-                        FieldInfos = Db_Helper_DG.ExecuteList<FieldInfo>($@"use [{dbName}] select syscolumns.name as Field ,systypes.name as FieldType , syscolumns.length as Length,syscolumns.isnullable as Nullable, sys.extended_properties.value as Description  ,IsPK = Case  when exists ( select 1 from sysobjects  inner join sysindexes  on sysindexes.name = sysobjects.name  inner join sysindexkeys  on sysindexes.id = sysindexkeys.id  and  sysindexes.indid = sysindexkeys.indid  where xtype='PK'  and parent_obj = syscolumns.id and sysindexkeys.colid = syscolumns.colid ) then 1 else 0 end ,IsIdentity = Case syscolumns.status when 128 then 1 else 0 end  from syscolumns inner join systypes on(  syscolumns.xtype = systypes.xtype and systypes.name <>'_default_' and systypes.name<>'sysname'  ) left outer join sys.extended_properties on  ( sys.extended_properties.major_id=syscolumns.id and minor_id=syscolumns.colid  ) where syscolumns.id = (select id from sysobjects where name='" + row2[0].ToString() + "') order by syscolumns.colid ")
+                        FieldInfos = Db_Helper_DG.ExecuteList<FieldInfo>($@"use [{dbName}] select syscolumns.name as Field ,systypes.name as FieldType , syscolumns.length as Length,syscolumns.isnullable as Nullable, sys.extended_properties.value as Description  ,IsPK = Case  when exists ( select 1 from sysobjects  inner join sysindexes  on sysindexes.name = sysobjects.name  inner join sysindexkeys  on sysindexes.id = sysindexkeys.id  and  sysindexes.indid = sysindexkeys.indid  where xtype='PK'  and parent_obj = syscolumns.id and sysindexkeys.colid = syscolumns.colid ) then 1 else 0 end ,IsIdentity = Case syscolumns.status when 128 then 1 else 0 end  from syscolumns inner join systypes on(  syscolumns.xtype = systypes.xtype and systypes.name <>'_default_' and systypes.name<>'sysname'  ) left outer join sys.extended_properties on  ( sys.extended_properties.major_id=syscolumns.id and minor_id=syscolumns.colid  ) where syscolumns.id = (select id from sysobjects where name='" + row2[0].ToString() + "') order by syscolumns.colid "),
+                        FieldInfosTable = Db_Helper_DG.ExecuteDataTable($@"use [{dbName}] select syscolumns.name as Field ,systypes.name as FieldType , syscolumns.length as Length,syscolumns.isnullable as Nullable, sys.extended_properties.value as Description  ,IsPK = Case  when exists ( select 1 from sysobjects  inner join sysindexes  on sysindexes.name = sysobjects.name  inner join sysindexkeys  on sysindexes.id = sysindexkeys.id  and  sysindexes.indid = sysindexkeys.indid  where xtype='PK'  and parent_obj = syscolumns.id and sysindexkeys.colid = syscolumns.colid ) then 1 else 0 end ,IsIdentity = Case syscolumns.status when 128 then 1 else 0 end  from syscolumns inner join systypes on(  syscolumns.xtype = systypes.xtype and systypes.name <>'_default_' and systypes.name<>'sysname'  ) left outer join sys.extended_properties on  ( sys.extended_properties.major_id=syscolumns.id and minor_id=syscolumns.colid  ) where syscolumns.id = (select id from sysobjects where name='" + row2[0].ToString() + "') order by syscolumns.colid ")
+
                     });
                 }
                 dataBaseInfo.Tables = tableInfos;
                 dataBaseInfos.Add(dataBaseInfo);
             }
             serverInfo.DataBaseInfos = dataBaseInfos;
+
+            CommonVariables.serverInfo = serverInfo;
 
             CommonVariables.getServerInfoFinished = true;
         }

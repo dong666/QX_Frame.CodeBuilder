@@ -45,7 +45,7 @@ namespace CSharp_FlowchartToCode_DG.QX_Frame.Helper
                     switch (language)
                     {
                         case Opt_Language.Java: return MySqlTypeConvert.SqlTypeStringToJavaTypeString(typeString);
-                        case Opt_Language.Net: return string.Empty;
+                        case Opt_Language.Net: return MySqlTypeConvert.SqlTypeStringToNetTypeString(typeString);
                         case Opt_Language.Python: return string.Empty;
                         case Opt_Language.JavaScript: return string.Empty;
                         case Opt_Language.Ruby: return string.Empty;

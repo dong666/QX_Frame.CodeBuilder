@@ -49,5 +49,38 @@ namespace CSharp_FlowchartToCode_DG.QX_Frame.Helper
                 default:return "Object";
             }
         }
+        public static string SqlTypeStringToNetTypeString(string mySqlTypeString)
+        {
+            switch (mySqlTypeString)
+            {
+                case "bit": return "Boolean";
+                case "binary": return "byte[]";
+                case "blob": return "byte[]";
+                case "mediumblob": return "byte[]";
+                case "longblob": return "byte[]";
+                case "int": return "Int32";
+                case "smallint": return "Int32 ";
+                case "mediumint": return "Int32 ";
+                case "bigint": return "long";
+                case "tinyint": return "Int32";
+                case "float": return "Float";
+                case "double": return "Double";
+                case "decimal": return "Decimal";
+                case "char": return "string";
+                case "varchar": return "string";
+                case "mediumtext": return "string";
+                case "text": return "string";
+                case "longtext": return "string";
+                case "enum": return "string";
+                case "set": return "string";
+                case "date": return "DateTime";
+                case "datetime": return "DateTime";
+                case "year": return "DateTime";
+                case "time": return "DateTime";
+                case "timestamp": return "long";
+                case "geometry": return "Object";
+                default: return "Object";
+            }
+        }
     }
 }

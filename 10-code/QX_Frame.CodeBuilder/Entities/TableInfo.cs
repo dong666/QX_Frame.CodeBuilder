@@ -13,6 +13,7 @@
  *********************************************************/
 
 using System.Collections.Generic;
+using System.Data;
 
 namespace CSharp_FlowchartToCode_DG.Entities
 {
@@ -20,5 +21,6 @@ namespace CSharp_FlowchartToCode_DG.Entities
     {
         public string TableName { get; set; }
         public List<FieldInfo> FieldInfos { get; set; }
+        public DataTable FieldInfosTable { get; set; }
     }
 }

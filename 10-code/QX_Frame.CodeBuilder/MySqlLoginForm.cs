@@ -1,4 +1,5 @@
-﻿using QX_Frame.Bantina;
+﻿using CSharp_FlowchartToCode_DG.Entities;
+using QX_Frame.Bantina;
 using QX_Frame.Bantina.Extends;
 using QX_Frame.Bantina.Options;
 using System;
@@ -16,6 +17,12 @@ namespace CSharp_FlowchartToCode_DG
     public partial class MySqlLoginForm : Form
     {
         MainForm mainForm;
+
+        private static string serverName;
+        private static string port;
+        private static string loginId;
+        private static string pwd;
+
         public MySqlLoginForm()
         {
             InitializeComponent();
@@ -51,7 +58,6 @@ namespace CSharp_FlowchartToCode_DG
             IO_Helper_DG.Ini_Update(CommonVariables.configFilePath, "mysql", "Password", textBox4.Text.Trim());
         }
 
-
         //Connect Test
         private void button3_Click(object sender, EventArgs e)
         {
@@ -77,6 +83,12 @@ namespace CSharp_FlowchartToCode_DG
             try
             {
                 mainForm.treeView1.Nodes[0].Nodes.Clear();//clear nodes
+
+                serverName = textBox1.Text.Trim();
+                port = textBox2.Text.Trim();
+                loginId = textBox3.Text.Trim();
+                pwd = textBox4.Text.Trim();
+
                 GetDataBaseInfo();
 
                 mainForm.button7.Enabled = false;//SqlServerStatement
@@ -84,6 +96,12 @@ namespace CSharp_FlowchartToCode_DG
                 mainForm.button30.Enabled = false;//OracleSqlStatement
 
                 WriteConfiguration();
+
+                Task_Helper_DG.TaskRun(() =>
+                {
+                    GetDataBaseInfoBack();
+                });
+
                 WindowClose();
             }
             catch (Exception ex)
@@ -92,17 +110,17 @@ namespace CSharp_FlowchartToCode_DG
             }
         }
         //cancel
-        private void button2_Click(object sender, EventArgs e)=> WindowClose();
+        private void button2_Click(object sender, EventArgs e) => WindowClose();
 
         private void GetDataBaseInfo()
         {
-            CommonVariables.SetCurrentDbConnection($"Data Source={textBox1.Text.Trim()};User ID={textBox3.Text.Trim()};Password={textBox4.Text.Trim()}", Opt_DataBaseType.MySql);
+            CommonVariables.SetCurrentDbConnection($"Data Source={serverName};User ID={loginId};Password={pwd}", Opt_DataBaseType.MySql);
 
             string sql = "select DISTINCT(TABLE_SCHEMA) as name from information_schema.columns";//查询sqlserver中的非系统库
 
             DataTable dataTable = Db_Helper_DG.ExecuteDataTable(sql);
 
-            TreeNode grand = new TreeNode(textBox1.Text.Trim());//添加节点服务器地址
+            TreeNode grand = new TreeNode(serverName);//添加节点服务器地址
             grand.ImageIndex = 1;
             mainForm.treeView1.Nodes[0].Nodes.Add(grand);
 
@@ -137,6 +155,53 @@ namespace CSharp_FlowchartToCode_DG
             //Nodes Expand
             grand.Expand();
             mainForm.treeView1.Nodes[0].Expand();
+        }
+
+        /// <summary>
+        /// if connect succeed execute this method get info in background
+        /// </summary>
+        private void GetDataBaseInfoBack()
+        {
+            CommonVariables.getServerInfoFinished = false;
+
+            CommonVariables.SetCurrentDbConnection($"Data Source={serverName};User ID={loginId};Password={pwd}", Opt_DataBaseType.MySql);
+
+            string sql = "select DISTINCT(TABLE_SCHEMA) as name from information_schema.columns";//查询sqlserver中的非系统库
+
+            DataTable dataTable = Db_Helper_DG.ExecuteDataTable(sql);
+
+            ServerInfo serverInfo = new ServerInfo { ServerName = serverName };
+
+            List<DataBaseInfo> dataBaseInfos = new List<DataBaseInfo>();
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                string dbName = row["name"].ToString();
+                DataBaseInfo dataBaseInfo = new DataBaseInfo { DataBaseName = dbName };
+
+                //获取表名
+                List<TableInfo> tableInfos = new List<TableInfo>();
+
+                string sqlTable = $"select DISTINCT(TABLE_NAME) from information_schema.columns where TABLE_SCHEMA='{dbName}'";
+                DataTable dt2 = Db_Helper_DG.ExecuteDataTable(sqlTable);
+                string[] tableNameArray = new string[dt2.Rows.Count];
+                foreach (DataRow row2 in dt2.Rows)
+                {
+                    tableInfos.Add(new TableInfo
+                    {
+                        TableName = row2[0].ToString(),
+                        FieldInfos = Db_Helper_DG.ExecuteList<FieldInfo>($"select COLUMN_NAME as Field,DATA_TYPE as DataType,SUBSTRING_INDEX(SUBSTRING_INDEX(COLUMN_TYPE,'(',-1),')',1) as Length,iF(IS_NULLABLE='YES',1,0) as Nullable,COLUMN_COMMENT as Description,IF(COLUMN_KEY='PRI',1,0) as IsPK,(SELECT IFNULL(0,1)) as IsIdentity from information_schema.columns where TABLE_SCHEMA='{dbName}' AND TABLE_NAME='{row2[0].ToString()}'"),
+                        FieldInfosTable = Db_Helper_DG.ExecuteDataTable($"select COLUMN_NAME as Field,DATA_TYPE as DataType,SUBSTRING_INDEX(SUBSTRING_INDEX(COLUMN_TYPE,'(',-1),')',1) as Length,iF(IS_NULLABLE='YES',1,0) as Nullable,COLUMN_COMMENT as Description,IF(COLUMN_KEY='PRI',1,0) as IsPK,(SELECT IFNULL(0,1)) as IsIdentity from information_schema.columns where TABLE_SCHEMA='{dbName}' AND TABLE_NAME='{row2[0].ToString()}'")
+                    });
+                }
+                dataBaseInfo.Tables = tableInfos;
+                dataBaseInfos.Add(dataBaseInfo);
+            }
+            serverInfo.DataBaseInfos = dataBaseInfos;
+
+            CommonVariables.serverInfo = serverInfo;
+
+            CommonVariables.getServerInfoFinished = true;
         }
     }
 }
