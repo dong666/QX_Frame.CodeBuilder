@@ -30,9 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Server");
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -72,14 +69,12 @@
             this.Check = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.colorRichTextBox1 = new CSharp_FlowchartToCode_DG.Controls.ColorRichTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.button23 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.colorRichTextBox2 = new CSharp_FlowchartToCode_DG.Controls.ColorRichTextBox();
             this.button20 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
@@ -127,6 +122,15 @@
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.button27 = new System.Windows.Forms.Button();
             this.button28 = new System.Windows.Forms.Button();
+            this.contextMenuStrip_Tables = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.netToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.javaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.entityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.entityToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip_Table = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.colorRichTextBox1 = new CSharp_FlowchartToCode_DG.Controls.ColorRichTextBox();
+            this.colorRichTextBox2 = new CSharp_FlowchartToCode_DG.Controls.ColorRichTextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -156,6 +160,8 @@
             this.tabPage5.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
+            this.contextMenuStrip_Tables.SuspendLayout();
+            this.contextMenuStrip_Table.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -545,36 +551,12 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Check});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(787, 274);
@@ -614,19 +596,6 @@
             this.splitContainer1.Size = new System.Drawing.Size(787, 643);
             this.splitContainer1.SplitterDistance = 262;
             this.splitContainer1.TabIndex = 0;
-            // 
-            // colorRichTextBox1
-            // 
-            this.colorRichTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.colorRichTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.colorRichTextBox1.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.colorRichTextBox1.Language = CSharp_FlowchartToCode_DG.Controls.ColorRichTextBox.Languages.CSHARP;
-            this.colorRichTextBox1.Location = new System.Drawing.Point(0, 43);
-            this.colorRichTextBox1.Name = "colorRichTextBox1";
-            this.colorRichTextBox1.Size = new System.Drawing.Size(787, 219);
-            this.colorRichTextBox1.TabIndex = 1;
-            this.colorRichTextBox1.Text = "";
-            this.colorRichTextBox1.WordWrap = false;
             // 
             // panel1
             // 
@@ -685,8 +654,8 @@
             this.dataGridView2.Location = new System.Drawing.Point(0, 0);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView2.Size = new System.Drawing.Size(787, 377);
             this.dataGridView2.TabIndex = 0;
             // 
@@ -706,21 +675,6 @@
             this.tabPage2.Size = new System.Drawing.Size(793, 649);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Code View";
-            // 
-            // colorRichTextBox2
-            // 
-            this.colorRichTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.colorRichTextBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.colorRichTextBox2.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.colorRichTextBox2.Language = CSharp_FlowchartToCode_DG.Controls.ColorRichTextBox.Languages.CSHARP;
-            this.colorRichTextBox2.Location = new System.Drawing.Point(2, 3);
-            this.colorRichTextBox2.Name = "colorRichTextBox2";
-            this.colorRichTextBox2.Size = new System.Drawing.Size(703, 643);
-            this.colorRichTextBox2.TabIndex = 7;
-            this.colorRichTextBox2.Text = "";
-            this.colorRichTextBox2.WordWrap = false;
             // 
             // button20
             // 
@@ -1322,6 +1276,85 @@
             this.button28.UseVisualStyleBackColor = false;
             this.button28.Click += new System.EventHandler(this.button28_Click);
             // 
+            // contextMenuStrip_Tables
+            // 
+            this.contextMenuStrip_Tables.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.netToolStripMenuItem,
+            this.javaToolStripMenuItem});
+            this.contextMenuStrip_Tables.Name = "contextMenuStrip1";
+            this.contextMenuStrip_Tables.ShowImageMargin = false;
+            this.contextMenuStrip_Tables.Size = new System.Drawing.Size(72, 48);
+            // 
+            // netToolStripMenuItem
+            // 
+            this.netToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.entityToolStripMenuItem});
+            this.netToolStripMenuItem.Name = "netToolStripMenuItem";
+            this.netToolStripMenuItem.Size = new System.Drawing.Size(71, 22);
+            this.netToolStripMenuItem.Text = ".Net";
+            // 
+            // javaToolStripMenuItem
+            // 
+            this.javaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.entityToolStripMenuItem1});
+            this.javaToolStripMenuItem.Name = "javaToolStripMenuItem";
+            this.javaToolStripMenuItem.Size = new System.Drawing.Size(71, 22);
+            this.javaToolStripMenuItem.Text = "Java";
+            // 
+            // entityToolStripMenuItem
+            // 
+            this.entityToolStripMenuItem.Name = "entityToolStripMenuItem";
+            this.entityToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
+            this.entityToolStripMenuItem.Text = "Entity";
+            // 
+            // entityToolStripMenuItem1
+            // 
+            this.entityToolStripMenuItem1.Name = "entityToolStripMenuItem1";
+            this.entityToolStripMenuItem1.Size = new System.Drawing.Size(104, 22);
+            this.entityToolStripMenuItem1.Text = "Entity";
+            // 
+            // contextMenuStrip_Table
+            // 
+            this.contextMenuStrip_Table.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
+            this.contextMenuStrip_Table.Name = "contextMenuStrip_Table";
+            this.contextMenuStrip_Table.ShowImageMargin = false;
+            this.contextMenuStrip_Table.Size = new System.Drawing.Size(128, 48);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(127, 22);
+            this.toolStripMenuItem1.Text = "SqlStatement";
+            // 
+            // colorRichTextBox1
+            // 
+            this.colorRichTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.colorRichTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.colorRichTextBox1.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.colorRichTextBox1.Language = CSharp_FlowchartToCode_DG.Controls.ColorRichTextBox.Languages.CSHARP;
+            this.colorRichTextBox1.Location = new System.Drawing.Point(0, 43);
+            this.colorRichTextBox1.Name = "colorRichTextBox1";
+            this.colorRichTextBox1.Size = new System.Drawing.Size(787, 219);
+            this.colorRichTextBox1.TabIndex = 1;
+            this.colorRichTextBox1.Text = "";
+            this.colorRichTextBox1.WordWrap = false;
+            // 
+            // colorRichTextBox2
+            // 
+            this.colorRichTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.colorRichTextBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.colorRichTextBox2.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.colorRichTextBox2.Language = CSharp_FlowchartToCode_DG.Controls.ColorRichTextBox.Languages.CSHARP;
+            this.colorRichTextBox2.Location = new System.Drawing.Point(2, 3);
+            this.colorRichTextBox2.Name = "colorRichTextBox2";
+            this.colorRichTextBox2.Size = new System.Drawing.Size(703, 643);
+            this.colorRichTextBox2.TabIndex = 7;
+            this.colorRichTextBox2.Text = "";
+            this.colorRichTextBox2.WordWrap = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1335,7 +1368,7 @@
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1300, 750);
-            this.MinimumSize = new System.Drawing.Size(1300, 750);
+            this.MinimumSize = new System.Drawing.Size(1300, 726);
             this.Name = "MainForm";
             this.Padding = new System.Windows.Forms.Padding(5);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1375,6 +1408,8 @@
             this.tabPage5.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
+            this.contextMenuStrip_Tables.ResumeLayout(false);
+            this.contextMenuStrip_Table.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1473,6 +1508,13 @@
         public System.Windows.Forms.Button button30;
         public System.Windows.Forms.Button button24;
         public System.Windows.Forms.Button button7;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip_Tables;
+        private System.Windows.Forms.ToolStripMenuItem netToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem entityToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem javaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem entityToolStripMenuItem1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip_Table;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }
 

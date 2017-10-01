@@ -57,7 +57,7 @@ namespace CSharp_FlowchartToCode_DG
                 textBox7.Text = IO_Helper_DG.Ini_SelectStringValue(CommonVariables.configFilePath, "code", "ClassNamePlus");//ClassExtends
                 textBox8.Text = IO_Helper_DG.Ini_SelectStringValue(CommonVariables.configFilePath, "code", "ClassExtends");//ClassExtends
                 textBox4.Text = IO_Helper_DG.Ini_SelectStringValue(CommonVariables.configFilePath, "code", "fileName");//fileName
-                comboBox1.Text = IO_Helper_DG.Ini_SelectStringValue(CommonVariables.configFilePath, "code", "fileNameSuffix",".txt");//fileNameSuffix
+                comboBox1.Text = IO_Helper_DG.Ini_SelectStringValue(CommonVariables.configFilePath, "code", "fileNameSuffix", ".txt");//fileNameSuffix
 
                 textBox6.Text = dir + "\\qixiaoCodeBuilder\\";
                 colorRichTextBox1.Language = CSharp_FlowchartToCode_DG.Controls.ColorRichTextBox.Languages.SQL;
@@ -95,7 +95,25 @@ namespace CSharp_FlowchartToCode_DG
 
         private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e) => getTableInfo();
 
-        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e) => getTableInfo();
+        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                getTableInfo();
+            }
+            else if(e.Button==MouseButtons.Right)
+            {
+                Point pos = new Point(e.Node.Bounds.X + e.Node.Bounds.Width, e.Node.Bounds.Y + e.Node.Bounds.Height / 2);
+                if (e.Node.Level == 3)
+                {
+                    this.contextMenuStrip_Tables.Show(this.treeView1, pos);
+                }
+                else if (e.Node.Level == 4)
+                {
+                    this.contextMenuStrip_Table.Show(this.treeView1, pos);
+                }
+            }
+        }
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e) => getTableInfo();
 
@@ -197,7 +215,7 @@ namespace CSharp_FlowchartToCode_DG
         private void saveCodeToFile()
         {
             string dirPath = textBox6.Text;
-            string fileComplexPath = dirPath + textBox4.Text+comboBox1.Text;
+            string fileComplexPath = dirPath + textBox4.Text + comboBox1.Text;
             IO_Helper_DG.CreateDirectoryIfNotExist(dirPath);
             using (FileStream fs = new FileStream(fileComplexPath, FileMode.Create))
             {
@@ -235,7 +253,7 @@ namespace CSharp_FlowchartToCode_DG
         private void button10_Click(object sender, EventArgs e) => ChangeTexBox4();
         private void textBox5_TextChanged(object sender, EventArgs e) => ChangeTexBox4();
         private void textBox7_TextChanged(object sender, EventArgs e) => ChangeTexBox4();
-        private void ChangeTexBox4()=> textBox4.Text = textBox5.Text.Trim() + textBox7.Text.Trim();
+        private void ChangeTexBox4() => textBox4.Text = textBox5.Text.Trim() + textBox7.Text.Trim();
 
         #endregion
 
