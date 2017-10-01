@@ -128,6 +128,10 @@
     <Compile Include="DataBaseChooseForm.Designer.cs">
       <DependentUpon>DataBaseChooseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\DataBaseInfo.cs" />
+    <Compile Include="Entities\FieldInfo.cs" />
+    <Compile Include="Entities\ServerInfo.cs" />
+    <Compile Include="Entities\TableInfo.cs" />
     <Compile Include="MicrosoftSqlServerLoginForm.cs">
       <SubType>Form</SubType>
     </Compile>

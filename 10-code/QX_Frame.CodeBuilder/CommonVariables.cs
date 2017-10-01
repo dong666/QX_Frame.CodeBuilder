@@ -1,4 +1,5 @@
-﻿using QX_Frame.Bantina;
+﻿using CSharp_FlowchartToCode_DG.Entities;
+using QX_Frame.Bantina;
 using QX_Frame.Bantina.Options;
 namespace CSharp_FlowchartToCode_DG
 {
@@ -7,6 +8,9 @@ namespace CSharp_FlowchartToCode_DG
 
         public static string configFilePath = @"qixiaoSrc\QixiaoConfig.ini";          //配置文件的路径
         public static Opt_DataBaseType currentDataBaseType = Opt_DataBaseType.SqlServer;
+
+        public static bool getServerInfoFinished = false;
+        public static ServerInfo serverInfo=new ServerInfo ();
 
         /// <summary>
         /// SetCurrentDbConnection

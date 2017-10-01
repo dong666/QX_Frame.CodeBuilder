@@ -93,15 +93,21 @@ namespace CSharp_FlowchartToCode_DG
 
         #region 获取数据库结构的代码
 
-        private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e) => getTableInfo();
-
-        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            if (e.Node.Level == 4)
             {
                 getTableInfo();
             }
-            else if(e.Button==MouseButtons.Right)
+        }
+
+        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left && e.Node.Level == 4)
+            {
+                getTableInfo();
+            }
+            else if (e.Button == MouseButtons.Right)
             {
                 Point pos = new Point(e.Node.Bounds.X + e.Node.Bounds.Width, e.Node.Bounds.Y + e.Node.Bounds.Height / 2);
                 if (e.Node.Level == 3)

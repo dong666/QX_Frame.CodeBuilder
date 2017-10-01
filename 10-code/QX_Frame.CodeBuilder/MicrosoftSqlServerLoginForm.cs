@@ -1,6 +1,8 @@
-﻿using QX_Frame.Bantina;
+﻿using CSharp_FlowchartToCode_DG.Entities;
+using QX_Frame.Bantina;
 using QX_Frame.Bantina.Options;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -44,6 +46,13 @@ namespace CSharp_FlowchartToCode_DG
                 mainForm.treeView1.Nodes[0].Nodes.Clear();//clear nodes
                 GetDataBaseInfo();
                 WriteConfiguration();
+
+                //Get DataBase Information in background
+                Task_Helper_DG.TaskRun(() =>
+                {
+                    GetDataBaseInfoBack();
+                });
+
                 this.Close();
                 this.Dispose();
             }
@@ -163,11 +172,62 @@ namespace CSharp_FlowchartToCode_DG
                     biao.Nodes.Add(biaovalue);
                 }
             }
-
             //Nodes Expand
             grand.Expand();
             mainForm.treeView1.Nodes[0].Expand();
         }
+
+        /// <summary>
+        /// if connect succeed execute this method get info in background
+        /// </summary>
+        private void GetDataBaseInfoBack()
+        {
+            CommonVariables.getServerInfoFinished = false;
+
+            if (comboBox3.Text.Equals("Windows Authentication"))
+            {
+                CommonVariables.SetCurrentDbConnection($"Data Source={comboBox2.Text.Trim()};Initial Catalog=master;Integrated Security = True", Opt_DataBaseType.SqlServer);
+            }
+            else if (comboBox3.Text.Equals("SQL Server Authentication"))
+            {
+                CommonVariables.SetCurrentDbConnection($"Data Source={comboBox2.Text.Trim()};Initial Catalog=master;Persist Security Info=True; User ID={comboBox4.Text.Trim()};Password={textBox1.Text.Trim()};", Opt_DataBaseType.SqlServer);
+            }
+
+            string sql = "select name from sys.databases where database_id > 4";//查询sqlserver中的非系统库
+
+            DataTable dataTable = Db_Helper_DG.ExecuteDataTable(sql);
+
+            ServerInfo serverInfo = new ServerInfo { ServerName = comboBox2.Text.Trim() };
+
+            List<DataBaseInfo> dataBaseInfos = new List<DataBaseInfo>();
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                string dbName = row["name"].ToString();
+                DataBaseInfo dataBaseInfo = new DataBaseInfo { DataBaseName = dbName };
+
+                //获取表名
+                List<TableInfo> tableInfos = new List<TableInfo>();
+
+                string sqlTable = $"use [{dbName}] SELECT name FROM sysobjects WHERE xtype = 'U' AND OBJECTPROPERTY (id, 'IsMSShipped') = 0 and name <> 'sysdiagrams'";
+                DataTable dt2 = Db_Helper_DG.ExecuteDataTable(sqlTable);
+                string[] tableNameArray = new string[dt2.Rows.Count];
+                foreach (DataRow row2 in dt2.Rows)
+                {
+                    tableInfos.Add(new TableInfo
+                    {
+                        TableName = row2[0].ToString(),
+                        FieldInfos = Db_Helper_DG.ExecuteList<FieldInfo>($@"use [{dbName}] select syscolumns.name as Field ,systypes.name as FieldType , syscolumns.length as Length,syscolumns.isnullable as Nullable, sys.extended_properties.value as Description  ,IsPK = Case  when exists ( select 1 from sysobjects  inner join sysindexes  on sysindexes.name = sysobjects.name  inner join sysindexkeys  on sysindexes.id = sysindexkeys.id  and  sysindexes.indid = sysindexkeys.indid  where xtype='PK'  and parent_obj = syscolumns.id and sysindexkeys.colid = syscolumns.colid ) then 1 else 0 end ,IsIdentity = Case syscolumns.status when 128 then 1 else 0 end  from syscolumns inner join systypes on(  syscolumns.xtype = systypes.xtype and systypes.name <>'_default_' and systypes.name<>'sysname'  ) left outer join sys.extended_properties on  ( sys.extended_properties.major_id=syscolumns.id and minor_id=syscolumns.colid  ) where syscolumns.id = (select id from sysobjects where name='" + row2[0].ToString() + "') order by syscolumns.colid ")
+                    });
+                }
+                dataBaseInfo.Tables = tableInfos;
+                dataBaseInfos.Add(dataBaseInfo);
+            }
+            serverInfo.DataBaseInfos = dataBaseInfos;
+
+            CommonVariables.getServerInfoFinished = true;
+        }
+
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e) => CheckConnectTypeChoose();
         private void CheckConnectTypeChoose()
         {
