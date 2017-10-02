@@ -67,6 +67,8 @@ namespace CSharp_FlowchartToCode_DG
                 dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dataGridView2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
                 dataGridView1.ColumnHeadersHeight = 22;
+
+                timer1.Interval = 50;//progress refresh time
             }
             catch (Exception ex)
             {
@@ -112,7 +114,7 @@ namespace CSharp_FlowchartToCode_DG
             }
             else if (e.Button == MouseButtons.Right)
             {
-                Point pos = new Point(e.Node.Bounds.X + e.Node.Bounds.Width/2, e.Node.Bounds.Y + e.Node.Bounds.Height / 2);
+                Point pos = new Point(e.Node.Bounds.X + e.Node.Bounds.Width / 2, e.Node.Bounds.Y + e.Node.Bounds.Height / 2);
                 if (e.Node.Level == 3)
                 {
                     this.contextMenuStrip_Tables.Show(this.treeView1, pos);
@@ -335,23 +337,25 @@ namespace CSharp_FlowchartToCode_DG
         {
             try
             {
-                setInitConfigFile();//record the opration history
-                InitCreateInfoDic();//init create info to dictionary
-
-                colorRichTextBox2.Text = null;
-
-                CodeTxt = method();
-
-                colorRichTextBox2.Text = CodeTxt;    //获取代码
-                if (comboBox2.Text.Equals("To File"))
+                ProgressDisplay(() =>
                 {
-                    saveCodeToFile();//save code to file
-                }
-                else
-                {
-                    this.tabControl1.SelectedTab = tabPage2;//trasfer to code view
-                }
-                Timer1Start();//Start Timer1();
+                    setInitConfigFile();//record the opration history
+                    InitCreateInfoDic();//init create info to dictionary
+
+                    colorRichTextBox2.Text = null;
+
+                    CodeTxt = method();
+
+                    colorRichTextBox2.Text = CodeTxt;    //获取代码
+                    if (comboBox2.Text.Equals("To File"))
+                    {
+                        saveCodeToFile();//save code to file
+                    }
+                    else
+                    {
+                        this.tabControl1.SelectedTab = tabPage2;//trasfer to code view
+                    }
+                });//progress display
             }
             catch (Exception ee)
             {
@@ -361,12 +365,26 @@ namespace CSharp_FlowchartToCode_DG
 
         #endregion
 
+        #region Progress Display
+
+        //create:qixiao
+        //time:2017-10-2 18:37:43
+        //desc:progress display . if action execute not finished , wait display
+
+        private static bool IsProgressFinished = false;
         //Special Effects Timer
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (toolStripProgressBar1.Value < 100)
+            if (toolStripProgressBar1.Value < 50)
             {
                 toolStripProgressBar1.Value += 10;
+            }
+            else if (toolStripProgressBar1.Value >= 50 && toolStripProgressBar1.Value < 100)
+            {
+                if (IsProgressFinished)
+                {
+                    toolStripProgressBar1.Value += 10;
+                }
             }
             else
             {
@@ -375,18 +393,23 @@ namespace CSharp_FlowchartToCode_DG
                 this.timer1.Stop();
             }
         }
-        //Init and Start timer
-        private void Timer1Start()
+        //Progress Display
+        private void ProgressDisplay(Action action)
         {
             if (timer1.Enabled)
             {
                 timer1.Stop();
             }
-            this.toolStripProgressBar1.Value = 0;
             this.toolStripStatusLabel1.ForeColor = Color.Red;
             this.toolStripStatusLabel1.Text = "Generate Watting...";
+            this.toolStripProgressBar1.Value = 0;
+            IsProgressFinished = false;
             this.timer1.Start();
+            action();//execute action
+            IsProgressFinished = true;
         }
+
+        #endregion
         //Execute Sql
         private void button23_Click(object sender, EventArgs e)
         {
@@ -429,6 +452,47 @@ namespace CSharp_FlowchartToCode_DG
         }
 
         // --- CodeGenerate Opration --------------------------------
+
+        //---Volume Generate ---
+        //VolumeGenerateCommonMethod
+        private void VolumeGenerateCommon(Action action)
+        {
+            //check database information obtain operation finished ?
+            if (CommonVariables.getServerInfoFinished)
+            {
+                //MessageBox.Show(this.treeView1.SelectedNode.Name);
+                TreeNode currentNode = this.treeView1.SelectedNode;
+                foreach (TreeNode nodeItem in currentNode.Nodes)
+                {
+                    this.treeView1.SelectedNode = nodeItem;
+                    getTableInfo();
+                    action();
+                }
+                this.treeView1.SelectedNode = currentNode;
+            }
+            else
+            {
+                MessageBox.Show("Access to the detailed database information action not complete , Please Wait ...");
+            }
+        }
+        //MouseButton right menue operation
+        private void entityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VolumeGenerateCommon(() =>
+            {
+                comboBox1.Text = ".cs";
+                CommonComponent(() => NetEntity.CreateCode(CreateInfoDic));
+            });
+        }
+        private void entityToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            VolumeGenerateCommon(() =>
+            {
+                comboBox1.Text = ".Java";
+                CommonComponent(() => JavaEntity.CreateCode(CreateInfoDic));
+            });
+        }
+
 
         //--- BaseGenerate ---
         private void button7_Click_1(object sender, EventArgs e) => CommonComponent(() => SqlServerSqlStatement.CreateCode(CreateInfoDic));
@@ -506,20 +570,5 @@ namespace CSharp_FlowchartToCode_DG
         private void button28_Click(object sender, EventArgs e) => CommonComponent(() => JavascriptAjaxData.CreateCode(CreateInfoDic));
         //Jquery-Ajax-Data
         private void button27_Click(object sender, EventArgs e) => CommonComponent(() => JavascriptAjaxData.CreateCode(CreateInfoDic));
-
-        //MouseButton right menue operation
-        private void entityToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //check database information obtain operation finished ?
-            if (CommonVariables.getServerInfoFinished)
-            {
-                MessageBox.Show(this.treeView1.SelectedNode.Name);
-                //这里遍历子节点，然后直接调用生成实体的方法即可
-            }
-            else
-            {
-                MessageBox.Show("Access to the detailed database information action not complete , Please Wait ...");
-            }
-        }
     }
 }

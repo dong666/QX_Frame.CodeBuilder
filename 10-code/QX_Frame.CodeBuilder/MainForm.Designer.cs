@@ -1323,7 +1323,7 @@
             // entityToolStripMenuItem
             // 
             this.entityToolStripMenuItem.Name = "entityToolStripMenuItem";
-            this.entityToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.entityToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
             this.entityToolStripMenuItem.Text = "Entity";
             this.entityToolStripMenuItem.Click += new System.EventHandler(this.entityToolStripMenuItem_Click);
             // 
@@ -1340,6 +1340,7 @@
             this.entityToolStripMenuItem1.Name = "entityToolStripMenuItem1";
             this.entityToolStripMenuItem1.Size = new System.Drawing.Size(104, 22);
             this.entityToolStripMenuItem1.Text = "Entity";
+            this.entityToolStripMenuItem1.Click += new System.EventHandler(this.entityToolStripMenuItem1_Click);
             // 
             // contextMenuStrip_Table
             // 
