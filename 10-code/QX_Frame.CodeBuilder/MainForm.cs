@@ -493,7 +493,6 @@ namespace CSharp_FlowchartToCode_DG
             });
         }
 
-
         //--- BaseGenerate ---
         private void button7_Click_1(object sender, EventArgs e) => CommonComponent(() => SqlServerSqlStatement.CreateCode(CreateInfoDic));
 
