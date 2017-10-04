@@ -25,13 +25,11 @@ namespace CSharp_FlowchartToCode_DG
 
             StringBuilder str = new StringBuilder();
 
-
             #region 版权信息
             //版权信息
             str.Append(Info.CopyRight);
             str.Append("\r\n");
             #endregion
-
 
             //判断是否需要 实例化对象 getForm
             if (MethodInfo[0])
@@ -96,9 +94,7 @@ namespace CSharp_FlowchartToCode_DG
                 str.Append("\t" + "{" + "\r\n");
                 str.Append("\t\t" + "return Json(new { TFMark = false, Msg = \"操作失败,请检查信息！\" }, JsonRequestBehavior.AllowGet);" + "\r\n");
                 str.Append("\t" + "}" + "\r\n");
-
             }
-
             return str.ToString();
         }
     }
