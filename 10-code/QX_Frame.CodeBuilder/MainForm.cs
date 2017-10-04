@@ -29,7 +29,6 @@ namespace CSharp_FlowchartToCode_DG
         List<string> FeildIsPK = new List<string>();          //表字段是否主键
         List<string> FeildIsIdentity = new List<string>();    //表字段是否自增
 
-
         string CodeTxt = "";        //代码字符串，用于输出到文件
         string dir = IO_Helper_DG.DeskTopPath;                  //获取路径
         DataTable DataBaseTable = default(DataTable); //数据库表数据DataTable
