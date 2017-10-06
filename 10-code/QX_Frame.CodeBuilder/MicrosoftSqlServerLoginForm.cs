@@ -245,6 +245,7 @@ namespace CSharp_FlowchartToCode_DG
         }
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e) => CheckConnectTypeChoose();
+
         private void CheckConnectTypeChoose()
         {
             if (comboBox3.Text.Equals("Windows Authentication"))
