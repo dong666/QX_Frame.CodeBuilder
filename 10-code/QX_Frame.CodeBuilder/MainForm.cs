@@ -337,6 +337,7 @@ namespace CSharp_FlowchartToCode_DG
         {
             try
             {
+                //progress display
                 ProgressDisplay(() =>
                 {
                     setInitConfigFile();//record the opration history
@@ -355,7 +356,7 @@ namespace CSharp_FlowchartToCode_DG
                     {
                         this.tabControl1.SelectedTab = tabPage2;//trasfer to code view
                     }
-                });//progress display
+                });
             }
             catch (Exception ee)
             {
