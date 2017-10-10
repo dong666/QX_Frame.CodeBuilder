@@ -36,15 +36,16 @@ namespace CSharp_FlowchartToCode_DG
                 StringBuilder str = new StringBuilder();    //版本信息
                 str.Append("/*********************************************************" + "\r\n");
                 str.Append(" * CopyRight: QIXIAO CODE BUILDER. \r\n");
-                str.Append(" * Version:" + VersionNum + "\r\n");
-                str.Append(" * Author:" + Author + "\r\n");
-                str.Append(" * Create:" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\r\n");
-                str.Append(" * Update:" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\r\n");
+                str.Append(" * Version: " + VersionNum + "\r\n");
+                str.Append(" * Author: " + Author + "\r\n");
+                str.Append(" * Address: Earth\r\n");
+                str.Append(" * Create: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\r\n");
+                str.Append(" * Update: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\r\n");
                 str.Append(" * E-mail: dong@qixiao.me | wd8622088@foxmail.com \r\n");
                 str.Append(" * GitHub: https://github.com/dong666 \r\n");
                 str.Append(" * Personal web site: http://qixiao.me \r\n");
                 str.Append(" * Technical WebSit: http://www.cnblogs.com/qixiaoyizhan/ \r\n");
-                str.Append(" * Description:\r\n");
+                str.Append(" * Description: \r\n");
                 str.Append(" * Thx , Best Regards ~\r\n");
                 str.Append(" *********************************************************/" + "\r\n");
                 #endregion
@@ -54,3 +55,18 @@ namespace CSharp_FlowchartToCode_DG
 
     }
 }
+/*********************************************************
+ * CopyRight: QIXIAO CODE BUILDER. 
+ * Version: 5.0.0
+ * Author: qixiao(柒小)
+ * Address: Earth
+ * Create: 2017-10-10 11:03:01
+ * Update: 2017-10-10 11:03:01
+ * E-mail: dong@qixiao.me | wd8622088@foxmail.com 
+ * GitHub: https://github.com/dong666 
+ * Personal web site: http://qixiao.me 
+ * Technical WebSit: http://www.cnblogs.com/qixiaoyizhan/ 
+ * Description: 
+ * Thx , Best Regards ~
+ *********************************************************/
+
