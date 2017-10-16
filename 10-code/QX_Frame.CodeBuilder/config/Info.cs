@@ -23,7 +23,7 @@ namespace CSharp_FlowchartToCode_DG
     {
         //版权信息通用模块
         public const string VersionNum = "5.0.0";         //版本号
-        public const string Author = "qixiao(柒小)";      //作者
+        public const string Author = "sevenTiny";         //作者
         public static readonly string Description = $"qixiao code builder start at:{DateTime.Now.ToString("yyyyMMdd HH:mm:ss")}";
 
         //设置版权信息
